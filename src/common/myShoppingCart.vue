@@ -185,6 +185,7 @@
             position: relative;
             z-index: 101;
             box-sizing: content-box;
+            margin-left: 10px;
             .qt {
                 margin-left: 10px;
             }

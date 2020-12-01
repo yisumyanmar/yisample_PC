@@ -3,21 +3,22 @@
 		<header>
 			<div class="header">
 				<div class="divOne l">
-					<el-tooltip class="item" effect="dark" content="按 Ctrl + D 收藏本网站" placement="bottom-start">
+					<!-- <el-tooltip class="item" effect="dark" content="按 Ctrl + D 收藏本网站" placement="bottom-start">
 						<span class="l"><img src="../assets/img/shuqian.jpg" />收藏{{this.$constant.mainTitle}}</span>
-					</el-tooltip>
-					<div class="l divTwo" @click="toAddress">
+					</el-tooltip> -->
+					<span class="l">中国大陆</span>
+					<img src="../assets/img/down-arrow.png"/>
+					<!-- <div class="l divTwo" @click="toAddress">
 						<i class="el-icon-location-outline"></i>
 						配送至:
 						<span class="shanghai">{{site}}</span>
 						<span>[切换]</span>
-					</div>
+					</div> -->
 				</div>
-				<div class="r phone">
+				<!-- <div class="r phone">
 					<img class="mobile" src="../assets/img/phone.jpg"/>
-					<!-- <span>{{$constant.web_phone}}</span> -->
 					<span>{{qrCode.intnet_phone}}</span>
-				</div>
+				</div> -->
 				<ul class="r ul">
 					<li class="l shortcut">
 						<div class="dt">
@@ -118,8 +119,6 @@ export default {
 			this.ok = false
 		}
 		this.getArticleType();
-		// this.getNav();
-		// this.getCommonHeader();
 
 	},
 	created(){
@@ -130,11 +129,6 @@ export default {
 		clearInterval(this.timer)
 	},
 	methods: {
-		// authenticated() {
-        //     let somethingtemp = localStorage.getItem('loginuserdata')
-        //     return somethingtemp;
-        // },
-
 		//获取二维码
 		QRcede(){
 			this.HTTP(this.$httpConfig.aboutEtcetera,{},'post')
@@ -142,16 +136,6 @@ export default {
 					this.qrCode = res.data.data;
 				}).catch(()=>{})
 		},
-		//获取默认地址addressLists
-		// getaddressLists(){
-		// 	// this.user_name = sessionStorage.getItem('userName');
-		// 	this.user_name = localStorage.getItem('userNamee');
-		// 	this.HTTP(this.$httpConfig.addressLists,{},'post').then((res)=>{
-		// 		this.site = res.data.data[0].prov_name+" "+res.data.data[0].dist_name;
-		// 	}).catch((e)=>{
-		// 		console.log(e)
-		// 	})
-		// },
 		getaddressLists(){
 			this.HTTP(this.$httpConfig.addressLists,{},'post').then((res)=>{
 				this.site = res.data.data[0].prov_name+" "+res.data.data[0].dist_name;
@@ -159,27 +143,6 @@ export default {
 				console.log(e)
 			})
 		},
-		//退出登录
-		// signOut(){
-		// 	localStorage.setItem("loginuserdata", 'false');
-		// 	// this.$emit('childToParent', localStorage.getItem('loginuserdata'))
-		// 	this.no = true
-		// 	this.ok = false
-		// 	this.HTTP(this.$httpConfig.outLogin, {}, 'post')
-		// 		.then((res) => {
-		// 			if(res.data.status == 1){
-		// 				localStorage.clear();
-		// 				sessionStorage.removeItem("token");
-		// 				sessionStorage.clear();
-						
-
-		// 				window.location.reload()
-		// 				window.opener.location.reload()
-		// 				document.location.href = "/passwordLogin";
-		// 				this.$router.push('/passwordLogin')
-		// 			}
-		// 		})
-		// },
 		signOut(){
 			localStorage.setItem("loginuserdata", 'false');
 			this.no = true
@@ -215,7 +178,6 @@ export default {
 		},
 		getCommonHeader(){
 			this.HTTP(this.$httpConfig.getCommonHeader, {}, 'post').then((res) => {
-				// this.articleType = res.data.data;
 			})
 		},
 		goHelp(id){
@@ -272,7 +234,7 @@ header {
     font-size: 12px;
 		cursor: pointer;
     img {
-      margin: 0 12px;
+      margin: 0 8px;
     }
     .divTwo {
       margin-left: 20px;

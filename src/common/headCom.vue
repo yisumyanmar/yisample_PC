@@ -1,11 +1,11 @@
 <template>
     <div id="head">
-        <!-- <CommonHeader></CommonHeader> -->
         <div class="line">
             <nav>
                 <div class="top l">
                     <router-link to="/home">
-                        <img class="logo" :src="URL + logo_name" />
+                        <!-- <img class="logo" :src="URL + logo_name" /> -->
+                        <img class="logo" src="../assets/img/logo-yi.png" />
                     </router-link>
                     <div class="middle">
                         <div class="inp">
@@ -37,15 +37,22 @@
                             />
                             <span class="search" @click="search">搜索</span>
                         </div>
-                        <ul>
+                        <!-- <ul>
                             <li v-for="(value, index) in keyWords" :key="index">
                                 <a @click="hotSearch(value)">{{
                                     value.hot_words
                                 }}</a>
                             </li>
+                        </ul> -->
+                        <ul>
+                            <li>标准品</li>
+                            <li>设计品</li>
+                            <li>原材商</li>
+                            <li>生产商</li>
                         </ul>
                     </div>
                     <div class="dropdown-content r">
+                        <my-shopping-cart></my-shopping-cart>
                         <my-shopping-cart></my-shopping-cart>
                     </div>
                 </div>
@@ -60,21 +67,16 @@
                             class="all-class-ctrl"
                             @click="$router.push({ path: '/allGoods' })"
                         >
-                            <!--<img class="jiazai" src="../assets/img/all.jpg">-->
                             <i class="jiazai"></i>
                             <span class="shangpin">全部商品分类</span>
                         </div>
-                        <!--<div class="nav-class" v-show="showClassNav" @mouseleave="hideClass">-->
                         <div
                             class="nav-class"
                             v-if="flag"
                             v-show="showClassNav"
                             @mouseleave="hideClass"
                         >
-                            <!-- v-show="flag"-->
                             <ul class="allul l">
-                                
-                                <!-- @mouseleave="hideClass1" -->
                                 <li
                                     @click="GoTo(item, 1)"
                                     class="li"
@@ -83,8 +85,6 @@
                                     
                                     :key="item.id"
                                 >
-                                    <!--<img src="../assets/img/header-ionic.png">-->
-                                    <!-- <i class="el-icon-arrow-left-com"></i> -->
                                     <img :src="URL + item.logo">
                                     <a>{{ item.class_name }}</a>
                                     <i class="el-icon-arrow-right-com"></i>
@@ -119,9 +119,6 @@
                             v-else
                             @mouseleave="hideClass"
                         >
-                        <!-- <div
-                            class="nav-class"
-                        > -->
                             <ul class="allul l">
                                 <li
                                     @click="GoTo(item, 1)"
@@ -130,15 +127,12 @@
                                     @mouseover="mouseover(item, index, 1)"
                                     :key="item.id"
                                 >
-                                    <!-- <img src="../assets/img/header-ionic.png"> -->
-                                    <!-- <i class="el-icon-arrow-left-com"></i> -->
                                     <img :src="URL + item.logo">
                                     <a>{{ item.class_name }}</a>
                                     <i class="el-icon-arrow-right-com"></i>
                                 </li>
                             </ul>
                             <div class="nav-right-home">
-                            <!-- <div v-show="showClassNav" class="nav-right-home"> -->
                                 <div
                                     class="second-class"
                                     v-for="(item, index) in condata"
@@ -161,9 +155,8 @@
                             </div>
                         </div>
                     </div>
-                    <ul class="navul">
+                    <!-- <ul class="navul">
                         <li v-for="(item, index) in items" :key="index">
-                            <!-- {{arr[index][1] == item.link.substr(22).match(arr[index][1])}} -->
                             <router-link :to="{path: templink, query:{id: item.id}}">
                                 <a v-if="navid"
                                     @click="toLink(item, index)"
@@ -176,20 +169,19 @@
                                     >{{ item.nav_titile }}</a
                                 >
                             </router-link>
-                        
-                            <!-- <a v-if="navid"
-                                @click="toLink(item, index)"
-                                :class="{ active: item.id == navid || index == navid }"
-                                >{{ item.nav_titile }}</a
-                            >
-                            <a v-else
-                                @click="toLink(item, index)"
-                                :class="{ active: index == off }"
-                                >{{ item.nav_titile }}</a
-                            > -->
-                            <!-- {{~~item.link.match(`currentId=${index}`)[0].match(/\d+/g)}} -->
-                            <!-- <a :href="item.link">{{item.nav_titile}}</a> -->
                         </li>
+                    </ul> -->
+                    <ul class="navul">
+                        <li style="color: red">首页</li>
+                        <li>询价采购</li>
+                        <li>定制下单</li>
+                        <li>标准品</li>
+                        <li>设计商</li>
+                        <li>原材商</li>
+                        <li>生产商</li>
+                        <li>向您推荐</li>
+                        <li>企业服务</li>
+                        <li>定制社区</li>
                     </ul>
                 </div>
             </nav>
@@ -198,7 +190,6 @@
 </template>
 <script>
 import Qs from "qs";
-// import CommonHeader from "./Header";
 export default {
     data() {
         return {
@@ -252,8 +243,6 @@ export default {
         title: function() {
             return {
                 inner: this.params.title,
-                // separator: ' ',
-                // complement: ' ' // don't show behind text
             }
         },
         meta: function(){
@@ -268,9 +257,6 @@ export default {
             ]
         }
     },
-    // components: {
-    //     CommonHeader
-    // },
     props:{
         flag:false,
         navid: null
@@ -293,17 +279,12 @@ export default {
             .catch(e => {
                 console.log(e);
             });
-        // shop-sn
-        // this.$route.query.num === undefined
-        //     ? (this.off = 0)
-        //     : (this.off = this.$route.query.num);
         
     },
 
     mounted() {
         this.getKeySearchList();
         this.getFootData();
-        // this.$on('okHead', function () {
         var self = this
         window.setTimeout(function () {
             self.params.title = sessionStorage.titleKey
@@ -311,7 +292,6 @@ export default {
             self.params.keywords = sessionStorage.contentKey
             self.$emit('updateHead')
         }, 3000)
-        // });
     },
 
     methods: {
@@ -328,10 +308,7 @@ export default {
                     sessionStorage.setItem("contentKey", res.data.data.init_key_word);
                     console.log(sessionStorage.getItem("titleKey"), 222);
                     localStorage.setItem("logo_name", this.logo_name);
-                    if(this.flag){
-                        // let title='首页'+'-'+ sessionStorage.titleKey+'-'+ sessionStorage.contentKey+' '
-                        // let title='首页'+'-'+sessionStorage.titleKey
-                        //  this.showScroll.scrollTitle(title);  
+                    if(this.flag){ 
                         let title='首页'+'-'+ sessionStorage.titleKey
                         this.showScroll.scrollTitle(title);
                     }
@@ -344,13 +321,7 @@ export default {
         toLink(item, num) {
             this.$root.$emit('naviddata', item)
             this.off = num
-            
-            // console.log('item ' + JSON.stringify(item));
-            // templink = templink.replace('/','');
-            // this.$router.push({name: templink, params: {foo: item}})
-            
             this.templink = item.link.replace(this.temphost,'');
-            // this.$router.push(this.templink)
         },
 
         //热词搜索(商品搜索)
@@ -379,9 +350,7 @@ export default {
                 });
         },
         GoTo(item, type) {
-            //sessionStorage.setItem('crumbs',item.class_name)
             this.t++;
-            //this.$router.push({path:'/goodsClass',query:{class_id:item.id,id:this.t}})
             window.open(
                 window.location.origin +
                     "/goodsClass?class_id=" +
@@ -422,8 +391,6 @@ export default {
                     }
                 });
             }
-
-            //this.$router.go(0);
         },
         showClass() {
             this.showClassNav = true;
@@ -551,7 +518,6 @@ nav {
             .inp {
                 width: 520px;
                 height: 34px;
-                /*border: 2px solid #b5a069;*/
                 float: left;
                 padding: 0;
 
@@ -628,7 +594,6 @@ nav {
 
         .all {
             height: 45px;
-            // width: 210px;
             width: 245px;
             background: #d02629;
             line-height: 44px;
@@ -637,7 +602,6 @@ nav {
 
             .all-class-ctrl {
                 height: 45px;
-                // width: 210px;
                 width: 245px;
                 background: #d02629;
                 line-height: 44px;
@@ -676,7 +640,6 @@ nav {
 
                 .allul {
                     position: relative;
-                    // width: 210px;
                     width: 245px;
                     height: 100%;
                     background: rgba(0, 0, 0, 0.55);
@@ -908,13 +871,11 @@ nav {
         }
 
         .navul {
-            // margin-left: 230px;
             margin-left: 265px;
             margin-top: 12px;
 
             li {
                 float: left;
-                // margin-right: 35px;
                 margin-right: 32px;
 
                 a {
@@ -930,20 +891,3 @@ nav {
     }
 }
 </style>
-
-<!--
-    https://medium.com/js-dojo/how-to-add-dynamic-meta-tags-to-your-vue-js-app-for-google-seo-b827e8c84ee9
-
-    https://www.digitalocean.com/community/tutorials/vuejs-vue-meta#bootstrap
--->
-
-<!-- https://www.npmjs.com/package/vue-head -->
-
-<!-- https://stackoverflow.com/questions/45047126/how-to-add-external-js-scripts-to-vuejs-components -->
-
-<!-- https://github.com/ktquez/vue-head/blob/master/example/index.html -->
-
-
-
-
-
