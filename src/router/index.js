@@ -5,6 +5,12 @@ import VueMeta from 'vue-meta';
 import home from "../components/home/home.vue";
 // 头部下拉交互
 import dropDown from "../components/home/dropDown.vue";
+//inquiryPublicity
+import inquiryPublicity from "../components/home/inquiryPublicity.vue";
+//inqInner
+import inqInner from "../components/home/inqInner.vue";
+//quotation
+import quotation from "../components/home/quotation.vue";
 // 品牌
 import brand from "../components/brand/brand.vue";
 // 品牌内页
@@ -305,6 +311,21 @@ const router = new Router({
             path: "/dropDown",
             name: "dropDown",
             component: dropDown
+        },
+        {
+            path: "/inquiryPublicity",
+            name: "inquiryPublicity",
+            component: inquiryPublicity
+        },
+        {
+            path: "/inqInner",
+            name: "inqInner",
+            component: inqInner
+        },
+        {
+            path: "/quotation",
+            name: "quotation",
+            component: quotation
         },
         // 所有商品页
         {

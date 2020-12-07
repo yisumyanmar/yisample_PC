@@ -493,6 +493,7 @@ nav .bottom .navul li .active {
 
 .line {
     border-bottom: 2px solid #d02629;
+    background: #ffffff;
 }
 
 nav {
@@ -877,6 +878,7 @@ nav {
             li {
                 float: left;
                 margin-right: 32px;
+                cursor: pointer;
 
                 a {
                     color: #2b2b2b;
