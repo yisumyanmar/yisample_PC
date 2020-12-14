@@ -172,10 +172,10 @@
                         </li>
                     </ul> -->
                     <ul class="navul">
-                        <li style="color: red">首页</li>
+                        <li>首页</li>
                         <li>询价采购</li>
                         <li>定制下单</li>
-                        <li>标准品</li>
+                        <li  @click="$router.push('yangShen')">标准品</li>
                         <li>设计商</li>
                         <li>原材商</li>
                         <li>生产商</li>

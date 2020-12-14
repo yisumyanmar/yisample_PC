@@ -1,7 +1,31 @@
 <template>
   <div class="newProduct">
     <div class="left l">
+
       <div class="l up">
+        <div class="headline">新品推荐</div>
+        <ul>
+          <li>
+            <img src="../assets/img/yi-11.png"/>
+            <p>数码印刷<br>尺寸类型：制造尺寸</p>
+            <p>￥ 3.57/只
+              <span
+                style="display:inline-block;margin-left:20px;font-size:11px;color:#656565">已售2件</span>
+            </p>
+          </li>
+           <li>
+            <img src="../assets/img/yi-8.png"/>
+            <p>数码印刷<br>尺寸类型：制造尺寸</p>
+            <p>￥ 3.57/只
+              <span
+                style="display:inline-block;margin-left:20px;font-size:11px;color:#656565">已售2件</span>
+            </p>
+          </li>
+        </ul>
+      </div>
+
+
+      <!-- <div class="l up">
         <div class="headline">新品推荐</div>
         <span class="nullData">{{newProduct.length === 0 ? '暂无数据' : ''}}</span>
         <ul>
@@ -30,7 +54,7 @@
 
           </li>
         </ul>
-      </div>
+      </div> -->
     </div>
   </div>
 </template>

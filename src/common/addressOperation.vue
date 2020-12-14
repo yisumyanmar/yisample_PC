@@ -3,10 +3,15 @@
 		<div class="dizhi">
 			<p class="biaoti">选择收货地址</p>
 			<ul class="dizhiul">
-				<li class="l" @click="hit(index)" v-for="(sites,index) in addressList" :key="index" :class="{hover:sites.status == 1}">
+				<!-- <li class="l" @click="hit(index)" v-for="(sites,index) in addressList" :key="index" :class="{hover:sites.status == 1}">
 					<p>{{sites.prov_name}}{{sites.city_name}} ({{sites.realname}}收)</p>
 					<p>{{sites.prov_name}}{{sites.city_name}}{{sites.dist_name}}{{sites.address}} {{sites.mobile}}</p>
 					<p><span @click.stop="modify(sites.id)">修改</span></p>
+				</li> -->
+				<li class="l" v-for="i in 4" :key="i">
+					<p>湖南长沙（张三收）</p>
+					<p>湖南省长沙市芙蓉区解放东路华海3C广场1F-10号店 13617486322</p>
+					<p><span>修改</span></p>
 				</li>
 			</ul>
 			
@@ -25,10 +30,8 @@
 					<textarea v-model="addressInfo.address" class="l" placeholder="建议您如实填写详细收货地址，例如街道名称，门牌号码，楼层和房间号码等信息"></textarea>
 				</div>
 	
-				<!-- <div>邮政编码：<input type="text" v-model="bank"/></div> -->
 				<div><span>*</span>收货人姓名：<input type="text" v-model="addressInfo.realname" /></div>
 				<div><span>*</span>手机号码：<input type="text" v-model="addressInfo.mobile" /></div>
-				<!-- <div>电话号码：<input type="text" v-model="mobile"/></div> -->
 				<p class="moren"><input type="checkbox" v-model="addressInfo.status" />设为默认收货地址</p>
 				<p class="baocun" @click="protect">保存</p>
 			</div>
@@ -47,11 +50,9 @@
 				isShow: false,
 				operation: false,
 				isopen: false,
-				// bank:"",
 				hello: "默认地址",
 				iphone: "",
-				addressList: [],
-				//单条地址
+				// addressList: [],
 				addressInfo: {
 					address: '',
 					realname: '',
@@ -95,28 +96,28 @@
 					this.selectAreaId = val.addressId;
 				}
 			},
-			getAddressList() {
-				this.HTTP(this.$httpConfig.addressLists, {}, 'post', false)
-					.then((res) => {
-						this.addressList = res.data.data;
-						if (this.addressList.length === 0) {
-							this.isShow = true;
-							this.isopen = true;
-						}
-						for (let index = 0; index < this.addressList.length; index++) {
-							if (this.addressList[index].status === '1') {
-								this.$emit('transferAddress', this.addressList[index]);
-							}
-						}
-					})
-			},
-			hit(index) {
-				for (let i = 0; i < this.addressList.length; i++) {
-					this.addressList[i].status = 0;
-				}
-				this.addressList[index].status = 1;
-				this.$emit('transferAddress', this.addressList[index]);
-			},
+			// getAddressList() {
+			// 	this.HTTP(this.$httpConfig.addressLists, {}, 'post', false)
+			// 		.then((res) => {
+			// 			this.addressList = res.data.data;
+			// 			if (this.addressList.length === 0) {
+			// 				this.isShow = true;
+			// 				this.isopen = true;
+			// 			}
+			// 			for (let index = 0; index < this.addressList.length; index++) {
+			// 				if (this.addressList[index].status === '1') {
+			// 					this.$emit('transferAddress', this.addressList[index]);
+			// 				}
+			// 			}
+			// 		})
+			// },
+			// hit(index) {
+			// 	for (let i = 0; i < this.addressList.length; i++) {
+			// 		this.addressList[i].status = 0;
+			// 	}
+			// 	this.addressList[index].status = 1;
+			// 	this.$emit('transferAddress', this.addressList[index]);
+			// },
 			//初始化数据
 			initData() {
 				this.addressInfo = {
@@ -146,11 +147,6 @@
 					})
 					return false;
 				}
-				// if(this.bank.length !== 6) {
-				// 	this.$message({
-				// 		message: "请填写正确的编码"
-				// 	})
-				// }
 				if (this.addressInfo.realname.length < 2) {
 					this.$message({
 						message: "请填写正确的收货人姓名",
@@ -336,9 +332,6 @@
 				border: 1px solid #ccc;
 			}
 		}
-		// div:nth-of-type(3){padding-left:5px;
-		// 	margin-top: 15px;input{width:281px;height:24px;border:1px solid #ccc;}
-		// }
 		div:nth-of-type(3) {
 			margin-left: -11px;
 			margin-top: 15px;
@@ -358,9 +351,6 @@
 				padding-left: 5px;
 			}
 		}
-		// div:nth-of-type(6){padding-left:5px;
-		// 	margin-top: 15px;input{width:281px;height:24px;border:1px solid #ccc;}
-		// }
 		.moren {
 			margin-top: 21px;
 			font-size: 12px;

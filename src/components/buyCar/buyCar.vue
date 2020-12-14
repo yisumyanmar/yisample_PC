@@ -1,35 +1,45 @@
 <template>
 <div class="buycar" ref="buycart">
-    <!-- <alert :alert-show.sync="alertShow" :store-id="storeId"></alert> -->
     <buy-header></buy-header>
-    <div class="center" v-if="cartShow">
+    <div class="buyCart">
+    <!-- <div class="center" v-if="cartShow"> -->
+      <div class="center">
       <div id="cart-goods-list" ref="listHeight" >
         <div class="all">
           <p class="l active">商品列表</p>
-          <p class="l">
+          <!-- <p class="l">
             <router-link to="buyCarPackage">套餐列表</router-link>
-          </p>
+          </p> -->
           <div class="r right">
-            <a :class="{ active: btnStyle }" class="r jie" @click="buy">结算</a>
+            <!-- <a :class="{ active: btnStyle }" class="r jie" @click="buy">结算</a> -->
+            <a class="r jie">结算</a>
             <div class="r">
               已选商品（不含运费）
-              <span>￥{{ selectedPrice | keep2Num }}</span>
+              <!-- <span>￥{{ selectedPrice | keep2Num }}</span> -->
+              <span>￥118.00</span>
             </div>
           </div>
         </div>
         <div class="xinxi">
           <div class="l left">
             <div id="check">
-              <input
+              <!-- <input
                 type="checkbox"
                 class="input_check"
                 id="input"
                 :checked="CheckBoxCartGoodsList"
                 @click="checkedAll"
-              />
+              /> -->
+              <input
+                type="checkbox"
+                class="input_check"
+                id="input"
+                :checked="CheckBoxCartGoodsList"
+            />
               <label for="input"></label>
             </div>
-            <span @click="checkedAll" class="total-selection">全选</span>
+            <!-- <span @click="checkedAll" class="total-selection">全选</span> -->
+            <span class="total-selection">全选</span>
             <span>商品信息</span>
           </div>
           <div class="right r">
@@ -40,29 +50,37 @@
           </div>
         </div>
         
-        <div class="dianpu" v-for="(store, index) in cartGoodsList" :key="index">
+        <!-- <div class="dianpu" v-for="(store, index) in cartGoodsList" :key="index"> -->
+          <div class="dianpu">
           <div class="top">
             <div id="check">
-              <input
+              <!-- <input
                 type="checkbox"
                 class="input_check"
                 :id="store.store_id"
                 :checked="store.CheckBoxShop"
                 @click="allShop(index)"
+              /> -->
+              <input
+                  type="checkbox"
+                  class="input_check"
               />
-              <label :for="store.store_id"></label>
+              <!-- <label :for="store.store_id"></label> -->
+              <label></label>
             </div>
             <span class="name">
               店铺：
-              <span class="store-name" @click="toStore(store.store_id)">{{ store.shop_name }}</span>
+              <!-- <span class="store-name" @click="toStore(store.store_id)">{{ store.shop_name }}</span> -->
+              <span class="store-name">小米官方旗舰店</span>
             </span>
-            <div class="service-wrapper" @click="openkefu(store)">
+            <!-- <div class="service-wrapper" @click="openkefu(store)"> -->
+              <div class="service-wrapper">
               <div id="dom">
-                <img src="@/assets/img/people_ser.png" />
-                <span>客服</span>
+                <img src="@/assets/img/qq.jpg" />
+                <!-- <span>客服</span> -->
               </div>
             </div>          
-            <el-dropdown placement="bottom-start" class="alert-display">
+            <!-- <el-dropdown placement="bottom-start" class="alert-display">
                 <div class="lvoucher" @mousemove="goodLuck(store.store_id, index)" @click="voucherr(store.store_id, index)">
                     优惠券
                     <i class="el-icon-arrow-down el-icon--right"></i>
@@ -70,10 +88,7 @@
                 <el-dropdown-menu slot="dropdown" :class="vouchers.length > 0 ? 'jj' : 'jjnone'">
                     <el-dropdown-item :class="vouchers.length > 0 ? 'kk' : 'kknone'">
                         <div class="voucherBoxx">
-                            <!-- <img class="crush" src="../../assets/img/down.png"> -->
-                            
                             <ul v-if="index == tempp">
-                                <!-- {{vouchers}} -->
                                 <li v-for="(voucher, index) in vouchers" :key="index">
                                     <div class="MoneyBox">
                                         <span class="money">{{'￥' + voucher.money}}</span>
@@ -98,14 +113,9 @@
                         </div>
                     </el-dropdown-item>
                 </el-dropdown-menu>
-            </el-dropdown>
-            <!-- <div class="l voucher" @click="voucher(store.store_id, index)">优惠券</div> -->
+            </el-dropdown> -->
           </div>
-          <div class="bottom">
-            <!-- <p class="up">
-              <span>满送活动</span>
-              <span>满200，送xxxxxxxxxxxx（送完即止）</span>
-            </p> -->
+          <!-- <div class="bottom">
             <div
               class="down"
               v-for="(item, i) in store.goods"
@@ -133,7 +143,6 @@
 
              
                 <div class="activity-list">
-                    <!-- <div class="list_ttitle" v-if="item.promotion.gift.length != 0 || reduction">促&nbsp;&nbsp;&nbsp;销</div> -->
                       <div class="pro">
                           <div class="activity" v-if="item.promotion.gift.length != 0">
                             <div v-for="id in item.promotion.gift" :key="id">
@@ -182,11 +191,73 @@
               </div>
 
             </div>
-          </div>
+          </div> -->
+
+          <div class="bottom">
+                        <div
+                        class="down">
+                        <div class="down_div">
+                            <div class="full_gift">满送活动</div>
+                            <div class="free">满200元,送xxxxxxxxxxxx（赠完即止）</div>
+                        </div>
+                        <div id="check">
+                            <input
+                            type="checkbox"
+                            class="input_check"/>
+                            <label></label>
+                        </div>
+                        <img
+                            class="l ctrl-img"
+                            src="../../assets/img/yi-14.png"
+                        />
+                        <p class="l">
+                            数码类7
+                            <span>
+                            材质: N435R-EB&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;箱型: 四半摇盖<br>
+                            打包方式: 绳捆打包&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;成型方式: 一页成型<br>
+                            印刷方式: 数码&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;面纸类型: 牛皮纸<br>
+                            版面设定: AA&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;成箱方式: 钉箱<br>
+                            存储环境: 正常&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;印刷面积: 30%以内<br>
+                            内装重量: 10kg&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;收取刀模费: 否<br>
+                            设计稿: 已有设计稿&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;折算系数: 1<br>
+                            数码表处: 水性光油&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;产品承压: 非承压<br>
+                            拼版方式: 单拼&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;尺寸类型: 制造尺寸<br>
+                            终端客户: 否&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;材质层数: 5<br>
+                            开槽模切: 开槽&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;仓储叠放: 15<br>
+                            层箱型规格: 50cm*60cm*70cm
+                            </span>
+                        </p>
+                        
+                        <p class="l">产品分类：御贡膳品</p>
+
+                        <p class="l">
+                            <span>￥196.00</span>
+                            <br />
+                            ￥59.00
+                        </p>
+                        <div class="l jishu">
+                            <el-input-number
+                            size="mini"
+                            v-model="num"
+                            :min="1"
+                            :max="200"
+                            ref="number"
+                            ></el-input-number>
+                        </div>
+                        <p class="l" ref="money">￥59.00</p>
+                        <div class="r yiru">
+                            <span>移入收藏夹</span>
+                            <br />
+                            <span>删除</span>
+                        </div>
+
+                        </div>
+                    </div>
+
         </div>
       </div>
 
-      <div class="jiesuan" :class="{ 'fixed-bottom': fixedBtn }" v-show="cartGoodsList.length != 0">
+      <!-- <div class="jiesuan" :class="{ 'fixed-bottom': fixedBtn }" v-show="cartGoodsList.length != 0">
         <div id="check">
           <input
             type="checkbox"
@@ -214,7 +285,33 @@
           已选商品
           <span>{{ this.selectedNumber }}</span>件
         </p>
-      </div>
+      </div> -->
+      <div class="jiesuan">
+                <div id="check">
+                <input
+                    type="checkbox"
+                    class="input_check"
+                    id="input"
+                    :checked="CheckBoxCartGoodsList"
+                />
+                <label for="input"></label>
+                </div>
+                <p class="l">全选</p>
+                <p class="l">删除选中的商品</p>
+                <p class="l">移入收藏夹</p>
+                <p
+                class="r"
+                style="color: white; font-size: 16px; background: #D02629"
+                >结算</p>
+                <p class="r">
+                合计件&nbsp;&nbsp;<b style="color: red; font-size: 14px">2</b>&nbsp;（不含运费）：
+                <span>118.00</span>
+                </p>
+                <p class="r">
+                已选商品
+                </p>
+            </div>
+
       <div class="del" v-show="Object.keys(delGoodsInfo).length != 0">已删除商品，您可以重新购买或加关注</div>
       <div class="cargo" v-show="Object.keys(delGoodsInfo).length != 0">
         <p class="l">{{ delGoodsInfo.title }}</p>
@@ -233,9 +330,10 @@
           <router-link to="/collect" style="color:#666;">移动到我的收藏夹</router-link>
         </p>
       </div>
-      <like-and-history></like-and-history>
+      <!-- <like-and-history></like-and-history> -->
     </div>
-    <div class="cart-empty" v-if="cartMeg">
+  </div>
+    <!-- <div class="cart-empty" v-if="cartMeg">
       <div class="photo">
        <img class="img-card" src="../../assets/img/no-login-icon.png">
       </div>
@@ -248,9 +346,10 @@
           </li>
         </ul>
       </div>
-    </div>
+    </div> -->
 
     <foot-com></foot-com>
+    <back-top></back-top>
     <div id="ctrlBidImg">
       <i></i>
       <img id="show-img" />
@@ -292,8 +391,7 @@ export default {
         reduction:null,
         gift:null,
         tempp: 0,
-        // cartGoodsListCount: [],
-        // cartGoodsListCountEach: []
+        num: 1
     };
   },
   destroyed() {
@@ -301,15 +399,10 @@ export default {
   },
   created() {
     this.getCartList();
-    // let title = "购物车列表" + this.$constant.webComContent;
       let title = "购物车列表" + '-' + this.$constant.webComContent;
     this.showScroll.scrollTitle(title);
-    // this.getCouponList();
   },
   watch: {
-    // vouchers(val) {
-    //     return val
-    // },
     goods() {
       this.btnStyle = this.goods.length > 0 ? true : false;
     },
@@ -366,7 +459,6 @@ export default {
             }).catch((res) => {
               Message.info(res.data.message)
             })
-            // this.getCouponList(1);
       },
       getCouponList(page) {
         this.vouchers = []
@@ -379,28 +471,7 @@ export default {
           console.log("ssssssssssss " + JSON.stringify(res.data.data.data))
           if (res.data.status) 
           {
-              // console.log('ssssssssss   ' + this.tempp)
-              // if(this.tempp >= 0) {
-              //     // this.cartGoodsListCount[0]['name'+this.tempp] = this.tempp
-              //     this.cartGoodsListCount[this.tempp] = this.tempp
-              // }
-
-              // console.log('2222222  ' + JSON.stringify(this.cartGoodsListCount))
-              // if(this.cartGoodsList) {
-              //     for(var i = 0; i < this.cartGoodsListCount.length; i++) {
-              //         if(this.cartGoodsListCount[i] == this.tempp) {
-              //             if(this.cartGoodsListCountEach[i]) {
-              //               this.vouchers = this.cartGoodsListCountEach[i]
-              //             } else {
-              //                 this.cartGoodsListCountEach[i] = res.data.data.data
-              //                 this.vouchers = res.data.data.data
-              //             }
-              //         } 
-              //     }
-              // }
               this.vouchers = res.data.data.data
-              
-            
           }
         })
       },
@@ -427,7 +498,6 @@ export default {
         });
     },
     voucherr(storeId, index) {
-      // this.alertShow = true;
       this.tempp = index
       this.storeId = Number(storeId);
     },
@@ -463,16 +533,6 @@ export default {
             newArr.push(item.store_id);
           }
         });
-        // if (newArr.length > 1) {
-        //   this.$alert("一次只能结算一个商家的商品", "提示", {
-        //     confirmButtonText: "确定",
-        //     center: true,
-        //     lockScroll: false,
-        //     type: "warning"
-        //   });
-        //   return;
-        // }
-
         for (let index = 0; index < this.goods.length; index++) {
           list.push(this.goods[index].id);
         }
@@ -494,11 +554,8 @@ export default {
 
             for (var j in list[i].goods) {
               list[i].goods[j].CheckBoxGoods = false;
-
             }
-            
             this.cartGoodsList.push(list[i]);
-
           }
         } else {
           this.cartShow = false;
@@ -818,7 +875,6 @@ export default {
                 .then(res => {
                   if (res.data.status == 1) {
                     this.delGoodsInfo = this.selectedGoodsArr;
-                    // this.delSelectedData();
                     this.$alert("添加成功", "提示", {
                       confirmButtonText: "确定",
                       center: true,
@@ -879,35 +935,7 @@ export default {
   }
 };
 </script>
-<style lang="less" scoped>
-.service-wrapper {
-  float: left;
-  cursor: pointer;
-  height: 68%;
-  width: 75px;
-  margin-top: 4px;
-  border: 1px solid #eeeeee;
-  background: #fbfbf1;
-  margin-left: 10px;
-  #dom {
-    line-height: 26px;
-  }
-}
-</style>
 <style>
-    /* .el-popper .popper__arrow, .el-popper .popper__arrow::after { */
-        /* background-color: #f8f8f8 !important;
-        margin-left: -1180px !important;
-        margin-top: -3px;
-        width: 20px !important; tda*/
-      
-        /* -webkit-filter: drop-shadow(0 2px 1px rgb(24, 172, 19)) !important;
-        filter: drop-shadow(0 2px 1px rgb(39, 180, 39)) !important; */
-        /* border-left-color: 3px solid green !important; */
-        /* color: red; */
-        /* margin-right: 750px; */
-    /* } */
-    
 .el-popper .popper__arrow {
     border-width: 6px;
     filter: drop-shadow(0 2px 12px rgba(0,0,0,.03));
@@ -933,9 +961,6 @@ export default {
     border-style: solid;
 }
     .crush{
-        /* width: 30px;
-        height: 30px;
-        margin: -31px 10px 0 11px; */
         width: 25px;
         height: 25px;
         margin: -27px 10px 0 14px;
@@ -949,31 +974,6 @@ export default {
         color: #d02629;
         margin: -20px 10px 0 19px;
     }
-    /* .el-popper .popper__arrow { 
-        border-width: 10px !important;  
-        border-top-width: 0px !important;
-        background-color: #f8f8f8 !important; 
-        border-bottom-color: #f8f8f8 !important; TDA  */
-
-        /* margin: -15px 0 0 0 !important; */
-        /* border-top-width: 5px !important; 
-        border-top-color: green !important;
-        border-left-width: 7px !important;
-        border-left-color: green !important;
-        border-right-color: green !important;
-        border-right-width: 7px !important;
-        background-color: #f8f8f8 !important;
-        border-bottom-color: rgb(248, 80, 80) !important;
-        border-bottom-width: 10px !important; */  
-    /* } */
- 
-    /*.el-popper .popper__arrow {
-            border-width: 6px;
-            -webkit-filter: drop-shadow(0 2px 12px rgba(0, 0, 0, .03));
-            filter: drop-shadow(0 2px 12px rgba(0, 0, 0, .03));
-            color: #d02629 !important;
-      }*/
-
     .el-input-number__decrease:hover:not(.is-disabled)
       ~ .el-input
       .el-input__inner:not(.is-disabled),
@@ -1006,16 +1006,15 @@ export default {
     }
 </style>
 <style lang="scss" scoped>
-  // .el-pagination {
-  //   text-align: center;
-  // }
-
-  // .loading {
-  //   color: white;
-  //   font-size: 70px;
-  //   animation: rotating 1.5s linear infinite;
-  // }
-
+.service-wrapper {
+  float: left;
+  cursor: pointer;
+  margin-top: 10px;
+  margin-left: 10px;
+  #dom {
+    line-height: 26px;
+  }
+}
    .alert-display{
      
       .lvoucher {
@@ -1031,18 +1030,6 @@ export default {
       }
       
     }
-
-  // .alertBox {
-  //   width: 100%;
-  //   height: 100%;
-  //   background: rgba(0, 0, 0, 0.5);
-  //   position: absolute;
-  //   top: -30%;
-  //   z-index: 2;
-  //   display: flex;
-  //   justify-content: center;
-  //   align-items: center;
-
   .el-popper[x-placement^=bottom] {
       margin-left: 25px;
   }
@@ -1054,36 +1041,14 @@ export default {
   }
   .jj{
       border: 1px solid #d02629;
-      padding: 0 !important; //tda
-      // border: 2px solid #d02629; //TDA
-
-      // margin: 0px 250px 0 600px; //tda
-      // margin: 0 !important;
-      // background: #d02629;
+      padding: 0 !important; 
       .kk{
-          // padding: 0 !important; //tda
           .voucherBoxx {
               border-radius: 8px;
               background: white;
               display: flex;
               flex-direction: column;
               padding: 10px 20px 20px;
-
-              // z-index: 1;
-              // overflow: hidden;
-
-              // position: fixed;
-              //  border: 2px solid #d02629;
-
-              // .close {
-              //   display: flex;
-              //   justify-content: flex-end;
-              //   font-size: 30px;
-              //   margin-right: 0px;
-              //   margin-top: -10px;
-              //   margin-bottom: 5px;
-              // }
-
               li {
                   display: flex;
                   flex-direction: row;
@@ -1112,10 +1077,8 @@ export default {
                       flex-direction: row;
                       margin-left: 30px;
                       padding: 0 0 0 0;
-                      // height: 30px;
                   }
                   div:last-child {
-                      // color: red;
                       display: flex;
                       align-items: center;
                       margin-right: 30px;
@@ -1136,12 +1099,6 @@ export default {
       }
   }
 
-  
-
-
-
-
-  // }
 </style>
 
 <style lang="less" scoped>
@@ -1164,8 +1121,6 @@ export default {
 }
 .cart-message{
   height : 98px;
-  // padding-left : 10rem;
-  // padding : 342px;
 }
 .cart-message .txt{
   font-size : 14px;
@@ -1173,7 +1128,6 @@ export default {
 }
 .cart-message li{
   line-height: 26px;
-    //  padding-right : 18rem;
 }
 .btn-1 {
     font-family: arial, "Microsoft YaHei";
@@ -1250,7 +1204,8 @@ export default {
   }
 }
 
-
+.buyCart {
+  background: #f1f1f1;
 .center {
   width: 1200px;
   margin: 0 auto;
@@ -1306,14 +1261,15 @@ export default {
     color: #d02629;
     border-bottom: 2px solid #d02629;
   }
-  .right {
-    width: 940px;
+   .right {
+    width: 1070px;
     border-bottom: 2px solid #e5e5e5;
     height: 37px;
     .jie {
       width: 56px;
       height: 26px;
-      background: #ccc;
+    //   background: #ccc;
+      background: #D02629;
       border-radius: 3px;
       text-align: center;
       color: #fff;
@@ -1382,7 +1338,7 @@ export default {
       }
     }
     img {
-      margin: 6px 0 0 10px;
+    //   margin: 6px 0 0 10px;
       float: left;
     }
   }
@@ -1390,6 +1346,7 @@ export default {
     border: 1px solid #ccc;
     overflow: hidden;
     width: 1200px;
+    background: #ffffff;
     .up {
       height: 50px;
       border-bottom: 1px solid #e8e8e8;
@@ -1469,10 +1426,28 @@ export default {
       }
       
     .down {
-      // height: 120px;
-      height: 190px;
+      height: 445px;
       border-bottom: 1px solid #eee;
       position: relative;
+
+      .down_div {
+          height: 65px;
+          border-bottom: 1px solid #E7E7E7;
+          padding: 20px;
+          display: flex;
+          .full_gift {
+              cursor: pointer;
+              width: 70px;
+              height: 25px;
+              background: #D02629;
+              color: #ffffff;
+              padding: 2px 0 0 7px;
+          }
+          .free {
+              color: #333333;
+              padding-left: 20px;
+          }
+      }
      
       #check {
         margin: 20px;
@@ -1497,13 +1472,16 @@ export default {
         -webkit-box-orient: vertical;
       }
       p:nth-of-type(1) {
-        width: 226px;
+        width: 250px;
         font-size: 12px;
         color: #575757;
         margin-top: 29px;
-        // margin-left: 11px;
         margin-left: 30px;
         cursor: pointer;
+        line-height: 25px;
+      }
+      span {
+          float: left;
       }
       p:nth-of-type(1):hover {
         color: red;
@@ -1518,7 +1496,7 @@ export default {
 
       p:nth-of-type(3) {
         font-size: 15px;
-        margin: 26px 0 0 0;
+        margin: 26px 0 0 20px;
         font-weight: bold;
         color: #575757;
         text-align: center;
@@ -1527,6 +1505,7 @@ export default {
           font-size: 10px;
           color: #acacac;
           text-decoration: line-through;
+          padding-left: 44px;
         }
       }
       .jishu {
@@ -1534,7 +1513,7 @@ export default {
         margin-top: 29px;
         z-index: 0;
         position: relative;
-        margin-left: 70px;
+        margin-left: 50px;
         span {
           width: 19px;
           height: 23px;
@@ -1555,7 +1534,7 @@ export default {
       p:nth-of-type(4) {
         font-size: 12px;
         color: #c4555c;
-        margin: 33px 0px 0 20px;
+        margin: 33px 0px 0 10px;
         width: 100px;
         text-align: center;
       }
@@ -1688,7 +1667,6 @@ export default {
   z-index: 100;
   border: #ddd solid 1px;
   display: none;
-  // box-shadow: 0 2px 1px rgba(0, 0, 0, 0.06);
   i {
     width: 10px;
     height: 10px;
@@ -1715,5 +1693,6 @@ export default {
   position: absolute;
   left: -19px;
   top: 65px;
+}
 }
 </style>

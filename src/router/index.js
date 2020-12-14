@@ -119,6 +119,14 @@ import receive from "../components/personal/child/receive.vue";
 import myNews from "../components/personal/child/myNews.vue";
 // 我的订单
 import myOrder from "../components/personal/child/myOrder.vue";
+
+import supplyManage from "../components/personal/child/supplyManage.vue";
+
+import productManage from "../components/personal/child/productManage.vue";
+
+import releaseInquiry from "../components/personal/child/releaseInquiry.vue";
+
+import releaseList from "../components/personal/child/releaseList.vue";
 // 积分订单
 import integralOrder from "../components/personal/child/integralOrder.vue";
 // 我的拍卖
@@ -215,6 +223,10 @@ import companyAdmission from "../components/business/child/companyAdmission.vue"
 import companyBankInfo from "../components/business/child/companyBankInfo.vue";
 // 招商入驻  -------企业入驻店铺信息
 import companyShopInfo from "../components/business/child/companyShopInfo.vue";
+
+import investment from "../components/business/child/investment.vue";
+
+import investSettle from "../components/business/child/investSettle.vue";
 // 招商入驻  -------提示页
 import Submit from "../components/business/submit.vue";
 // 招商入驻  -------编辑个人开店信息第一页
@@ -702,6 +714,30 @@ const router = new Router({
                     name: "myOrder",
                     component: myOrder
                 },
+                {
+                    // 我的订单
+                    path: "/supplyManage",
+                    name: "supplyManage",
+                    component: supplyManage
+                },
+                {
+                    // 我的订单
+                    path: "/productManage",
+                    name: "productManage",
+                    component: productManage
+                },
+                {
+                    // 我的订单
+                    path: "/releaseInquiry",
+                    name: "releaseInquiry",
+                    component: releaseInquiry
+                },
+                {
+                    // 我的订单
+                    path: "/releaseList",
+                    name: "releaseList",
+                    component: releaseList
+                },
                 //举报违规
                 {
                     path: "/informOutline",
@@ -1050,6 +1086,16 @@ const router = new Router({
             path: "/Submit",
             name: "Submit",
             component: Submit
+        },
+        {
+            path: "/investment",
+            name: "investment",
+            component: investment
+        },
+        {
+            path: "/investSettle",
+            name: "investSettle",
+            component: investSettle
         },
         {
             path: "/chase",
