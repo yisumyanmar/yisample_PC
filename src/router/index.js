@@ -124,6 +124,10 @@ import supplyManage from "../components/personal/child/supplyManage.vue";
 
 import productManage from "../components/personal/child/productManage.vue";
 
+import boughtStd from "../components/personal/child/boughtStd.vue";
+
+import customProduct from "../components/personal/child/customProduct.vue";
+
 import releaseInquiry from "../components/personal/child/releaseInquiry.vue";
 
 import releaseList from "../components/personal/child/releaseList.vue";
@@ -725,6 +729,18 @@ const router = new Router({
                     path: "/productManage",
                     name: "productManage",
                     component: productManage
+                },
+                {
+                    // 我的订单
+                    path: "/boughtStd",
+                    name: "boughtStd",
+                    component: boughtStd
+                },
+                {
+                    // 我的订单
+                    path: "/customProduct",
+                    name: "customProduct",
+                    component: customProduct
                 },
                 {
                     // 我的订单

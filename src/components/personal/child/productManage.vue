@@ -110,7 +110,7 @@ export default {
     height: 100%;
 }
 .productManage {
-    height: 800px;
+    height: 700px;
     width: 980px;
     background: #fff;
     margin-top: 16px;
