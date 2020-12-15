@@ -7,7 +7,7 @@
         <div class="login-left d">
           <p class="sign ">
             <router-link to="/home">
-							<img src="../../assets/img/logodl.jpg" />
+							<img src="../../assets/img/logo-yi.png" />
 					  </router-link>
           </p>
           <p class="heat">
@@ -21,7 +21,7 @@
             <p>提交</p>
           </div>   
           <div>
-            <img src="../../assets/img/images/zs2.png" alt="">
+            <img src="../../assets/img/zs2.png" alt="">
             <p>完成</p>
           </div>   
         </div> 

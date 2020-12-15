@@ -95,12 +95,10 @@
                   <!--</span>-->
                    <span v-if="li.collection == 0" @click.stop="toCollect(li.id,i)" class="g-collection">
                             <i class="l like"></i>
-                            <!--<img class="l" src="../../assets/img/collect_gooods.png" />-->
                             <span>收藏</span>
                   </span>
                   <span v-else class="g-collection" @click.stop="toCollect(li.id,i)">
                             <i class="l like cancel"></i>
-                            <!--<img class="l" src="../../assets/img/collected_goods.png" />-->
                             <span>已收藏</span>
                   </span>
                 </div>

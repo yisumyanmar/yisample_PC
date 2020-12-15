@@ -7,7 +7,7 @@
                 <div class="nake l">
                     <p class="Gongpin l">
                         <router-link to="/home">
-                            <img src="../../assets/img/logodl.jpg" />
+                            <img src="../../assets/img/logo-yi.png" />
                         </router-link>
                     </p>
                     <!-- <p class="iphone l">

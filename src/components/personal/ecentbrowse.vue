@@ -4,7 +4,7 @@
         <div class="center">
             <!-- <div class="header">
                 <router-link to="home"
-                    ><img src="../../assets/img/logodl.jpg"/></router-link
+                    ><img src="../../assets/img/logo-yi.png"/></router-link
                 ><span>最近浏览</span>
             </div> -->
             <div class="top">
@@ -89,7 +89,7 @@
 </template>
 
 <script>
-import img from "@/assets/img/shoulian.png";
+import img from "@/assets/img/shoulian.jpg";
 export default {
     data() {
         return {

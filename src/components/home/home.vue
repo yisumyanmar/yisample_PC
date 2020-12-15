@@ -802,7 +802,7 @@ import $ from "jquery";
 import hp from "@/assets/img/hp.jpg";
 import avatar from "@/assets/img/gongniu.jpg";
 import avatars from "@/assets/img/hp1.jpg";
-import ns from "@/assets/img/ns.png";
+import ns from "@/assets/img/ns.jpg";
 import chun from "@/assets/img/chun.png";
 import maotai from "@/assets/img/maotai.png";
 import huanyipi from "@/assets/img/huanyipi.jpg";

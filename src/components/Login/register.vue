@@ -4,7 +4,7 @@
             <div class="center">
                 <ul class="l">
                     <li class="l logo">
-                        <img src="../../assets/img/logodl.jpg" />
+                        <img src="../../assets/img/logo-yi.png" />
                     </li>
                     <li class="l category">
                         <img src="../../assets/img/register_text.png" />

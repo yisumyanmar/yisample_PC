@@ -126,7 +126,7 @@
 				</div>
 				<div class="zhifu name" v-show="zhifubao==0"><span>*</span>支付宝账号：<input type="text" /></div>
 			</div>
-			<div class="third" v-show="third"><img class="duihao" src="../../../assets/img/duihao1.png" alt="" />
+			<div class="third" v-show="third"><img class="duihao" src="../../../assets/img/bigduihao.png" alt="" />
 				<p class="success">银行卡绑定成功</p>
 				<p class="goback" @click="Goback">返回账户安全中心>></p>
 			</div>

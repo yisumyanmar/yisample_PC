@@ -4,7 +4,7 @@
         <common-header v-on:childToParent="onChildClick"></common-header>
         <div class="logo">
             <router-link to="/home">
-                <img src="../../assets/img/ban_head.jpg" />
+                <img src="../../assets/img/logo-yi.png" />
             </router-link>
             <p>积分结算页</p>
         </div>

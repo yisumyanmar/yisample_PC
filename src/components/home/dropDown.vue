@@ -5,7 +5,7 @@
 		<div class="banner">
 			<div class="center">
 				<div class="denglu r">
-					<img class="touxiang" src="../../assets/img/denglu.jpg" />
+					<img class="touxiang" src="../../assets/img/default-head.png" />
 					<h3 class="l">Hi,欢迎来到{{this.$constant.mainTitle}}</h3>
 					<div class="qdl l">
 						<span class="qingdenglu both">请登录</span>

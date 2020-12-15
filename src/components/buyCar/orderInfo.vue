@@ -2,7 +2,7 @@
   <div class="account">
     <!-- <pay-header></pay-header> -->
     <div class="logo">
-      <img @click="toHome" src="../../assets/img/logodl.jpg" />
+      <img @click="toHome" src="../../assets/img/logo-yi.png" />
       <p>结算页</p>
     </div>
     <div class="center">

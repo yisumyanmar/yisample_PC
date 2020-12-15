@@ -245,6 +245,7 @@ import companyTwo from "../components/business/child/companyTwo.vue";
 import companyTherr from "../components/business/child/companyTherr.vue";
 // 引入抢购页面
 import chase from "../components/gouwu/chase.vue"; // 购物页面1
+import orderInner from "../components/gouwu/orderInner.vue"; // 购物页面1
 import introduce from "../components/gouwu/introduce.vue"; // 抢购页面
 import settleAccounts from "../components/gouwu/settleAccounts.vue"; // 抢购结算页
 import payment from "../components/gouwu/payment.vue"; // 抢购支付页
@@ -1117,6 +1118,11 @@ const router = new Router({
             path: "/chase",
             name: "chase",
             component: chase
+        }, //noheader
+        {
+            path: "/orderInner",
+            name: "orderInner",
+            component: orderInner
         }, //noheader
         {
             path: "/introduce/:id",

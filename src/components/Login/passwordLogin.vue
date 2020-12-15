@@ -4,7 +4,7 @@
             <div class="center">
                 <ul>
                     <li class="l logo" @click="$router.push('home')">
-                        <img class="home" src="../../assets/img/logodl.jpg" />
+                        <img class="home" src="../../assets/img/logo-yi.png" />
                     </li>
                     <li class="l category">
                         <img src="../../assets/img/login_text.png" />

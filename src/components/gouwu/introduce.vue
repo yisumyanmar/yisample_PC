@@ -5,7 +5,7 @@
         <div id="share">
             <div class="center">
                 <div class="last">
-                    <img class="l" src="../../assets/img/qianggou/house.png" />
+                    <img class="l" src="../../assets/img/qianggous/house.png" />
                     <p>
                         <router-link to="home" class="l sopt"
                             >首页></router-link

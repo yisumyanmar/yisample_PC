@@ -11,7 +11,7 @@
   
           <p class="Gongpin l">
   
-            <router-link to="home"><img src="../../../assets/img/logodl.jpg" /></router-link>
+            <router-link to="home"><img src="../../../assets/img/logo-yi.png" /></router-link>
   
           </p>
   

@@ -3,7 +3,7 @@
 		<div class="advance">
 			<div class="center">
 				<div class="logo l">
-					<p class="Gongpin l"><img src="../../assets/img/logodl.jpg" @click="goTo"/></p>
+					<p class="Gongpin l"><img src="../../assets/img/logo-yi.png" @click="goTo"/></p>
 					<!-- <p class="iphone l">
 						<span class="hot l">招商热线</span>
 						<span class="shuzi l">{{$constant.tel}}</span>

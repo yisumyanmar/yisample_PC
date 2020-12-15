@@ -8,7 +8,7 @@
                 <h1>vip 会员说明</h1>
             </div>
             <div class="contailer">
-                <img src="../../../assets/img/light.png" alt />
+                <img src="../../../assets/img/deng.png" alt />
                 <div class="right">
                     <p class="first">温馨提示</p>
                     <p class="second">

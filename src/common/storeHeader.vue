@@ -1,7 +1,7 @@
 <template>
     <div class="head">
         <div class="middle center">
-            <img
+            <!-- <img
                 class="logo l c"
                 :src="
                     storeInfo.store_logo === undefined
@@ -9,7 +9,7 @@
                         : URL + storeInfo.store_logo
                 "
                 @click="bg()"
-            />
+            /> -->
             <div class="qq l c">
                 <span @click="bg()" class="nameshop">{{ storeInfo.shop_name }}</span>
 <!--                <img @click="qqLink" src="../assets/img/qq.jpg" />-->
@@ -217,7 +217,7 @@ import downjiantou from "@/assets/img/downjiantou.jpg";
 export default {
     data() {
         return {
-            requireImg: require("../assets/img/initLogo.png"),
+            // requireImg: require("../assets/img/initLogo.png"),
             storeID: 0,
             on: "",
             isactive: "",

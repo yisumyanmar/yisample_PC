@@ -4,7 +4,7 @@
 			<div class="center">
 				<div class="header">
 					<router-link to="/home">
-						<img class="l" src="../assets/img/logodl.jpg"/>
+						<img class="l" src="../assets/img/logo-yi.png"/>
 					</router-link>
 					<p class="l">我的收银台</p>
 				</div>

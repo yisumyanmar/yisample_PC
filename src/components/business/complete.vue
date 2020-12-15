@@ -5,7 +5,7 @@
 		<div id="logo">
 			<div class="center">
 				<div class="nake l">
-					<p class="Gongpin l"><img src="../../assets/img/logodl.jpg" /></p>
+					<p class="Gongpin l"><img src="../../assets/img/logo-yi.png" /></p>
 					<!-- <p class="iphone l">
 						<span class="hot l">招商热线</span>
 						<span class="shuzi l">{{$constant.tel}}</span>

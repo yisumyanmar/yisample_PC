@@ -199,7 +199,7 @@
                         v-for="i in 6"
                         :key="i"
                     >
-                        <img src="../../../assets/img/gem.png" />
+                        <img src="../../../assets/img/giftone.png" />
                         <p>¥920.00</p>
                     </li>
                 </ul>
