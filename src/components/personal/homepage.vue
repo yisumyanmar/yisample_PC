@@ -53,6 +53,8 @@ export default {
         [
           { title: "供应商管理", url: "supplyManage" },
           { title: "产品管理", url: "productManage" },
+          { title: ". 买过的标准品", url: "boughtStd" },
+          { title: ". 我的新增定制品", url: "customProduct" },
           { title: "发布询价", url: "releaseInquiry" },
           { title: "发布询价列表", url: "releaseList" }
         ],

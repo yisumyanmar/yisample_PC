@@ -3,7 +3,7 @@
         <div class="l middle">
             <div class="up">
                 <div class="l">
-                    <img
+                    <!-- <img
                         class="l"
                         :src="URL + userInfo.user_header"
                         v-if="userInfo.user_header"
@@ -11,21 +11,35 @@
                         v-else
                         class="l"
                         src="../../../assets/img/default-head.png"
+                    /> -->
+                    <img
+                        class="l"
+                        src="../../../assets/img/gerentouxiang.png"
                     />
-                    <p class="l">
+                    <!-- <p class="l">
                         欢迎{{ user_name }}进入{{
                             this.$constant.mainTitle
                         }}商城
+                    </p> -->
+                    <p class="l">
+                        欢迎进入商城
                     </p>
-                    <p class="l">当前等级：{{ userInfo.current_level_name }}</p>
-                    <p class="l integral" @click="integral">
+                    <!-- <p class="l">当前等级：{{ userInfo.current_level_name }}</p> -->
+                    <p class="l">当前等级：VIP会员</p>
+                    <!-- <p class="l integral" @click="integral">
                         我的积分：<span>{{ userInfo.current_integral }}</span>
                         再积累<span>{{ userInfo.next_integral }}</span
                         >积分 即可升级至 {{ userInfo.next_level_name }}
+                    </p> -->
+                    <p class="l integral">
+                        我的积分：<span>0</span>
+                        再积累<span>500</span>
+                        积分 即可升级至 钻石会员
                     </p>
                 </div>
-                <p class="l my-address" @click="toMyAddress">我的收货地址</p>
-                <div class="r xinxi">
+                <!-- <p class="l my-address" @click="toMyAddress">我的收货地址</p> -->
+                <p class="l my-address">我的收货地址</p>
+                <!-- <div class="r xinxi">
                     <p class="l mine" @click="hits" :class="{ col: iscol }">
                         我的优惠信息<i class="el-icon-arrow-down"></i>
                     </p>
@@ -33,6 +47,30 @@
                         <p @click="GoTo">店铺优惠券：<span>1</span></p>
                         <p>平台积分：<span>200</span></p>
                     </span>
+                </div> -->
+                <div class="r xinxi">
+                    <p class="l mine">
+                        我的优惠信息<i class="el-icon-arrow-down"></i>
+                    </p>
+                </div>
+                <div class="r evaluate">
+                    <ul>
+                        <li class="l">
+                            <p>待付款<span>0</span></p>
+                        </li>
+                        <li class="l">
+                            <p>待发货<span>0</span></p>
+                        </li>
+                        <li class="l">
+                            <p>待收货<span>0</span></p>
+                        </li>
+                        <li class="l">
+                            <p>待评价<span>0</span></p>
+                        </li>
+                        <li class="l">
+                            <p>退款<span>0</span></p>
+                        </li>
+                    </ul>
                 </div>
             </div>
             <div class="shoucang">
@@ -49,11 +87,11 @@
                         :class="{ bor: isbor == 1 }"
                         >店铺收藏</span
                     >
-                    <router-link to="/collect" class="r" style="color:#666;"
+                    <router-link to="/collect" class="r" style="color:#999999; padding-right: 10px;"
                         >更多</router-link
                     >
                 </div>
-                <div class="bottom">
+                <!-- <div class="bottom">
                     <ul class="clearfix" v-if="status">
                         <li
                             class="l"
@@ -78,6 +116,19 @@
                             <p class="text1-hidden">{{ item.shop_name }}</p>
                         </li>
                     </ul>
+                </div> -->
+                <div class="bottom">
+                    <ul class="clearfix">
+                        <li
+                            class="l"
+                            v-for="i in 12"
+                            :key="i"
+                        >
+                            <img src="../../../assets/img/gift.png"/>
+                            <p class="text1-hidden">联想旗舰店</p>
+                            <p>¥669.00</p>
+                        </li>
+                    </ul>
                 </div>
             </div>
             <div class="like">
@@ -88,7 +139,7 @@
                         >换一批<img src="../../../assets/img/huanyipi.jpg"
                     /></span>
                 </p>
-                <ul>
+                <!-- <ul>
                     <li
                         class="l"
                         :key="i"
@@ -105,15 +156,28 @@
                             >
                         </p>
                     </li>
+                </ul> -->
+                <ul>
+                    <li
+                        class="l"
+                        :key="i"
+                        v-for="i in 4"
+                    >
+                        <img src="../../../assets/img/yuzhuo.jpg" />
+                        <p class="text1-hidden">正品和田玉白玉手链男女款...</p>
+                        <p>
+                            ¥1280.00
+                        </p>
+                    </li>
                 </ul>
             </div>
         </div>
         <div class="right r">
             <div class="same l">
                 <div class="me l">
-                    <p>浏览记录</p>
+                    <p>我的购物车</p>
                 </div>
-                <ul class="l">
+                <!-- <ul class="l">
                     <li
                         class="l"
                         v-for="(item, index) in browseList"
@@ -128,10 +192,33 @@
                             已售{{ item.sales_sum }}件
                         </p>
                     </li>
+                </ul> -->
+                <ul class="l">
+                    <li
+                        class="l"
+                        v-for="i in 6"
+                        :key="i"
+                    >
+                        <img src="../../../assets/img/gem.png" />
+                        <p>¥920.00</p>
+                    </li>
                 </ul>
-                <div class="base l" @click="ToView">
+                <!-- <div class="base l" @click="ToView">
                     查看全部<span>({{ browseList.length }})</span>
+                </div> -->
+                <div class="base1 l">
+                    查看全部<span>(5)</span>
                 </div>
+                <ul class="l">
+                    <li
+                        class="l"
+                        v-for="i in 6"
+                        :key="i"
+                    >
+                        <img src="../../../assets/img/fozhu.jpg" />
+                        <p>¥920.00</p>
+                    </li>
+                </ul>
             </div>
         </div>
     </div>
@@ -154,16 +241,12 @@ export default {
         };
     },
     created() {
-        // let sss = localStorage.getItem("loginuserdata");
-        // alert(sss)
         if(localStorage.getItem("loginuserdata") == 'true') {
             this.getGoodsCollection(); //商品收藏
             this.myCollectionlikes(); //猜你喜欢
             this.browseRecords(); //浏览记录
             this.getInfo(); //个人资料
             this.user_name = sessionStorage.getItem("userName");
-            // this.user_name = localStorage.getItem("userNamee");
-            // let title = "个人中心" + this.$constant.webComContent;
               let title = "个人中心" + '-' + this.$constant.webComContent;
             this.showScroll.scrollTitle(title);
         } else {
@@ -278,15 +361,18 @@ export default {
         margin-left: 10px;
         margin-top: 16px;
         .up {
-            height: 100px;
+            // height: 100px;
+            height: 150px;
             background: #fff;
             width: 100%;
             div.l {
                 width: 434px;
                 img {
                     margin: 10px 14px 0 12px;
-                    width: 50px;
-                    height: 50px;
+                    // width: 50px;
+                    // height: 50px;
+                    width: 75px;
+                    height: 75px;
                 }
                 p {
                     width: 320px;
@@ -352,10 +438,36 @@ export default {
                     color: #d02629;
                 }
             }
+            .evaluate {
+                width: 724px;
+                background: #fff;
+                ul {
+                    overflow: hidden;
+                    margin: 14px 17px 20px;
+                    border-top: 1px solid #E8E8E8;
+                    height: 37px;
+                    li {
+                        cursor: pointer;
+                        height: 36px;
+                        color: #333333;
+                        width: 135px;
+                        p {
+                            height: 16px;
+                            border-right: 1px solid #E8E8E8;
+                            text-align: center;
+                            margin-top: 18px;
+                            font-size: 12px;
+                            span {
+                                color: #D02629;
+                            }
+                        }
+                    }
+                }
+            }
         }
         .shoucang {
             background: #fff;
-            margin-top: 11px;
+            margin-top: 15px;
             height: 408px;
             .thead {
                 height: 43px;
@@ -438,12 +550,17 @@ export default {
                 overflow: hidden;
                 margin-left: 20px;
                 li {
-                    width: 110px;
-                    height: 195px;
-                    margin-right: 9px;
+                    // width: 110px;
+                    // height: 195px;
+                    // margin-right: 9px;
+                    width: 160px;
+                    height: 200px;
+                    margin-right: 18px;
                     img {
-                        width: 100%;
-                        height: 110px;
+                        // width: 100%;
+                        // height: 110px;
+                        width: 160px;
+                        height: 160px;
                     }
                     p:nth-of-type(1) {
                         font-size: 12px;
@@ -493,9 +610,12 @@ export default {
                 margin-left: 8px;
                 margin-bottom: 10px;
                 li {
+                    // width: 80px;
+                    // height: 134px;
+                    // margin: 0 15px;
                     width: 80px;
-                    height: 134px;
-                    margin: 0 15px;
+                    height: 110px;
+                    margin: 0 11px;
                     img {
                         width: 80px;
                         height: 80px;
@@ -508,7 +628,7 @@ export default {
                     }
                 }
             }
-            .base {
+            .base1 {
                 cursor: pointer;
                 height: 41px;
                 border-top: 1px solid #f5f8fa;
