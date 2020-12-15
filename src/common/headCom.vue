@@ -172,10 +172,10 @@
                         </li>
                     </ul> -->
                     <ul class="navul">
-                        <li style="color: red">首页</li>
+                        <li>首页</li>
                         <li>询价采购</li>
                         <li>定制下单</li>
-                        <li>标准品</li>
+                        <li  @click="$router.push('yangShen')">标准品</li>
                         <li>设计商</li>
                         <li>原材商</li>
                         <li>生产商</li>
@@ -493,6 +493,7 @@ nav .bottom .navul li .active {
 
 .line {
     border-bottom: 2px solid #d02629;
+    background: #ffffff;
 }
 
 nav {
@@ -877,6 +878,7 @@ nav {
             li {
                 float: left;
                 margin-right: 32px;
+                cursor: pointer;
 
                 a {
                     color: #2b2b2b;

@@ -51,6 +51,12 @@ export default {
           { title: "我的消息", url: "myNews" }
         ],
         [
+          { title: "供应商管理", url: "supplyManage" },
+          { title: "产品管理", url: "productManage" },
+          { title: "发布询价", url: "releaseInquiry" },
+          { title: "发布询价列表", url: "releaseList" }
+        ],
+        [
           { title: "我的订单", url: "myOrder" },
           { title: "套餐订单", url: "packageOrder" },
           { title: "积分订单", url: "integralOrder" },
@@ -89,6 +95,7 @@ export default {
       isactive: 0,
       titleArr: [
         { img: huiyuan, p: "会员中心" },
+        { img: jiaoyi, p: "询价中心" },
         { img: jiaoyi, p: "交易中心" },
         { img: zijin, p: "资金中心" },
         { img: fapiao, p: "我的发票" },

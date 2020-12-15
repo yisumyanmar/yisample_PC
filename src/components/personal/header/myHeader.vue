@@ -3,8 +3,9 @@
         <div class="topnav">
             <div class="center">
                 <router-link to="home">
-                    <img class="logo l" src="../../../assets/img/qw.png" alt=""
-                /></router-link>
+                    <!-- <img class="logo l" src="../../../assets/img/qw.png" alt="" /> -->
+                    <img class="logo l" src="../../../assets/img/logo-m.png" alt="" />
+                </router-link>
                 <div class="my l">
                     <span>我的商城</span>
                     <router-link to="home">返回商城首页</router-link>

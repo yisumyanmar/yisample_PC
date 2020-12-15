@@ -10,13 +10,15 @@
                          arrow="always"
                         :height="bannerHeight"
                     >
-                        <el-carousel-item v-for="item in banner" :key="item.id">
+                        <!-- <el-carousel-item v-for="item in banner" :key="item.id">
                             <a :href="item.ad_link" style="pointer-events:auto; ">
                                 <img :src="URL + item.pic_url" />
                             </a>
-                        </el-carousel-item>
+                        </el-carousel-item> -->
+
+                        <img src="../../assets/img/Clip.png" />
                         
-                        <div id="apDiv2">
+                        <!-- <div id="apDiv2">
                             <div class="denglu r">
                             <img class="touxiang" @click="HeadPortrait" v-if="userInfo.userHeaderImg" :src="URL+userInfo.userHeaderImg"/>
                             <img class="touxiang" @click="HeadPortrait" v-else src="../../assets/img/default-head.png"/>
@@ -40,20 +42,14 @@
                             <h4 class="l rukou">快捷入口</h4>
                             <ul class="ul l">
                                 <li>
-                                <!-- <router-link to="ecentBrowse" > -->
                                 <a href="javascript:;" @click="toLink('ecentBrowse')">
                                     <i class="el-icon-view"></i><br/> 我的浏览
                                 </a>
-
-                                <!-- </router-link> -->
                                 </li>
                                 <li>
                                 <a href="javascript:;" @click="toLink('collect')">
                                     <img src="../../assets/img/heart.jpg" style="width: auto; height: auto;" /> 我的收藏
                                 </a>
-                                <!-- <router-link to="collect"> -->
-
-                                <!-- </router-link> -->
                                 </li>
                                 <li>
                                 <a href="javascript:;" @click="toLink('myOrder',0)">
@@ -66,91 +62,13 @@
                                 </li>
                             </ul>
                             </div>
-                        </div>
+                        </div> -->
                     </el-carousel>
                 </div>
                 
             </div>
         </div>
         <div class="center">
-            <!--首页限时抢购-->
-            <!-- <div class="wti-sk wrapper">
-                <div class="sk_inner">
-                    <div class="sk_hd">
-                        <img src="../../assets/img/rushbuy.jpg" alt="" />
-                    </div>
-                    <div class="sk_bd">
-                        <div class="sk_list slider_list">
-                            <div class="sk_list_inner">
-                                <div class="goods_wrapper swiper-container">
-                                    <div class="swiper-wrapper">
-                                        <div
-                                            class="swiper-slide"
-                                            v-for="(item, index) in panicList"
-                                            :key="index"
-                                            @click="toRushBuy(item.goods_id)"
-                                        >
-                                            <div class="sk_item">
-                                                <div class="sk_item_lk">
-                                                    <div class="goods-thumb">
-                                                        <img
-                                                            :src="
-                                                                URL +
-                                                                    item.pic_url
-                                                            "
-                                                        />
-                                                    </div>
-                                                    <p
-                                                        class="sk_item_name"
-                                                        @mouseenter="
-                                                            updateXY(
-                                                                item.title,
-                                                                $event
-                                                            )
-                                                        "
-                                                        @mouseleave="
-                                                            updataFullFlag
-                                                        "
-                                                    >
-                                                        {{ item.title }}
-                                                    </p>
-                                                    <div class="sk_item_price">
-                                                        <span
-                                                            class="sk_item_price_new"
-                                                            ><span
-                                                                >&yen;{{
-                                                                    item.panic_price
-                                                                }}</span
-                                                            ></span
-                                                        ><span
-                                                            class="sk_item_price_origin"
-                                                            ><span
-                                                                >&yen;{{
-                                                                    item.price_member
-                                                                }}</span
-                                                            ></span
-                                                        >
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-
-                                    <div class="swiper-button-prev"></div>
-                                    <div class="swiper-button-next"></div>
-                                </div>
-                            </div>
-                        </div> -->
-                        <!--<div class="sk_chn">-->
-                        <!--<div class="sk_chn_inner">-->
-                        <!--<img v-if="panicAd.pic_url" @click="toLink1(panicAd.ad_link)" width="200" height="260"-->
-                        <!--:src="URL + panicAd.pic_url">-->
-                        <!--</div>-->
-                        <!--</div>-->
-                    <!-- </div>
-                </div>
-            </div> -->
-
             <div class="wti-sk wrapper">
                 <div class="sk_inner">
                     <div class="sk_hd">
@@ -160,7 +78,7 @@
                         <div class="sk_list slider_list">
                             <div class="sk_list_inner">
                                 <swiper class="swiper" :options="swiperOption">
-                                    <swiper-slide
+                                    <!-- <swiper-slide
                                         v-for="(item, index) in panicList"
                                         :key="index">
                                         <div class="sk_item" @click="toRushBuy(item.goods_id)">
@@ -206,6 +124,96 @@
                                                     </div>
                                                 </div>
                                             </div>
+                                    </swiper-slide> -->
+                                    <swiper-slide>
+                                        <div class="sk_item">
+                                                <div class="sk_item_lk">
+                                                    <div class="goods-thumb">
+                                                        <img src="../../assets/img/yi-1.png" />
+                                                    </div>
+                                                    <p class="sk_item_name">钉枪包装盒材质瓦楞：T414F-EB</p>
+                                                    <div class="sk_item_price">
+                                                        <span class="sk_item_price_new">
+                                                            <span>&yen;98.00</span>
+                                                        </span>
+                                                        <span class="sk_item_price_origin">
+                                                            <span>&yen;1398.00</span>
+                                                        </span>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                    </swiper-slide>
+                                    <swiper-slide>
+                                        <div class="sk_item">
+                                                <div class="sk_item_lk">
+                                                    <div class="goods-thumb">
+                                                        <img src="../../assets/img/yi-2.png" />
+                                                    </div>
+                                                    <p class="sk_item_name">传感器彩盒材质瓦楞：U4G-E</p>
+                                                    <div class="sk_item_price">
+                                                        <span class="sk_item_price_new">
+                                                            <span>&yen;998.00</span>
+                                                        </span>
+                                                        <span class="sk_item_price_origin">
+                                                            <span>&yen;299.00</span>
+                                                        </span>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                    </swiper-slide>
+                                    <swiper-slide>
+                                        <div class="sk_item">
+                                                <div class="sk_item_lk">
+                                                    <div class="goods-thumb">
+                                                        <img src="../../assets/img/yi-3.png" />
+                                                    </div>
+                                                    <p class="sk_item_name">水泵彩箱材质瓦楞：T414F-BC</p>
+                                                    <div class="sk_item_price">
+                                                        <span class="sk_item_price_new">
+                                                            <span>&yen;1888.00</span>
+                                                        </span>
+                                                        <span class="sk_item_price_origin">
+                                                            <span>&yen;3968.00</span>
+                                                        </span>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                    </swiper-slide>
+                                    <swiper-slide>
+                                        <div class="sk_item">
+                                                <div class="sk_item_lk">
+                                                    <div class="goods-thumb">
+                                                        <img src="../../assets/img/yi-4.png" />
+                                                    </div>
+                                                    <p class="sk_item_name">工作台彩箱材质瓦楞：U43435Q</p>
+                                                    <div class="sk_item_price">
+                                                        <span class="sk_item_price_new">
+                                                            <span>&yen;68.00</span>
+                                                        </span>
+                                                        <span class="sk_item_price_origin">
+                                                            <span>&yen;99.00</span>
+                                                        </span>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                    </swiper-slide>
+                                    <swiper-slide>
+                                        <div class="sk_item">
+                                                <div class="sk_item_lk">
+                                                    <div class="goods-thumb">
+                                                        <img src="../../assets/img/yi-5.png" />
+                                                    </div>
+                                                    <p class="sk_item_name">桌上型小气炉彩箱</p>
+                                                    <div class="sk_item_price">
+                                                        <span class="sk_item_price_new">
+                                                            <span>&yen;0..01</span>
+                                                        </span>
+                                                        <span class="sk_item_price_origin">
+                                                            <span>&yen;588.00</span>
+                                                        </span>
+                                                    </div>
+                                                </div>
+                                            </div>
                                     </swiper-slide>
                                     <div class="swiper-button-prev" slot="button-prev"></div>
                                     <div class="swiper-button-next" slot="button-next"></div>
@@ -221,7 +229,7 @@
                     <img class="l" src="../../assets/img/dianpu.jpg" />
                 </div>
                 <ul class="r">
-                    <li
+                    <!-- <li
                         class="l right"
                         v-for="(pinpai, index) in pinpais"
                         :key="index"
@@ -240,6 +248,18 @@
                                 >点击进入</span
                             >
                         </div>
+                    </li> -->
+                    <li class="l right">
+                        <img src="../../assets/img/shop.jpg" />
+                        <div class="click">
+                            <span>点击进入</span>
+                        </div>
+                    </li>
+                    <li class="l right">
+                        <img src="../../assets/img/storefuzhu.jpg" />
+                        <div class="click">
+                            <span>点击进入</span>
+                        </div>
                     </li>
 
                     <li class="another" @click="anotherFun">
@@ -248,7 +268,7 @@
                     </li>
                 </ul>
             </div>
-            <div class="various-lists">
+            <!-- <div class="various-lists">
                 <div
                     class="list"
                     v-for="(item,index) in goodsType"
@@ -261,8 +281,9 @@
                         <img v-for="items in item.goods" :key="items.id" :src="URL + items.pic_url" alt />
                     </div>
                 </div>
-            </div>
-            <div
+            </div> -->
+            
+            <!-- <div
                 class="gongyi same"
                 v-for="(item, page) in allFloor"
                 :key="page"
@@ -314,14 +335,6 @@
                                 v-for="(img, index) in item.imgArray"
                                 :key="index"
                             >
-                                <!-- <img
-                                    :src="
-                                        item.middle.length === 0
-                                            ? img.pic_url
-                                            : URL + img.pic_url
-                                    "
-                                    @click="goto(img)"
-                                /> -->
                                 <img
                                     :src="URL + img.pic_url
                                     "
@@ -417,15 +430,351 @@
                         </li>
                     </ul>
                 </div>
-                <!--<img v-show="(item.button instanceof Array) && item.button.length===0" class="bottomnav"-->
-                <!--src="../../assets/img/bottom-img.png"/>-->
                 <img
                     v-show="!item.button.hasOwnProperty('length')"
                     class="bottomnav"
                     :src="URL + item.button.pic_url"
                     @click="goto(item.button)"
                 />
+            </div> -->
+            <div class="gongyi same">
+                <h1>1F 标准品</h1>
+                <ul class="l tabul">
+                    <li class="l tab" style="color: red">新品推荐</li>
+                    <li class="l tab">热卖商品</li>
+                    <li class="l tab">猜您喜欢</li>
+                </ul>
+                <div class="huaping l">
+                    <img class="l classImg" src="../../assets/img/yi-clip.png"/>
+                    <div class="bottom l">
+                        <ul class="bottomul">
+                            <li class="l bottomli">烹饪锅具</li>
+                            <li class="l bottomli">刀剪菜板</li>
+                            <li class="l bottomli">收纳保鲜</li>
+                            <li class="l bottomli">餐具</li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="swiper l" @mouseover="stop()" @mouseout="move()">
+                    <div class="slideshow">
+                        <el-carousel
+                            :interval="5000"
+                            arrow="always"
+                            :height="imgHeight"
+                        >
+                            <el-carousel-item>
+                                <img
+                                    src="../../assets/img/yi-6.png" />
+                            </el-carousel-item>
+                        </el-carousel>
+                    </div>
+                </div>
+                <div class="showdiv r">
+                    <ul class="showul l">
+                        <li class="showli l">
+                            <img
+                                class="hp w_h"
+                                src="../../assets/img/yi-7.png"
+                            />
+                            <p class="jieshao">
+                            <!-- <el-dropdown v-if="thing.store_grade_name">
+                                <span class="first-name">{{ thing.store_grade_name }}</span>
+                                <el-dropdown-menu slot="dropdown" v-if="thing.store_grade_classification">
+                                <el-dropdown-item>{{thing.store_grade_classification}}</el-dropdown-item>
+                                </el-dropdown-menu>
+                            </el-dropdown> -->
+                            &nbsp;GR60水泵纸箱制造尺寸：26x15.2x18.5 cm</p>
+                            <div class="jiage l">￥<span>5.90/只</span>
+                                <div style="margin-left:40px;display:inline-block;font-size:12px;color:#656565">已售2件</div>
+                            </div>
+                        </li>
+                        <li class="showli l">
+                            <img
+                                class="hp w_h"
+                                src="../../assets/img/yi-8.png"
+                            />
+                            <p class="jieshao">
+                            &nbsp;清洗机制造尺寸： 65x41.5x53.5cm</p>
+                            <div class="jiage l">￥<span>3.57/只</span>
+                                <div style="margin-left:40px;display:inline-block;font-size:12px;color:#656565">已售2件</div>
+                            </div>
+                        </li>
+                        <li class="showli l">
+                            <img
+                                class="hp w_h"
+                                src="../../assets/img/yi-9.png"
+                            />
+                            <p class="jieshao">
+                            &nbsp;气钉枪彩箱制造尺寸：27x25.3x6cm</p>
+                            <div class="jiage l">￥<span>6.90/只</span>
+                                <div style="margin-left:40px;display:inline-block;font-size:12px;color:#656565">已售2件</div>
+                            </div>
+                        </li>
+                        <li class="showli l">
+                            <img
+                                class="hp w_h"
+                                src="../../assets/img/yi-10.png"
+                            />
+                            <p class="jieshao">
+                            &nbsp;GR60水泵纸箱制造尺寸：26x15.2x18.5 cm</p>
+                            <div class="jiage l">￥<span>5.90/只</span>
+                                <div style="margin-left:40px;display:inline-block;font-size:12px;color:#656565">已售2件</div>
+                            </div>
+                        </li>
+                        <li class="showli l">
+                            <img
+                                class="hp w_h"
+                                src="../../assets/img/yi-11.png"
+                            />
+                            <p class="jieshao">
+                            &nbsp;JET100M彩箱制造尺寸： 65x41.5x53.5cm</p>
+                            <div class="jiage l">￥<span>3.57/只</span>
+                                <div style="margin-left:40px;display:inline-block;font-size:12px;color:#656565">已售2件</div>
+                            </div>
+                        </li>
+                        <li class="showli l">
+                            <img
+                                class="hp w_h"
+                                src="../../assets/img/yi-12.png"
+                            />
+                            <p class="jieshao">
+                            &nbsp;DJ02548彩箱制造尺寸：27x25.3x6cm</p>
+                            <div class="jiage l">￥<span>6.90/只</span>
+                                <div style="margin-left:40px;display:inline-block;font-size:12px;color:#656565">已售2件</div>
+                            </div>
+                        </li>
+                    </ul>
+                </div>
+                <img
+                    class="bottomnav"
+                    src="../../assets/img/yi-13.png"
+                />
             </div>
+
+            <div class="gongyi same">
+                <h1>2F 标准品</h1>
+                <ul class="l tabul">
+                    <li class="l tab" style="color: red">新品推荐</li>
+                    <li class="l tab">热卖商品</li>
+                    <li class="l tab">猜您喜欢</li>
+                </ul>
+                <div class="huaping l">
+                    <img class="l classImg" src="../../assets/img/yi-clip.png"/>
+                    <div class="bottom l">
+                        <ul class="bottomul">
+                            <li class="l bottomli">烹饪锅具</li>
+                            <li class="l bottomli">刀剪菜板</li>
+                            <li class="l bottomli">收纳保鲜</li>
+                            <li class="l bottomli">餐具</li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="swiper l" @mouseover="stop()" @mouseout="move()">
+                    <div class="slideshow">
+                        <el-carousel
+                            :interval="5000"
+                            arrow="always"
+                            :height="imgHeight"
+                        >
+                            <el-carousel-item>
+                                <img
+                                    src="../../assets/img/yi-6.png" />
+                            </el-carousel-item>
+                        </el-carousel>
+                    </div>
+                </div>
+                <div class="showdiv r">
+                    <ul class="showul l">
+                        <li class="showli l">
+                            <img
+                                class="hp w_h"
+                                src="../../assets/img/yi-7.png"
+                            />
+                            <p class="jieshao">
+                            <!-- <el-dropdown v-if="thing.store_grade_name">
+                                <span class="first-name">{{ thing.store_grade_name }}</span>
+                                <el-dropdown-menu slot="dropdown" v-if="thing.store_grade_classification">
+                                <el-dropdown-item>{{thing.store_grade_classification}}</el-dropdown-item>
+                                </el-dropdown-menu>
+                            </el-dropdown> -->
+                            &nbsp;GR60水泵纸箱制造尺寸：26x15.2x18.5 cm</p>
+                            <div class="jiage l">￥<span>5.90/只</span>
+                                <div style="margin-left:40px;display:inline-block;font-size:12px;color:#656565">已售2件</div>
+                            </div>
+                        </li>
+                        <li class="showli l">
+                            <img
+                                class="hp w_h"
+                                src="../../assets/img/yi-8.png"
+                            />
+                            <p class="jieshao">
+                            &nbsp;清洗机制造尺寸： 65x41.5x53.5cm</p>
+                            <div class="jiage l">￥<span>3.57/只</span>
+                                <div style="margin-left:40px;display:inline-block;font-size:12px;color:#656565">已售2件</div>
+                            </div>
+                        </li>
+                        <li class="showli l">
+                            <img
+                                class="hp w_h"
+                                src="../../assets/img/yi-9.png"
+                            />
+                            <p class="jieshao">
+                            &nbsp;气钉枪彩箱制造尺寸：27x25.3x6cm</p>
+                            <div class="jiage l">￥<span>6.90/只</span>
+                                <div style="margin-left:40px;display:inline-block;font-size:12px;color:#656565">已售2件</div>
+                            </div>
+                        </li>
+                        <li class="showli l">
+                            <img
+                                class="hp w_h"
+                                src="../../assets/img/yi-10.png"
+                            />
+                            <p class="jieshao">
+                            &nbsp;GR60水泵纸箱制造尺寸：26x15.2x18.5 cm</p>
+                            <div class="jiage l">￥<span>5.90/只</span>
+                                <div style="margin-left:40px;display:inline-block;font-size:12px;color:#656565">已售2件</div>
+                            </div>
+                        </li>
+                        <li class="showli l">
+                            <img
+                                class="hp w_h"
+                                src="../../assets/img/yi-11.png"
+                            />
+                            <p class="jieshao">
+                            &nbsp;JET100M彩箱制造尺寸： 65x41.5x53.5cm</p>
+                            <div class="jiage l">￥<span>3.57/只</span>
+                                <div style="margin-left:40px;display:inline-block;font-size:12px;color:#656565">已售2件</div>
+                            </div>
+                        </li>
+                        <li class="showli l">
+                            <img
+                                class="hp w_h"
+                                src="../../assets/img/yi-12.png"
+                            />
+                            <p class="jieshao">
+                            &nbsp;DJ02548彩箱制造尺寸：27x25.3x6cm</p>
+                            <div class="jiage l">￥<span>6.90/只</span>
+                                <div style="margin-left:40px;display:inline-block;font-size:12px;color:#656565">已售2件</div>
+                            </div>
+                        </li>
+                    </ul>
+                </div>
+                <img
+                    class="bottomnav"
+                    src="../../assets/img/yi-13.png"
+                />
+            </div>
+
+            <div class="gongyi same" v-for="i in 4" :key="i">
+                <h1>3F 标准品</h1>
+                <ul class="l tabul">
+                    <li class="l tab" style="color: red">新品推荐</li>
+                    <li class="l tab">热卖商品</li>
+                    <li class="l tab">猜您喜欢</li>
+                </ul>
+                <div class="huaping l">
+                    <img class="l classImg" src="../../assets/img/yi-clip.png"/>
+                    <div class="bottom l">
+                        <ul class="bottomul">
+                            <li class="l bottomli">烹饪锅具</li>
+                            <li class="l bottomli">刀剪菜板</li>
+                            <li class="l bottomli">收纳保鲜</li>
+                            <li class="l bottomli">餐具</li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="swiper l" @mouseover="stop()" @mouseout="move()">
+                    <div class="slideshow">
+                        <el-carousel
+                            :interval="5000"
+                            arrow="always"
+                            :height="imgHeight"
+                        >
+                            <el-carousel-item>
+                                <img
+                                    src="../../assets/img/yi-6.png" />
+                            </el-carousel-item>
+                        </el-carousel>
+                    </div>
+                </div>
+                <div class="showdiv r">
+                    <ul class="showul l">
+                        <li class="showli l">
+                            <img
+                                class="hp w_h"
+                                src="../../assets/img/yi-7.png"
+                            />
+                            <p class="jieshao">
+                            <!-- <el-dropdown v-if="thing.store_grade_name">
+                                <span class="first-name">{{ thing.store_grade_name }}</span>
+                                <el-dropdown-menu slot="dropdown" v-if="thing.store_grade_classification">
+                                <el-dropdown-item>{{thing.store_grade_classification}}</el-dropdown-item>
+                                </el-dropdown-menu>
+                            </el-dropdown> -->
+                            &nbsp;GR60水泵纸箱制造尺寸：26x15.2x18.5 cm</p>
+                            <div class="jiage l">￥<span>5.90/只</span>
+                                <div style="margin-left:40px;display:inline-block;font-size:12px;color:#656565">已售2件</div>
+                            </div>
+                        </li>
+                        <li class="showli l">
+                            <img
+                                class="hp w_h"
+                                src="../../assets/img/yi-8.png"
+                            />
+                            <p class="jieshao">
+                            &nbsp;清洗机制造尺寸： 65x41.5x53.5cm</p>
+                            <div class="jiage l">￥<span>3.57/只</span>
+                                <div style="margin-left:40px;display:inline-block;font-size:12px;color:#656565">已售2件</div>
+                            </div>
+                        </li>
+                        <li class="showli l">
+                            <img
+                                class="hp w_h"
+                                src="../../assets/img/yi-9.png"
+                            />
+                            <p class="jieshao">
+                            &nbsp;气钉枪彩箱制造尺寸：27x25.3x6cm</p>
+                            <div class="jiage l">￥<span>6.90/只</span>
+                                <div style="margin-left:40px;display:inline-block;font-size:12px;color:#656565">已售2件</div>
+                            </div>
+                        </li>
+                        <li class="showli l">
+                            <img
+                                class="hp w_h"
+                                src="../../assets/img/yi-10.png"
+                            />
+                            <p class="jieshao">
+                            &nbsp;GR60水泵纸箱制造尺寸：26x15.2x18.5 cm</p>
+                            <div class="jiage l">￥<span>5.90/只</span>
+                                <div style="margin-left:40px;display:inline-block;font-size:12px;color:#656565">已售2件</div>
+                            </div>
+                        </li>
+                        <li class="showli l">
+                            <img
+                                class="hp w_h"
+                                src="../../assets/img/yi-11.png"
+                            />
+                            <p class="jieshao">
+                            &nbsp;JET100M彩箱制造尺寸： 65x41.5x53.5cm</p>
+                            <div class="jiage l">￥<span>3.57/只</span>
+                                <div style="margin-left:40px;display:inline-block;font-size:12px;color:#656565">已售2件</div>
+                            </div>
+                        </li>
+                        <li class="showli l">
+                            <img
+                                class="hp w_h"
+                                src="../../assets/img/yi-12.png"
+                            />
+                            <p class="jieshao">
+                            &nbsp;DJ02548彩箱制造尺寸：27x25.3x6cm</p>
+                            <div class="jiage l">￥<span>6.90/只</span>
+                                <div style="margin-left:40px;display:inline-block;font-size:12px;color:#656565">已售2件</div>
+                            </div>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+
             <div class="more">
                 <span v-if="floorIndex > 0 && floorIndex <= floorCount" @click="getFloor"
                     >加载更多...</span
@@ -460,9 +809,7 @@ import huanyipi from "@/assets/img/huanyipi.jpg";
 import banner1 from "@/assets/img/banner1.jpg";
 import banner2 from "@/assets/img/banner2.jpg";
 import banner3 from "@/assets/img/banner3.jpg";
-// import Swiper from "swiper";
 import { Swiper, SwiperSlide } from 'vue-awesome-swiper';
-// import CommonHeader from "../../common/Header";
 import "swiper/dist/css/swiper.min.css";
 
 export default {
@@ -482,7 +829,6 @@ export default {
             prevButton: ".swiper-button-prev",
             nextButton: ".swiper-button-next"
             },
-            // classImg: hp,
             huanyipi: huanyipi,
             animate: false, //广告滚动处控制
             allFloor: [], //所有楼层的数据
@@ -502,7 +848,6 @@ export default {
             display: null,
             showClassify: false,
             marksArr: [], //比对图片索引的变量
-            // imgArray: [{ pic_url: ns }, { pic_url: chun }, { pic_url: maotai }],
             isbackcolor: "",
             pinpais: [],
             class_id: 0, //分类ID
@@ -536,29 +881,7 @@ export default {
     created() {
         this.getGoodsType();
         this.floorCount = localStorage.getItem('countF')
-        
-        // let title='首页'+'-'+ sessionStorage.titleKey
-	    // this.showScroll.scrollTitle(title);
         this.getFloor();
-        // SH-OP-SN
-        // if (
-        //     sessionStorage.getItem("userHeaderImg") ||
-        //     sessionStorage.getItem("userName")
-        // ) {
-        //     this.userInfo = {
-        //         userName: sessionStorage.getItem("userName"),
-        //         userHeaderImg: sessionStorage.getItem("userHeaderImg")
-        //     };
-        // }
-        // if (
-        //     localStorage.getItem("userNamee") ||
-        //     localStorage.getItem("userHeaderImgg")
-        // ) {
-        //     this.userInfo = {
-        //         userName: localStorage.getItem("userNamee"),
-        //         userHeaderImg: localStorage.getItem("userHeaderImgg"),
-        //     };
-        // }
         if (sessionStorage.getItem('userHeaderImg') || sessionStorage.getItem('userName')) {
             this.userInfo = {
                 userName: sessionStorage.getItem('userName'),
@@ -631,13 +954,6 @@ export default {
                     type
             );
         },
-         
-        // authenticated() {
-        //     let somethingtemp = localStorage.getItem('loginuserdata')
-        //     return somethingtemp;
-        // },
-        
-
         //轮播跳转
         goto(img) {
             if (img && img.hasOwnProperty("ad_link")) {
@@ -667,16 +983,6 @@ export default {
                 if (res.data.status == 1) {
                     this.panicList = res.data.data.panic;
                     this.panicAd = res.data.data.ad;
-                    // setTimeout(() => {
-                    //     var mySwiper = new Swiper(".swiper-container", {
-                    //         loop: true,
-                    //         autoplay: 4000,
-                    //         slidesPerView: 5,
-                    //         slidesPerGroup: 1,
-                    //         prevButton: ".swiper-button-prev",
-                    //         nextButton: ".swiper-button-next"
-                    //     });
-                    // }, 500);
                 }
             });
         },
@@ -696,7 +1002,6 @@ export default {
             if (n == 0) {
                 window.open(window.location.origin + "/" + l + "?id=1");
             } else {
-                // console.log("=====" + l);
                 window.open(window.location.origin + "/" + l);
             }
         },
@@ -717,7 +1022,6 @@ export default {
             });
         },
         entryClass(jingruis) {
-            // console.log(window.location.origin + '/' + item.pc_url)
             this.Go++;
             window.open(
                 window.location.origin +
@@ -734,9 +1038,6 @@ export default {
                 window.location.origin + "/shopsn_product?id=" + goods.id
             );
         },
-        // addBuyCar(goods) {
-
-        // },
         stop() {},
         move() {},
         getHome()   {
@@ -767,12 +1068,6 @@ export default {
                     "post"
                 )
                     .then(res => {
-                        //判断数组是否为空，空则假数据
-                        // if (res.data.data.middle.length === 0) {
-                        //     res.data.data.imgArray = this.imgArray;
-                        // } else {
-                        //     res.data.data.imgArray = res.data.data.middle;
-                        // }
                          res.data.data.imgArray = res.data.data.middle;
                         this.allFloor.push(res.data.data);
                         this.marksArr.push(0);
@@ -785,7 +1080,6 @@ export default {
                                 i
                             ].goods_news;
                         }
-                        // console.log(this.allFloor, 2222);
                     })
                     .catch(e => {
                         console.log(e);
@@ -826,10 +1120,6 @@ export default {
                         ].hotGoods;
                     }
                     break;
-                // case 2: {
-                //   this.arr[page] = this.allFloor[page].rushGoods;
-                // }
-                //   break;
                 case 2:
                     {
                         this.allFloor[page].goods = this.allFloor[
@@ -846,12 +1136,7 @@ export default {
 </script>
 
 <style lang="less" scoped>
-
-.el-dropdown{
-//  width: 230px !important; 
-}
 .el-dropdown-menu {
-    // width: 230px !important;
     position: absolute !important;
     margin: 5px -50px 0 0 !important;
     background-color: #FFF;
@@ -923,31 +1208,6 @@ export default {
 .swiper-container {
     width: 100%;
 }
-
-/* .goods_wrapper .swiper-button-prev {
-}
-
-.goods_wrapper .swiper-button-next,
-.goods_wrapper .swiper-button-prev {
-    background: url(../../assets/img/home_bg.png) no-repeat;
-    opacity: 0.5 !important;
-    width: 19px;
-    height: 29px;
-    position: absolute;
-    z-index: 2;
-    top: 120px;
-    cursor: pointer;
-}
-
-.goods_wrapper .swiper-button-next {
-    background-position: -180px -40px;
-    right: 0;
-}
-.goods_wrapper .swiper-button-prev {
-    background-position: -160px -40px;
-    left: 0;
-} */
-
 .swiper-button-prev, .swiper-container-rtl .swiper-button-next {
     background: url(../../assets/img/home_bg.png) no-repeat;
     opacity: 0.5 !important;
@@ -1011,20 +1271,17 @@ export default {
                 height: 275px;
                 overflow: hidden;
                 position: relative;
-                /*width: 999px;*/
                 width: 1010px;
 
                 .sk_list_inner {
                     height: 275px;
                     position: relative;
-                    /*width: 999px;*/
                     width: 1010px;
 
                     .sk_item {
                         float: left;
                         height: 275px;
                         position: relative;
-                        /*width: 200px;*/
                         width: 202px;
 
                         .sk_item_lk {
@@ -1134,7 +1391,6 @@ export default {
 
 .wrapper {
     width: 1200px;
-    // margin: auto;
     margin-top:90px;
 }
 
@@ -1171,25 +1427,11 @@ export default {
             width: 100%;
             height: 100%;
             position: relative;
-            /*background-color: #d02629;*/
 
             .banner-img {
-                // position: absolute;
                 top: 0;
                 left: 0;
-                /*width: auto;*/
-                
-                // width: 100%;
-                /*width: 100%;*/
-                // margin: 0 auto;
-                // height: 400px;
-                // width:100%;
-                // height:100%;
                 img {
-                    // width: 100%;
-                    // /*height: 100%;*/
-                    // height: 98.29%;
-                    // z-index: 0;
                     width:100%;
                     height:100%;
                 }
@@ -1200,9 +1442,7 @@ export default {
                 left: 0;
                 top: 0;
                 width: 1200px;
-                // height: 210px;
                 z-index: 2;
-                // background-color:green;
                 opacity: 1;
                 margin: 0 auto;
                 margin: auto;
@@ -1213,20 +1453,16 @@ export default {
             
             .denglu {
                 pointer-events:auto;
-                // position: absolute;
                 top: 0;
                 z-index: 10;
                 margin: auto;
                 left: 0;
                 right: 0;
                 bottom: 0;
-
-                // right: 181px;
                 width: 204px;
                 height: 480px;
                 background: #fbfdfc;
                 margin-top: 9px;
-                // margin-right: 361px;
 
                 .touxiang {
                     float: left;
@@ -1376,7 +1612,6 @@ export default {
         margin-top: 14px;
 
         .left {
-            /*width: 435px;*/
             width: 387px;
             height: 305px;
             img {
@@ -1386,7 +1621,6 @@ export default {
 
         ul {
             margin-left: 9px;
-            /*width: 752px;*/
             width: 801px;
             border: 0.5px solid #e8e8e8;
             li {
@@ -1436,47 +1670,47 @@ export default {
         }
     }
 
-    .various-lists {
-        padding: 2%;
-        display: flex;
-        flex-wrap: wrap;
-        background: #f1f1f1;
-        .list {
-            padding-top: 15px;
-            border-radius: 10px;
-            width: 15.7%;
-            padding-bottom: 10px;
-            background: #ffffff;
-            margin-bottom: 10px;
-            margin-left: 10px;
-            .title {
-                padding: 3px 10px;
-                font-size: 15px;
-                border: 1px solid orange;
-                background: orange;
-                margin: 0 10px 10px 10px;
-                border-radius: 10px;
-                color: #ffffff;   
-            }
-            .subtitle {
-                font-size: 12px;
-                padding-left: 12px;
-                color: #999999;
-                margin-top:10px;
-            }
-            .img-list {
-                display: flex;
-                align-items: center;
+    // .various-lists {
+    //     padding: 2%;
+    //     display: flex;
+    //     flex-wrap: wrap;
+    //     background: #f1f1f1;
+    //     .list {
+    //         padding-top: 15px;
+    //         border-radius: 10px;
+    //         width: 15.7%;
+    //         padding-bottom: 10px;
+    //         background: #ffffff;
+    //         margin-bottom: 10px;
+    //         margin-left: 10px;
+    //         .title {
+    //             padding: 3px 10px;
+    //             font-size: 15px;
+    //             border: 1px solid orange;
+    //             background: orange;
+    //             margin: 0 10px 10px 10px;
+    //             border-radius: 10px;
+    //             color: #ffffff;   
+    //         }
+    //         .subtitle {
+    //             font-size: 12px;
+    //             padding-left: 12px;
+    //             color: #999999;
+    //             margin-top:10px;
+    //         }
+    //         .img-list {
+    //             display: flex;
+    //             align-items: center;
 
-                img {
-                    width: 60px;
-                    height: 60px;
-                    margin-left: 15px;
-                    margin-top: 5px;
-                }
-            }
-        }    
-    }
+    //             img {
+    //                 width: 60px;
+    //                 height: 60px;
+    //                 margin-left: 15px;
+    //                 margin-top: 5px;
+    //             }
+    //         }
+    //     }    
+    // }
     .same {
         min-height: 550px;
         height: auto;
@@ -1580,8 +1814,6 @@ export default {
             .showli {
                 width: 203px;
                 height: 244px;
-                //border-right: 1px solid #e7e8e3;
-                //border-bottom: 1px solid #e7e8e3;
                 cursor: pointer;
 
                 img {
@@ -1670,6 +1902,3 @@ export default {
 }
 
 </style>
-
-<!-- https://stackoverflow.com/questions/14821425/overlapping-divs-click
-http://jsfiddle.net/hj9UL/1/ -->

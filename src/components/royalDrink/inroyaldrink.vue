@@ -1,50 +1,52 @@
 <template>
     <div class="shopsn_product">
-        <common-header v-on:childToParent="onChildClick"></common-header>
+        <!-- <common-header v-on:childToParent="onChildClick"></common-header> -->
+        <common-header></common-header>
         <head-com></head-com>
         <div class="center">
+
             <div class="header">
                 <img class="l" src="../../assets/img/fangzi.jpg" />
                 <span class="shouye">
-                    <router-link to="home">首页</router-link>
+                    <router-link to="home">首页></router-link>
                 </span>
-                <a @click="GoTo" class="xiala"
+                <!-- <a @click="GoTo" class="xiala"
                     >{{ getTopClass(goodsData.class_id) }}
                     <i class="el-icon-arrow-down"></i>
                 </a>
-                <span>{{ goodsData.title }}</span>
+                <span>{{ goodsData.title }}</span> -->
+                <a @click="$router.push('yangShen')" class="xiala">标准品</a>
+                <span style="color: #D02629; padding-left: 10px">传感器彩盒</span>
             </div>
+
             <div class="top">
                 <div class="left l">
-                    <div class="bigImg" v-if="video && showVideo == false">
+                    <!-- <div class="bigImg" v-if="video && showVideo == false">
                         <img
                             v-if="defaultPicture"
                             :src="URL + defaultPicture"
                         />
                         <div id="winSelector"></div>
+                    </div> -->
+                     <div class="bigImg">
+                        <img
+                            src="../../assets/img/yi-16.png"
+                        />
+                        <div id="winSelector"></div>
                     </div>
-                    <div class="see-video" v-if="video && showVideo == false" >
+                    <!-- <div class="see-video" v-if="video && showVideo == false" >
                         <img src="../../assets/img/videoplay.png" class="playimg" @click="showvideo(video)"/>
                     </div>
                     <div class="bigImg" v-show="video && showVideo == true">
                         <vue-core-video-player 
                             @ended="endedPlaying" class="playimg" :src="video"></vue-core-video-player>
-                        
-                        <!-- <video-player  class="playimg vjs-custom-skin"
-                            ref="videoPlayer"
-                            :options="playerOptions"
-                            :playsinline="true"
-                            @ended="endedPlaying"
-                        >
-                        </video-player> -->
-                        
-                    </div>
+                    </div> -->
                     <div class="smallImg spec-scroll">
                         <div class="scrollbutton smallImgUp disabled l">
                             <i class="el-icon-caret-left"></i>
                         </div>
                         <div id="imageMenu" class="img-list">
-                            <ul :style="{ width: imgList.length * 75 + 'px' }">
+                            <!-- <ul :style="{ width: imgList.length * 75 + 'px' }">
                                 <li
                                     @mouseover="styleChange(index, li.pic_url)"
                                     :key="index"
@@ -55,20 +57,40 @@
                                         :src="URL + li.pic_url"
                                     />
                                 </li>
+                            </ul> -->
+                            <ul>
+                                <li>
+                                    <img src="../../assets/img/yi-16.png" />
+                                </li>
+                                <li>
+                                    <img src="../../assets/img/yi-2.png" />
+                                </li>
+                                <li>
+                                    <img src="../../assets/img/yi-3.png" />
+                                </li>
+                                <li>
+                                    <img src="../../assets/img/yi-4.png" />
+                                </li>
+                                <li>
+                                    <img src="../../assets/img/yi-6.png" />
+                                </li>
                             </ul>
                         </div>
-                        <div
+                        <!-- <div
                             class="scrollbutton smallImgDown r"
                             :class="{ disabled: imgList.length < 5 }"
                         >
                             <i class="el-icon-caret-right"></i>
+                        </div> -->
+                        <div class="scrollbutton smallImgDown r">
+                            <i class="el-icon-caret-right"></i>
                         </div>
                     </div>
-                    <div id="bigView" v-if="showVideo == false">
+                    <!-- <div id="bigView" v-if="showVideo == false">
                         <div class="big-img">
                             <img :src="URL + defaultPicture" />
                         </div>
-                    </div>
+                    </div> -->
                     <div class="fenxiang l">
                         <span class="share">
                             <i class="el-icon-share"></i>分享
@@ -95,21 +117,23 @@
                             ><i class="el-icon-star-on"></i
                             >{{ collection_text1 }}</span
                         >
-                        <span @click="handleNotice">举报</span>
+                        <!-- <span @click="handleNotice">举报</span> -->
                     </div>
                 </div>  
                 <div class="central l">
-                    <p class="goods-title">{{ goodsData.title }}</p>
-                    <p class="description">{{ goodsData.description }}</p>
+                    <!-- <p class="goods-title">{{ goodsData.title }}</p> -->
+                    <p class="goods-title">传感器彩盒</p>
+                    <!-- <p class="description">{{ goodsData.description }}</p> -->
                     <div class="price">
-                        <span style="visibility: hidden;">hello</span>
-                        <p class="l">
+                        <!-- <span style="visibility: hidden;">hello</span> -->
+                        <!-- <p class="l">
                             市场价
                             <span
                                 >￥{{ goodsData.price_market || "0.00" }}</span
                             >
-                        </p>
-                        <p class="l">
+                        </p> -->
+
+                        <!-- <p class="l">
                             售 &nbsp;&nbsp;价
                             <span> ￥{{ goodsData.price_member || 0.0 }}</span>
                             <span id="discount" @click="handleGoVip">
@@ -117,8 +141,16 @@
                                     handleDiscount
                                 }}折优惠</span
                             >
+                        </p> -->
+                        <p class="l">
+                            售 &nbsp;&nbsp;价
+                            <span>￥279.00</span>
+                            <span>￥259.00</span>
+                            <span>￥248.00</span>
+                            <span>￥230.00</span>
                         </p>
-                        <div class="couponSliceDiv" v-if="storeCouponList.length != 0">
+
+                        <!-- <div class="couponSliceDiv" v-if="storeCouponList.length != 0">
                             优惠券
                             <el-dropdown>
                                 <div class="couponSlice">
@@ -164,8 +196,17 @@
                                 </el-dropdown-item>
                             </el-dropdown-menu>
                                 </el-dropdown>
+                        </div> -->
+                        <div class="couponSliceDiv">
+                            起订量
+                            <span>100 件</span>
+                            <span>100 件</span>
+                            <span>100 件</span>
+                            <span>100 件</span>
                         </div>
-                        <div class="activity-list l" v-if="fullGift && fullGift.goods && fullGift.goods.length != 0">
+
+
+                        <!-- <div class="activity-list l" v-if="fullGift && fullGift.goods && fullGift.goods.length != 0">
                             <span
                                 >促&nbsp;&nbsp;&nbsp;销</span
                             >
@@ -198,10 +239,10 @@
                                 </div>
                             </div>
                         </div>
-                        <span style="visibility: hidden;">world</span>
+                        <span style="visibility: hidden;">world</span> -->
                     </div>
                     <div class="dizhi">
-                        <div
+                        <!-- <div
                             class="spec-group"
                             v-for="(item, index) in spec.spec_group"
                             :key="index"
@@ -217,42 +258,21 @@
                                 <img :src="URL + d.pic_url" class="addspec-photo" v-if="d.pic_url"/>
                                 <span class="spec-term-name" v-if="d.item">{{ d.item }}</span>
                             </div>
-                        </div>
-
-                        <!-- <p class="send-to">
-                            <span class="send-to-span">配送至</span>
-                            <receiving-address @trigger="getFreight"></receiving-address>
-                            <span class="yunfei">运费：￥{{freightMoney}}</span>
-                        </p> -->
-
+                        </div> -->
 
                         <p class="send-to">
                             <span class="send-to-span">配送至</span>
-
-                            <!-- <span v-if="freightMoney == 0" class="yunfei">运费：卖家包邮</span>
-                            <span v-else class="yunfei">运费：商家不支持配送地区</span> -->
-
-                            <!-- <span>
-                            <span v-if="freightMoney > 0" class="yunfei">运费：￥{{freightMoney}}</span>
-                            <span v-else-if="freightMoney == 0" class="yunfei">运费：卖家包邮</span>
-                            <span v-else class="yunfei">运费：{{freightMoney}}</span>
-                            </span> -->
-                            
-                            <span v-if="callStatus == 1">
-                            <!-- <span  v-if="deliveryCal == 0" class="yunfei">配送：0 元</span> -->
+                            <!-- <span v-if="callStatus == 1">
                             <span v-if="deliveryCal == -1" class="yunfei">配送：免配送费</span>
                             <span v-else class="yunfei">配送：{{deliveryCal}} 元</span>
                             </span>
                             <span v-else>
-                            <!-- <span v-if="freightCal == 0.00" class="yunfei">运费：0 元</span> -->
                             <span v-if="freightCal == 0" class="yunfei">运费：卖家包邮</span>
                             <span v-else class="yunfei">运费：{{freightCal}} 元</span>
-                            </span>
-                            <!-- <span v-else-if="freightCal">
-                            <span v-if="ship_status == 1" class="yunfei">运费：{{freightCal}} 元</span>
-                            <span v-if="ship_status == 2" class="yunfei">包邮：{{freightCal}} 元</span>
                             </span> -->
-
+                            <span>
+                            <span class="yunfei">运费 ：￥10.00</span>
+                            </span>
                             <div class="tab-input" @click="callingArea">
                             <input v-if="addressAll == ''" placeholder="请选择地区" type="tel" class="mint-field-core" disabled v-model="addressAllData">
                             <input v-else placeholder="请选择地区" type="tel" class="mint-field-core" disabled v-model="addressAll">
@@ -260,7 +280,6 @@
                             </div>
                         </p>
 
-                        <!-- <br> -->
                         <div class="popup-div" v-show="popupVisible">    
                             <div class="select1">
                                 <ul class="address-area-tit">
@@ -327,7 +346,7 @@
 
                         <p class="g-service">
                             服 &nbsp;&nbsp;务
-                            <span v-if="merchantDelivery" class=""
+                            <!-- <span v-if="merchantDelivery" class=""
                                 >由
                                 <span class="yellow"
                                       @click="goStore(shop_data.store_id)"
@@ -340,10 +359,28 @@
                                       @click="goStore(shop_data.store_id)"
                                     >{{ shop_data.shop_name }} </span
                                 >&nbsp;在&nbsp;{{expressDelivery.stock_name}}&nbsp;负责发货,&nbsp;{{expressDelivery.send_time}}小时内发货</span
-                            > 
+                            >  -->
+                            <span class=""
+                                >由
+                                <span class="yellow"
+                                    >美玉美翡翠店</span
+                                >负责发货，&nbsp;并提供售后服务</span>
                         </p>
+
+                        <p class="g-service">
+                            评 &nbsp;&nbsp;价
+                            <span>
+                                <span class="yellow">536</span>
+                                件成交
+                            </span>
+                            <span>
+                                <span class="yellow">59</span>
+                                条评价
+                            </span>
+                        </p>
+
                     </div>
-                    <div class="leiji">
+                    <!-- <div class="leiji">
                         <p>
                             累计评价
                             <span>{{ info.count }}人评价</span>
@@ -360,7 +397,7 @@
                                 ).toFixed(0) || 0
                             }}</span>
                         </p>
-                    </div>
+                    </div> -->
                     <div class="shuliang">
                         <span class="l">数量</span>
                         <div class="inp l">
@@ -385,9 +422,20 @@
                                 <i class="el-icon-minus"></i>
                             </span>
                         </div>
-                        <span class="l">件 库存{{ goodsData.stock }}件</span>
+                        <!-- <span class="l">件 库存{{ goodsData.stock }}件</span> -->
+                        <span class="l">件 库存14件</span>
                     </div>
-                    <div class="buy">
+
+                    <div class="leiji">
+                        <p>
+                            <span style="font-size: 18px; font-weight: bold;">601<span style="font-size: 12px; ">件</span></span>
+                        </p>
+                        <p>
+                            <span style="font-size: 18px; ">34858.00<span style="font-size: 12px; ">元</span></span>
+                        </p>
+                    </div>
+
+                    <!-- <div class="buy">
                         <span v-if="goodsData.shelves == 1" @click="purchase"
                             >立即购买</span
                         >
@@ -420,8 +468,20 @@
                         </div>
                         <div id="qrCode" ref="qrCodeDiv"></div>
                     </div>
+                </div> -->
+                    <div class="buy">
+                        <span>立即订购</span>
+                        <span>
+                            <img
+                                src="../../assets/img/gw.png"
+                                style="position: relative;"
+                            />
+                            加入进货单
+                        </span>
+                    </div>
                 </div>
-                <div class="r right">
+
+                <!-- <div class="r right">
                     <div class="header l">{{ shop_data.shop_name }}&nbsp;&nbsp;&nbsp;
                         <el-dropdown v-if="shop_data.grade_name">
                             <span class="first-name">{{ shop_data.grade_name }}</span>
@@ -470,13 +530,6 @@
                                 />在线客服</span
                             >
                         </p>
-                        <!-- <p
-                            @click="getSale"
-                            class="getReward"
-                            v-if="storeCouponList.length"
-                        >
-                            领优惠券
-                        </p> -->
                         <popup
                             v-if="saleInfo"
                             @close="handleClose"
@@ -517,9 +570,11 @@
                         <p v-if="store_goods_id" @click="storeSearch" >店内搜索</p>
                         <p v-else v-loading="loading" element-loading-spinner="el-icon-loading"></p>
                     </div>
-                </div>
+                </div> -->
+
             </div>
-            <div class="middle" v-if="optimalPortfolio.data.length > 0 || GoodsPackage.data.length > 0">
+
+            <!-- <div class="middle" v-if="optimalPortfolio.data.length > 0 || GoodsPackage.data.length > 0">
                 <div class="l tab">
                     <ul class="l">
                         <li
@@ -538,38 +593,9 @@
                         >
                             优惠套餐
                         </li>
-                        <!--<li @click="change(2)" :class="{bor: isbor === 2}" class="l">最佳组合</li>-->
                     </ul>
                     <div class="l"></div>
                 </div>
-                <!-- 推荐配件 -->
-                <!--<div class="l taocan class_one" v-show="isbor == 0">-->
-                <!--<span class="nullData" v-show="GoodsAccessories.data.length === 0">{{this.goodsId == this.$route.query.id ? '请先选择规格' : '暂无数据!!'}}</span>-->
-                <!--<div class="GoodsAccessories">-->
-                <!--<div class="l shangpin" v-for="(item, index) in GoodsAccessories.data" :key="index">-->
-                <!--<img :src="URL + item.img" @click="$router.push({path: '/shopsn_product', query: {id: item.goods_id}})"/>-->
-                <!--<p>{{item.title}}</p>-->
-                <!--<p>￥{{item.goods_price}}</p>-->
-                <!--</div>-->
-                <!--</div>-->
-
-                <!--<div class="l all" v-show="GoodsAccessories.data.length !== 0">-->
-                <!--&lt;!&ndash; <p>套餐价：-->
-                <!--<span>{{computedTotal(GoodsAccessories.data)}}</span>-->
-                <!--<span>省￥{{computedTotalPrice(GoodsAccessories.data) - computedTotal(GoodsAccessories.data)}}</span>-->
-                <!--</p>-->
-                <!--<p>价格:￥{{computedTotalPrice(GoodsAccessories.data)}}</p> &ndash;&gt;-->
-                <!--<p class="buy same" @click="goodsComboBuyNow(0)">立即购买</p>-->
-                <!--<p class="car same" @click="recommendAndGroup(0)">加入购物车</p>-->
-                <!--</div>-->
-                <!--</div>-->
-                <!-- 优惠套餐 -->
-
-                <!-- {{isbor}}<br>
-                {{this.GoodsPackage.data}}
-                <br>
-                {{this.optimalPortfolio.data}}<br>
-                {{this.goodsData}} -->
                 <div class="l taocan class_two" v-show="isbor == 1" v-if="GoodsPackage.data.length > 0">
                     <span
                         class="nullData"
@@ -611,7 +637,7 @@
                         </p>
                     </div>
                 </div>
-                <!-- 推荐组合 -->
+
                 <div class="l taocan class_three" v-show="isbor == 0" v-if="optimalPortfolio.data.length > 0">
                     <span
                         class="nullData"
@@ -637,11 +663,6 @@
                         class="l all"
                         v-show="optimalPortfolio.data.length !== 0"
                     >
-                        <!-- <p>套餐价：
-                      <span>{{computedTotal(optimalPortfolio.data)}}</span>
-                      <span>省￥{{computedTotalPrice(optimalPortfolio.data) - computedTotal(GoodsAccessories.data)}}</span>
-                    </p>
-                    <p>价格:￥{{computedTotalPrice(optimalPortfolio.data)}}</p> -->
                         <p class="buy same" @click="goodsComboBuyNow(2)">
                             立即购买
                         </p>
@@ -650,11 +671,11 @@
                         </p>
                     </div>
                 </div>
-            </div>
+            </div> -->
+
             <div class="bottom">
                 <div class="left l">
                     <div class="zhongxin l">
-                        <!-- s-h-o-p-s-n -->
                         <p class="l kefu">
                             <span>客服中心</span><br />CUSTOMER
                         </p>
@@ -822,7 +843,6 @@
                                 class="l"
                             >
                                 商品评价&nbsp;&nbsp;{{ allCount }}
-                                <!-- <span>{{ info.comment_number }}</span> -->
                             </li>
                             <li
                                 @click="undo(3)"
@@ -845,11 +865,15 @@
                                 <p class="p">工艺：不限</p>
                                 <p class="p">窑口：不限</p>
                             </div>
-                            <div
+                            <!-- <div
                                 class="down"
                                 id="detail-img"
                                 v-html="shopImage"
-                            ></div>
+                            ></div> -->
+                            <div
+                                class="down"
+                                id="detail-img"
+                            ><img src="../../assets/img/yi-18.png" /></div>
                         </div>
                         <div v-show="only == 1" class="attribute">
                             <table class="table" cellspacing="0">
@@ -930,14 +954,6 @@
                                             </li>
                                         </ul>
                                     </div>
-
-                                    <!--<ul class="clearfix yinxiangul list">-->
-                                    <!--<li class="impress-tit">买家印象：</li>-->
-                                    <!--<li class="l tag-info" :key="index" v-for="(yinxiang,index) in yinxiangs">-->
-                                    <!--<span>{{yinxiang.p}}</span>-->
-                                    <!--<span>({{yinxiang.span}})</span>-->
-                                    <!--</li>-->
-                                    <!--</ul>-->
                                 </div>
                             </div>
                             <div class="down">
@@ -1134,7 +1150,6 @@ import popup from "./popup";
 import { magnify } from "@/assets/js/magnify.js";
 import QRCode from "qrcodejs2";
 import { Message } from "element-ui";
-// require styles
 import 'video.js/dist/video-js.css'
 import { videoPlayer } from 'vue-video-player'
 export default {
@@ -1151,18 +1166,10 @@ export default {
                     type: "video/mp4",
                     src: "http://vjs.zencdn.net/v/oceans.mp4"
                 }],
-                // http://center.shopsn.cn/Uploads/video/sampletesting.mp4
                 controlBar: {
-                    // playToggle: false,
-                    // captionsButton: false,
-                    // chaptersButton: false,            
-                    // subtitlesButton: false,
-                    // remainingTimeDisplay: false,
                     progressControl: {
                         seekBar: true
                     },
-                    // fullscreenToggle: false,
-                    // playbackRateMenuButton: false,
                 },
             },
             popupVisible:false,
@@ -1193,7 +1200,6 @@ export default {
             cityArrName: '',
             areaArrName: '',
             townArrName: '',
-            // provList: [],
             bb: [{
             value: 'bbb',
             label: 'bbb'
@@ -1262,7 +1268,6 @@ export default {
             addCommitProblemValue: "",
             isactive: "",
             imgs: [],
-            // freightMoney: 0, //运费
             isbg: "",
             only: "",
             down: [bigfozhu, bigfozhu1, bigfozhu, bigfozhu1],
@@ -1379,8 +1384,6 @@ export default {
     },
 
     mounted() {
-        // this.$refs.videoPlayer.player.controlBar.progressControl.seekBar = true
-        // this.$refs.videoPlayer.player.controlBar.progressControl.disable();
         
         setTimeout(() => {
             console.log('dynamic change options', this.player)
@@ -1405,8 +1408,6 @@ export default {
         };
     },
     created() {
-        // console.log(this.$route, 1234);
-        //this.getGoodsDetails(this.$route.query.id,2);
         this.getGoodsSpec(this.$route.query.id, 2);
         this.getMyFootFrint();
 
@@ -1444,14 +1445,11 @@ export default {
             this.fullTitieFlag = false;
         },
         showvideo(video){
-            // window.location.href= video
             this.url = video
             this.showVideo = true
         },
         endedPlaying(){
             this.showVideo = false
-            // var self = this;
-            // self.ended = true;
         },
     getData(){
         this.HTTP(this.$httpConfig.regionLists, {}, "get").then(res => {
@@ -1559,7 +1557,6 @@ export default {
             this.choiceTown = false;
             this.province = "请选择";
         }
-        // this.getFreight();
         this.getDeliveryCal();
     },
     callingArea(){
@@ -1568,23 +1565,9 @@ export default {
     cancelArea(){
         this.popupVisible = false;
     },
-
-    // getFreight(){ //获取运费
-    //     var data = {
-    //         prov: this.provinceId,
-    //         goods_id: this.$route.query.id
-    //     };
-    //     this.HTTP(this.$httpConfig.getFreightMoney,data,'post').then(res=>{
-    //         this.freightMoney = res.data.data;
-    //     }).catch(err=>{
-    //         this.freightMoney = err.data.message
-    //     })
-    // },
-
     getDeliveryCal(){
         var data = {
           store_id: this.store_goods_id,
-        //   goods_id: this.provinceId,
           goods_id: this.$route.query.id,
           prov_id: this.provinceId,
           dist_id: this.cityId,
@@ -1672,19 +1655,8 @@ export default {
           this.townArrName = res.data.data[0].name;
           this.addressAllData = this.addressPlaceName +'-'+ this.cityArrName +'-'+ this.areaArrName +'-'+ this.townArrName;
       });
-    //   var data = {
-    //         prov: 11,
-    //         goods_id: this.$route.query.id
-    //     };
-    //     this.HTTP(this.$httpConfig.getFreightMoney,data,'post').then(res=>{
-    //         this.freightMoney = res.data.data;
-    //     }).catch(err=>{
-    //         this.freightMoney = err.data.message
-    //     })
-
         var data = {
           store_id: 2,
-        //   goods_id: 11,
           goods_id: this.$route.query.id,
           prov_id: 11,
           dist_id: 175,
@@ -1749,10 +1721,8 @@ export default {
         }).catch((res) => {
             Message.info(res.data.message)
         })
-        // this.getCouponList(1);
     },
     voucherr(storeId, index) {
-      // this.alertShow = true;
       this.tempp = index
       this.storeId = Number(storeId);
     },
@@ -1778,21 +1748,8 @@ export default {
             });
         },
         goStore(store_id) {
-            // window.open(window.location.origin + "/storehome/" +'?store_id=' +store_id);
             window.open(window.location.origin + "/storehome" +'?id=' +store_id);
         },
-        // getFreight(prov){ //获取运费
-        //     var data = {
-        //         prov: prov,
-        //         goods_id: this.$route.query.id
-        //     };
-        //     this.HTTP(this.$httpConfig.getFreightMoney,data,'post').then(res=>{
-        //         // console.log(res,222)
-        //         this.freightMoney = res.data.data;
-        //     }).catch(err=>{
-        //         console.log(err);
-        //     })
-        // },
         //折扣信息
         getDiscountInfo(id) {
             this.HTTP(
@@ -1804,7 +1761,6 @@ export default {
             )
                 .then(res => {
                     this.discountInfo = res.data.data;
-                    // console.log(res.data.data, 333);
                 })
                 .catch(err => {
                     console.error(err);
@@ -1864,16 +1820,6 @@ export default {
                         this.showCoupon2 =res.data.data.data[2];
                         this.storeCouponSlice4 = res.data.data.data[2].money;
                         this.storeCouponSlice5 = res.data.data.data[2].condition;
-                        // for(let a in storeCouponList) {
-                        //     this.storeCouponSlice = res.data.data.data[a].item;
-                        // }
-                        // if(res.data.data.data[2]) {
-                        //     this.showCoupon2 = 3
-                        // } else if(res.data.data.data[1]) {
-                        //     this.showCoupon1 = 2
-                        // } else if(res.data.data.data[0]) {
-                        //     this.showCoupon0 = 1
-                        // }
                     }
                 })
                 .catch(error => {
@@ -1951,10 +1897,6 @@ export default {
 
             var start = arrUrl[1].indexOf("/");
             var relUrl = arrUrl[1].substring(start); //stop省略，截取从start开始到结尾的所有字符
-
-            // 　　　　if(relUrl.indexOf("?") != -1){
-            // 　　　　　　relUrl = relUrl.split("?")[0];
-            // 　　　　}
             sessionStorage.setItem("site", relUrl);
         },
         entryGoods(id) {
@@ -2074,13 +2016,6 @@ export default {
                     }
                 });
             }
-            // window.open(
-            //   window.location.origin +
-            //   "/goodsClass?class_id=" +
-            //   item.id +
-            //   "&id=" +
-            //   this.g + '&class_name=' + item.class_name
-            // );
         },
         GoTo() {
             sessionStorage.setItem(
@@ -2185,7 +2120,6 @@ export default {
             }
         },
         storeSearch() {
-            // if(this.store_goods_id ) {
                 this.$router.push({
                     name: "TheStoreSearch",
                     query: {
@@ -2196,10 +2130,8 @@ export default {
                         type: 0 //带价格搜索
                     }
                 });
-            // }
         },
         buy() {
-            // let str = this.addCarToString(this.GoodsPackage.package);
             this.$router.push({
                 path: "/setMealCar",
                 query: {
@@ -2369,25 +2301,6 @@ export default {
                 ~(-new Date() / 36e5);
             document.body.appendChild(s);
         },
-        //优惠套餐
-        // getGoodsPackage(id) {
-        //     this.HTTP(
-        //         this.$httpConfig.GoodsPackage,
-        //         {
-        //             goods_id: id,
-        //             store_id: this.goodsData.store_id
-        //         },
-        //         "post",
-        //         false
-        //     )
-        //         .then(res => {
-        //             const { values } = Object;
-
-        //             this.GoodsPackage.data = values(res.data.data);
-        //             this.GoodsPackage.package = res.data.data[0].package_id;
-        //         })
-        //         .catch(() => {});
-        // },
         getGoodsPackage(id) {
             this.HTTP(
                 this.$httpConfig.GoodsPackage,
@@ -2423,20 +2336,6 @@ export default {
                 this.info = res.data.data;
             }
         },
-        //最佳组合
-        // getGoodsCombo(id) {
-        //     this.HTTP(
-        //         this.$httpConfig.GoodsCombo,
-        //         {
-        //             goods_id: id
-        //         },
-        //         "post"
-        //     )
-        //         .then(res => {
-        //             this.optimalPortfolio.data = res.data.data;
-        //         })
-        //         .catch(() => {});
-        // },
         getGoodsCombo(id) {
             this.HTTP(
                 this.$httpConfig.GoodsCombo,
@@ -2589,7 +2488,6 @@ export default {
                     this.shop_data = res.data.data;
                     this.shopName=res.data.data.shop_name;
                     this.store_goods_id = res.data.data.store_id;
-                    // let title =  this.productTitle +'-' + this.shopName + this.$constant.webComContent;
                      let title = this.$constant.webComContent;
                     this.showScroll.scrollTitle(title);
                     this.getCouponInfo();
@@ -2667,12 +2565,6 @@ export default {
                 this.goodsId = this.$route.query.id;
                 this.getGoodsDetails(this.goodsId);
             }
-            // this.$router.push({
-            //   path: "/shopsn_product",
-            //   query: {
-            //     id: goodsId
-            //   }
-            // });
         },
         //获取商品规格
         getGoodsSpec(id, type) {
@@ -2686,17 +2578,6 @@ export default {
                 .then(res => {
                     this.specData = res.data.data;
                     this.spec = res.data.data.spec;
-                    // for (let key in this.spec.spec_children) {
-                    //   if (
-                    //     this.specData.goods[this.specKey].key.indexOf(
-                    //       this.spec.spec_children[key].id
-                    //     ) > -1
-                    //   ) {
-                    //     this.$set(this.spec.spec_children[key], "default_spec", true);
-                    //   } else {
-                    //     this.$set(this.spec.spec_children[key], "default_spec", false);
-                    //   }
-                    // }
                     if (type == 2) {
                         
                         this.getDefaultGoodsId();
@@ -2758,12 +2639,10 @@ export default {
                 this.goodsData = {}
                 this.get_store_id = res.data.data.store_id;
                 this.get_goods_id = res.data.data.id;
-                this.get_main_id=res.data.data.p_id
-                // console.log(this.get_store_id,221133);
+                this.get_main_id=res.data.data.p_id;
                 this.goodsData = res.data.data;
                 this.video = res.data.data.video;
                 this.productTitle = this.goodsData.title;
-                // document.title = this.productTitle;
                 this.imgList = this.goodsData.images;
                 if (this.goodsData.images.length != 0) {
                     this.defaultPicture = this.goodsData.images[0].pic_url;
@@ -2821,7 +2700,6 @@ export default {
             )
                 .then(res => {
                     this.comments = res.data.data;
-                    // this.$set(this.comments,'list',res.data.data.list);
                     if (res.data.status == 1) {
                         this.allCount = res.data.data.allCount;
                         this.allNice = res.data.data.allNice;
@@ -2893,7 +2771,6 @@ export default {
             }
             if (index === 0) {
                 this.getGoodsCombo(this.goodsData.id);
-                // this.getGoodsAccessories(this.goodsData.id);
             }
             this.itemall = this.items[index];
         },
@@ -2919,11 +2796,7 @@ export default {
     padding: 4px;
     color: #575757;
 }
- .el-dropdown{
-//  width: 10% !important; 
-}
 .el-dropdown-menu {
-    // width: 10% !important;
     position: absolute !important;
     margin: -3px -92px 0 5px !important;
     background-color: #FFF;
@@ -3051,7 +2924,6 @@ export default {
     font-size: 14px !important;
     line-height: 24px !important;
     text-align: justify !important;
-    /*padding-bottom: 16px !important;*/
     padding-top: 0px !important;
 }
 .el-select-dropdown__list {
@@ -3107,12 +2979,14 @@ export default {
         padding: 10px 30px 10px 10px;
         font-size: 14px;
         width: 260px;
-        height: 38px;
+        // height: 38px;
+        height: 35px;
         border: 1px solid #a7a7a7;
         text-align: center;
         background: #fff;
-        border-radius: 5px;
-        color: #777;
+        // border-radius: 5px;
+        // color: #777;
+        color: #666666;
         overflow: hidden;
         cursor: pointer;
     }
@@ -3227,7 +3101,7 @@ export default {
   }
   .jj{
       border: 1px solid #d02629;
-      padding: 0 !important; //tda
+      padding: 0 !important;
       margin: 7px 0 0 1px !important;
       .kk{
           line-height: 30px !important;
@@ -3265,10 +3139,8 @@ export default {
                       flex-direction: row;
                       margin-left: 30px;
                       padding: 0 0 0 0;
-                      // height: 30px;
                   }
                   div:last-child {
-                      // color: red;
                       display: flex;
                       align-items: center;
                       margin-right: 30px;
@@ -3293,7 +3165,6 @@ export default {
 <style lang="less" scoped>
 .GoodsAccessories {
     overflow-x: auto;
-    // width: 1020px;
     height: 200px;
 }
 
@@ -3357,7 +3228,7 @@ export default {
     .xiala {
         display: inline-block;
         width: 82px;
-        height: 23px;
+        height: 25px;
         border: 1px solid #d1d1d1;
         text-align: center;
         line-height: 23px;
@@ -3397,16 +3268,22 @@ export default {
 
         .bigImg {
             width: 400px;
-            height: 400px;
+            // height: 400px;
+            height: 420px;
+            border: 1px solid #D2D2D2;
             overflow: hidden;
             position: relative;
 
             img {
                 position: absolute;
-                top: 0;
-                left: 0;
-                width: 400px;
-                height: 400px;
+                // top: 0;
+                top: 20px;
+                // left: 0;
+                left: 30px;
+                // width: 400px;
+                width: 300px;
+                // height: 400px;
+                height: 390px;
             }
 
             #winSelector {
@@ -3585,18 +3462,17 @@ export default {
 
     .central {
         width: 549px;
-        margin-left: 10px;
+        margin-left: 15px;
 
         .goods-title {
             font-size: 16px;
-            color: #303030;
+            color: #333333;
             width: 90%;
             margin: 0 0 18px 9px;
             overflow: hidden;
             text-overflow: ellipsis;
             display: -webkit-box;
             -webkit-line-clamp: 3;
-            /* 可以显示的行数，超出部分用...表示*/
             -webkit-box-orient: vertical;
         }
 
@@ -3608,68 +3484,87 @@ export default {
             text-overflow: ellipsis;
             display: -webkit-box;
             -webkit-line-clamp: 1;
-            /* 可以显示的行数，超出部分用...表示*/
             -webkit-box-orient: vertical;
         }
 
         .price {
-            background-image: url(../../assets/img/beijing.jpg);
+            // background-image: url(../../assets/img/beijing.jpg);
+            background-image: url(../../assets/img/yi-17.png);
+            width: 790px;
+            height: 115px;
             p,
             .activity-list {
                 font-size: 12px;
-                color: #9a9a9a;
+                // color: #9a9a9a;
+                color: #999999;
                 margin-left: 25px;
                 width: 100%;
             }
 
+            // p:nth-of-type(1) {
+            //     margin-top: 10px;
+
+            //     span {
+            //         margin-left: 14px;
+            //         font-size: 9px;
+            //         color: #575757;
+            //         text-decoration: line-through;
+            //     }
+            // }
+
+            // p:nth-of-type(2) {
+            //     margin-top: 8px;
+
+            //     span {
+            //         font-size: 18px;
+            //         color: #d62b3e;
+            //         margin-left: 10px;
+            //     }
+            // }
             p:nth-of-type(1) {
-                // margin-top: 21px;
-                margin-top: 10px;
+                margin-top: 25px;
 
                 span {
-                    margin-left: 14px;
-                    font-size: 9px;
-                    color: #575757;
-                    text-decoration: line-through;
-                }
-            }
-
-            p:nth-of-type(2) {
-                // margin-top: 18px;
-                margin-top: 8px;
-
-                span {
-                    font-size: 18px;
-                    color: #d62b3e;
+                    font-size: 24px;
+                    color: #CC353E;
                     margin-left: 10px;
+                    font-weight: bold;
+                    margin-right: 70px;
                 }
             }
 
             .couponSliceDiv {
                 font-size: 12px;
-                color: #9a9a9a;
+                // color: #9a9a9a;
+                color: #999999;
                 margin-left: 25px;
                 padding-top: 15px;
                 width: 100%;
                 display: flex;
+                span {
+                    font-size: 14px;
+                    color: #333333;
+                    margin-left: 42px;
+                    margin-right: 102px;
+                }
 
-                .couponSlice {
-                    width: 455px;
-                    margin-top: -5px;
-                    display: flex;
-                }
-                img {
-                    width: 140px;
-                    height: 23px;
-                    margin-left: 10px;
-                }
-                .couponText {
-                    font-size: 12px;
-                    color: #ffffff;
-                    margin-top: -21px;
-                    width: 108px;
-                    text-align: center;
-                }
+                // .couponSlice {
+                //     width: 455px;
+                //     margin-top: -5px;
+                //     display: flex;
+                // }
+                // img {
+                //     width: 140px;
+                //     height: 23px;
+                //     margin-left: 10px;
+                // }
+                // .couponText {
+                //     font-size: 12px;
+                //     color: #ffffff;
+                //     margin-top: -21px;
+                //     width: 108px;
+                //     text-align: center;
+                // }
             }
 
             .activity-list {
@@ -3721,11 +3616,13 @@ export default {
         }
 
         .dizhi {
-            margin-top: 12px;
+            // margin-top: 12px;
+            margin-top: 40px;
 
             p {
                 font-size: 12px;
-                color: #9a9a9a;
+                // color: #9a9a9a;
+                color: #999999;
                 margin-left: 25px;
                 width: 100%;
 
@@ -3790,8 +3687,8 @@ export default {
                 align-items: center;
 
                 .yunfei {
-                    color: #535353;
-                    // margin-left: 16px;
+                    // color: #535353;
+                    color: #555555;
                     display: inline-block;
                     line-height: 22px;
                     margin-left: 295px;
@@ -3799,8 +3696,8 @@ export default {
             }
 
             .g-service {
-                margin-top: 16px;
-                margin-bottom: 7px;
+                margin-top: 20px;
+                margin-bottom: 20px;
                 span {
                     font-size: 12px;
                     margin-left: 22px;
@@ -3809,16 +3706,19 @@ export default {
                 .yellow {
                     margin-left: 0;
                     cursor : pointer;
-                    color: #d02629;
+                    color: #D02629;
                 }
             }
         }
 
         .leiji {
-            height: 40px;
-            border-top: 1px solid #f1f1f1;
-            border-bottom: 1px solid #f1f1f1;
+            // height: 40px;
+            height: 50px;
+            background: #F9F9F9;
+            // border-top: 1px solid #f1f1f1;
+            // border-bottom: 1px solid #f1f1f1;
             margin-left: 20px;
+            margin-top: 40px;
 
             p {
                 float: left;
@@ -3828,10 +3728,11 @@ export default {
                 line-height: 20px;
                 text-align: center;
                 border-left: 1px solid #e4e0dd;
-                margin-top: 10px;
+                // margin-top: 10px;
+                margin-top: 15px;
 
                 span {
-                    color: #d02629;
+                    color: #CC353E;
                     margin-left: 7px;
                 }
             }
@@ -3843,6 +3744,7 @@ export default {
 
         .shuliang {
             margin-top: 13px;
+            margin-bottom: 20px;
             margin-left: 26px;
             overflow: hidden;
 
@@ -3892,7 +3794,8 @@ export default {
         }
 
         .buy {
-            margin-top: 16px;
+            // margin-top: 16px;
+            margin-top: 30px;
 
             span {
                 cursor: pointer;
@@ -3904,6 +3807,7 @@ export default {
                 border: 1px solid #d02629;
                 display: inline-block;
                 color: #d02629;
+                // border-radius: 5px;
                 border-radius: 5px;
             }
 
@@ -4554,64 +4458,6 @@ export default {
         .subpage {
             overflow: hidden;
             width: 100%;
-            // .jieshao {
-            //   .up {
-            //     height: 93px;
-            //     border: 1px solid #e8e8e8;
-            //     width: 100%;
-            //     border-top: 0;
-            //     p {
-            //       float: left;
-            //       margin-top: 25px;
-            //       font-size: 12px;
-            //       color: #5d5d5d;
-            //     }
-            //     p:nth-of-type(1) {
-            //       width: 365px;
-            //       margin-left: 16px;
-            //     }
-            //     p:nth-of-type(2) {
-            //       width: 342px;
-            //     }
-            //     p:nth-of-type(3) {
-            //       width: 234px;
-            //     }
-            //     p:nth-of-type(4) {
-            //       width: 365px;
-            //       margin-left: 16px;
-            //       margin-top: 15px;
-            //     }
-            //     p:nth-of-type(5) {
-            //       width: 342px;
-            //       margin-top: 15px;
-            //     }
-            //     p:nth-of-type(63) {
-            //       width: 234px;
-            //       margin-top: 15px;
-            //     }
-            //   }
-            //   .down {
-            //     overflow: hidden;
-            //     border: 1px solid #e8e8e8;
-            //     img {
-            //       margin-left: 16px;
-            //     }
-            //     img:last-child {
-            //       margin-bottom: 76px;
-            //     }
-            //     img:first-child {
-            //       margin-top: 15px;
-            //     }
-            //   }
-            //   #detail-img {
-            //     text-align: center;
-            //     margin-top: 5px;
-            //     img {
-            //       width: 100% !important;
-            //     }
-            //   }
-            // }
-
             .attribute {
                 width: 100%;
 
@@ -4620,16 +4466,6 @@ export default {
                     margin-bottom: 0;
 
                     tr {
-                        /*th{*/
-                        /*border-left: 1px solid #e8e8e8;*/
-                        /*border-right: 1px solid #e8e8e8;*/
-                        /*}*/
-                        /*td{*/
-                        /*border-left: 1px solid #e8e8e8;*/
-                        /*border-right: 1px solid #e8e8e8;*/
-                        /*padding:10px 0px 10px 10px ;*/
-                        /*}*/
-
                         td {
                             line-height: 30px;
                             display: inline-block;
@@ -4995,15 +4831,3 @@ export default {
     }
 }
 </style>
-
-<!--
-    https://core-player.github.io/vue-core-video-player/events.html
-
-    https://laracasts.com/discuss/channels/vue/video-event
-
-    https://stackoverflow.com/questions/59006475/how-to-hide-disable-buttons-controls-in-videojs/59007177
-
-    https://player.support.brightcove.com/coding-topics/overview-components.html
-
-    https://player.support.brightcove.com/styling/customizing-player-appearance.html#Player
--->

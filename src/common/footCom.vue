@@ -3,16 +3,18 @@
         <div class="top">
             <div class="center">
                 <div class="erweima l">
-                    <img :src="URL + websiteInfo.init_qr_code" />
+                    <!-- <img :src="URL + websiteInfo.init_qr_code" /> -->
+                    <img src="../assets/img/card1.png" />
                     <p>贡品商城官方微信服务号扫一扫，享更多优惠</p>
                 </div>
                 <div class="phone l">
-                    <span class="call">{{ websiteInfo.intnet_phone }}</span>
+                    <!-- <span class="call">{{ websiteInfo.intnet_phone }}</span> -->
+                    <span class="call">021-2889059测试</span>
                     <br />
                     <span class="workday">工作日(9:00-18:00)</span>
                 </div>
                 <div class="topul l">
-                    <div class="l" v-for="(item, k) in article_category" :key="k">
+                    <!-- <div class="l" v-for="(item, k) in article_category" :key="k">
                         <span @click="toLink(item.id, item.name)" class="c">
                             {{
                             item.name
@@ -29,6 +31,41 @@
                                 </span>
                             </li>
                         </ul>
+                    </div> -->
+                    <div class="l">
+                        <span class="c">帮助中心</span>
+                        <ul>
+                            <li><span>ddd</span></li>
+                            <li><span>测试测试</span></li>
+                            <li><span>支付说明</span></li>
+                            <li><span>测试测试</span></li>
+                            <li><span>支付说明</span></li>
+                            <li><span>test测试</span></li>
+                        </ul>
+                    </div>
+                     <div class="l">
+                        <span class="c">平台新闻</span>
+                        <ul>
+                            <li><span>行业新闻</span></li>
+                            <li><span>文章列表在哪里</span></li>
+                        </ul>
+                    </div>
+                    <div class="l">
+                        <span class="c">关于我们</span>
+                        <ul>
+                            <li><span>加入我们</span></li>
+                            <li><span>公司简介</span></li>
+                        </ul>
+                    </div>
+                    <div class="l">
+                        <span class="c">平台加盟</span>
+                        <ul>
+                            <li><span>我要加盟</span></li>
+                            <li><span>加盟信息</span></li>
+                        </ul>
+                    </div>
+                     <div class="l">
+                        <span class="c">测试文章分类</span>
                     </div>
                 </div>
             </div>
@@ -40,7 +77,7 @@
         </div>
         <div class="bottom">
             <div class="center">
-                <p class="pOne l">
+                <!-- <p class="pOne l">
                     ICP备{{
                     <a href="http://www.miitbeian.gov.cn">{{websiteInfo.record_number}}</a>
                     }}号|有任何问题请联系我们在线客服 电话：{{
@@ -49,11 +86,25 @@
                 </p>
                 <p class="pOne l">{{ websiteInfo.intnet_licence }}</p>
                 <p class="pOne l">{{ websiteInfo.intnet_copyright }}</p>
-                <!-- <img src="../assets/img/biaozhi.jpg"/> -->
                 <ul class="partner">
                     <li v-for="item in partner" :key="item.id">
                         <img :src="URL + item.pic_url" />
                     </li>
+                </ul> -->
+                <p class="pOne l">
+                    ICP备{{
+                    <a href="http://www.miitbeian.gov.cn">1888888测试</a>
+                    }}号|有任何问题请联系我们在线客服 电话：021-2889059测试
+                </p>
+                <p class="pOne l">互联网出版许可证编号新出版网证(沪)字151号测试 | 出版物经营许可证 | 网络文化经营许可证京网文[2014]2048-348号测试</p>
+                <p class="pOne l">©2016-2019 ShopsN 版权所有 未授权不得商用测试测试</p>
+                <!-- <ul class="partner">
+                    <li v-for="item in partner" :key="item.id">
+                        <img :src="URL + item.pic_url" />
+                    </li>
+                </ul> -->
+                <ul class="partner">
+                        <img src="../assets/img/footer-yi.png" />
                 </ul>
             </div>
         </div>
@@ -224,22 +275,6 @@ footer {
     .bottom {
         height: 236px;
         text-align: center;
-        // ul{
-        // 	margin-top: 30px;
-        // 	margin-left: 34%;
-        // 	text-align: center;
-        // 	float: left;
-        // 	li{
-        // 		width: 75px;
-        // 		float: left;
-        // 		text-align: center;
-        // 		border-left: 1px solid #989898;
-        // 		cursor:pointer;
-        // 		a{font-size: 12px;color: #a6a6a6;}
-        // 		&:hover a{color:red;}
-        // 	}
-        // 	li:first-child{border: 0;}
-        // }
         .pOne {
             width: 100%;
             text-align: center;
@@ -259,7 +294,6 @@ footer {
                 border: 0;
             }
         }
-        // img{margin:33px 0 0 36px;}
     }
 }
 </style>

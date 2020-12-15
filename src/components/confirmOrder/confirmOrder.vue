@@ -1,9 +1,10 @@
 <template>
   <div class="account">
-    <common-header v-on:childToParent="onChildClick"></common-header>
+    <!-- <common-header v-on:childToParent="onChildClick"></common-header> -->
+    <common-header></common-header>
     <div class="logo">
       <router-link to="/home">
-        <img src="../../assets/img/logodl.jpg"/>
+        <img src="../../assets/img/logo-yi.png"/>
       </router-link>
       <p>结算页</p>
     </div>
@@ -24,13 +25,13 @@
         <div class="bottom">
           <div class="thead">
             <p class="l">店铺宝贝</p>
-            <p class="l">商品属性</p>
+            <p class="l">商品分类</p>
             <p class="l">单价</p>
             <p class="l">数量</p>
             <p class="l">优惠方式</p>
             <p class="l">小计</p>
           </div>
-          <div class="dianpu">
+          <!-- <div class="dianpu">
             <p class="name">店铺：<span @click="toStore">{{storeData.shop_name}}</span>
             <div class="service-wrapper" @click="openkefu(goodsData)">
               <div id="dom">
@@ -69,10 +70,6 @@
                 <p v-else>
                   无
                 </p>
-                <!-- <p class="r" v-if="goodsreduce.length!=0">{{(total-Number(goodsreduce.expression))|keep2Num}}</p>
-                <p class="r" v-else-if="options.length!=0 && coupunData">{{(total-Number(couponPrice))
-                  |keep2Num}} </p>
-                <p class="r" v-else>{{total|keep2Num}} </p> -->
                 <p v-if="deliveryMoney == -1" class="r">免配送费</p>
                 <p v-else-if="deliveryMoney" class="r">{{deliveryMoney|keep2Num}}</p>
 								<p v-else-if="freight_price == 0" class="r">卖家包邮</p>
@@ -106,17 +103,6 @@
                     <textarea v-model="remarks" class="text-area-input" placeholder=""></textarea>
                   </div>
                 </div>
-                <!-- <div class="order-extInfo r">
-                  <div class="order-deliveryMethod">
-                    <span>运送方式：</span><span>普通运送 </span><span>快递 </span><span>免邮 </span> <span class="freight">{{freight_price|keep2Num}} 元</span>
-                  </div>
-                  <div class="shop-total">
-                    店铺合计（含运费）
-                    <span class="total-price" v-if="goodsreduce.length!=0">{{(total+freight_price-Number(goodsreduce.expression))|keep2Num}} 元</span>
-                    <span class="total-price" v-else-if='options.length!=0 && coupunData'>{{(total+freight_price-Number(couponPrice))|keep2Num}} 元</span>
-                    <span class="total-price" v-else>{{(total+freight_price)|keep2Num}} 元</span>
-                  </div>
-                </div> -->
                 <div class="order-extInfo r">
                   <div v-if="deliveryMoney == -1" class="order-deliveryMethod">
                     <span>配送费：</span>
@@ -126,11 +112,6 @@
                     <span>配送费：</span>
                     <span class="freight">{{deliveryMoney|keep2Num}} 元</span>
                   </div>
-                  <!-- <div v-else class="order-deliveryMethod">
-										<span v-if="ship_status == 1">运费：</span>
-										<span v-if="ship_status == 2">包邮：</span>
-										<span class="freight">{{freight_price|keep2Num}} 元</span>
-									</div> -->
                   <div v-else class="order-deliveryMethod">
 										<span>运费：</span>
                     <span v-if="freight_price == 0" class="freight">卖家包邮</span>
@@ -139,35 +120,102 @@
                 </div>
               </li>
             </ul>
+          </div> -->
+          <div class="dianpu">
+            <p class="name">店铺：<span>小米官方旗舰店</span>
+            <div class="service-wrapper">
+              <div id="dom">
+                <img
+                        src="@/assets/img/qq.jpg"
+                />
+              </div>
+            </div>
+            </p>
+            <ul class="order-list">
+
+              <li class="order-info">
+                <img class="l" src="../../assets/img/yi-14.png" alt=""/>
+                <p class="l">
+                  数码类7
+                  <span>
+                  材质: N435R-EB&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;箱型: 四半摇盖<br>
+                  打包方式: 绳捆打包&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;成型方式: 一页成型<br>
+                  印刷方式: 数码&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;面纸类型: 牛皮纸<br>
+                  版面设定: AA&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;成箱方式: 钉箱<br>
+                  存储环境: 正常&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;印刷面积: 30%以内<br>
+                  内装重量: 10kg&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;收取刀模费: 否<br>
+                  设计稿: 已有设计稿&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;折算系数: 1<br>
+                  数码表处: 水性光油&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;产品承压: 非承压<br>
+                  拼版方式: 单拼&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;尺寸类型: 制造尺寸<br>
+                  终端客户: 否&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;材质层数: 5<br>
+                  开槽模切: 开槽&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;仓储叠放: 15<br>
+                  层箱型规格: 50cm*60cm*70cm
+                  </span>
+                </p>
+                <p class="l">身份：原材商</p>
+                <p class="l">60</p>
+                <p class="l">1000</p>
+                <p class="l" v-if="goodsreduce.length!=0">
+                  满{{goodsreduce.full}}减{{goodsreduce.expression}}
+                </p>
+                <p class="l">省20</p>
+                <p class="r"> 55.00</p>
+              </li>
+          
+              <li class="order-info gift-info" v-for="(id, index) in giftData" :key="index">
+                
+                <img @click="toDetails" class="l" :src="URL + id.pic_url" alt=""/>
+                <p @click="toDetails" class="l">{{id.title}}</p>
+                <p class="l">无</p>
+                <p class="l">{{id.price_member}}</p>
+                <p class="l">{{id.give_num}}</p>
+                <p class="l gift" style="color: #dd2727;">赠品</p>
+                <p class="r">无</p>
+              </li>
+
+              <li class="delivery_method">运送方式：
+                <span class="method_info">普通配送</span>
+                <span class="method_toggle">快递</span>
+                <span class="method_no"> 免邮</span>
+                <span class="method_price">0.00</span>
+              </li>
+
+              <li class="store_total">店铺合计(含运费)
+                <span class="total_info">￥120.00</span>
+              </li>
+
+              <li class="fapiao">发票抬头：
+                <span class="invoice-info">湖南实力有限公司</span>
+                <span class="invoice-toggle">修改</span>
+                <span class="invoice-no">不开发票</span>
+              </li>
+            </ul>
           </div>
-          <!--<div class="jifen">使用积分</div>-->
-          <!--<div class="dikou l">-->
-          <!--<p class="l">账户共<span>200</span>积分 本次使用<input type="text"/> 积分</p>-->
-          <!--<p class="l">抵扣<span>￥20.00</span></p>-->
-          <!--</div>-->
-          <!--<div class="l helpjf">积分抵用<span>￥20.00</span></div>-->
+
+          
         </div>
       </div>
-      <div class="jiesuan">
+      <!-- <div class="jiesuan">
         <p><span>{{goodsData.goods_num}} </span>件商品，商品总金额：{{total|keep2Num}} 元</p>
         <p>{{discountData.memberLevel}}:{{Number(discountData.discount)/10}}折优惠</p>
         <p v-if="coupunData">优惠券：-{{couponPrice|keep2Num}} 元</p>
         <p v-else>优惠券：-0.00 元</p>
-        <!-- <p>运费：￥{{freight_price|keep2Num}}</p> -->
-        <!-- <p v-if="deliveryFlag">配送费：￥{{deliveryMoney}}</p> -->
         <p v-if="deliveryMoney == -1">配送共计 ：免配送费</p>
         <p v-else-if="deliveryMoney">配送共计 ：{{deliveryMoney|keep2Num}} 元</p>
         <p v-else>
           <span class="delivery_price" v-if="freight_price == 0">运费共计 ：卖家包邮</span>
           <span class="delivery_price" v-else>运费共计 ：{{freight_price|keep2Num}} 元</span>
         </p>
+      </div> -->
+      <div class="jiesuan">
+        <p><span>1</span>件商品，总商品金额：￥19.80</p>
+        <p>积分： -￥20.00</p>
+        <p>优惠券： -￥10.00</p>
+        <p>运费： ￥3.00</p>
       </div>
-      <div class="pay">
-        <!-- <p class="yingfu r">应付金额：
-          <span v-if='goodsreduce.length!=0'>{{(total+freight_price+Number(deliveryMoney)-Number(goodsreduce.expression))|keep2Num}} 元</span>
-            <span v-else-if='options.length!=0 && coupunData'>{{(total+freight_price+Number(deliveryMoney)-Number(couponPrice)-Number((total)*(1-(Number(discountData.discount)/100)).toFixed(2)))|keep2Num}} 元</span>
-            <span v-else>{{((total+freight_price+Number(deliveryMoney))-Number((total)*(1-(Number(discountData.discount)/100)).toFixed(2)))|keep2Num}} 元</span>
-        </p> -->
+
+
+      <!-- <div class="pay">
         <p class="yingfu r">应付金额：
           <span v-if="deliveryMoney == -1">{{(total-Number(couponPrice)-Number((total)*(1-(Number(discountData.discount)/100)).toFixed(2)))|keep2Num}} 元</span>
             <span v-else-if="deliveryMoney">{{(total+Number(deliveryMoney)-Number(couponPrice)-Number((total)*(1-(Number(discountData.discount)/100)).toFixed(2)))|keep2Num}} 元</span>
@@ -178,13 +226,30 @@
           </p>
           <p class="l">收货人：<span>{{addressInfo.realname}} {{addressInfo.mobile}}</span></p>
         </div>
+      </div> -->
+      <div class="pay">
+        <p class="yingfu r">应付总额：
+          <span>￥13.80</span>
+        </p>
+        <!-- <div class="r">
+          <p class="l">寄送至：<span>{{addressInfo.prov_name}}{{addressInfo.city_name}}{{addressInfo.dist_name}} {{addressInfo.address}}</span>
+          </p>
+          <p class="l">收货人：<span>{{addressInfo.realname}} {{addressInfo.mobile}}</span></p>
+        </div> -->
+        <div class="r">
+          <p class="l">寄送至：<span>上海市 普陀区百春园小区22栋四单元401</span>
+          </p>
+          <p class="l">收货人：<span>张小五 185****3665</span></p>
+        </div>
       </div>
+
+
       <div class="submit">
         <p class="r"><a @click="placeOrder">提交订单</a></p>
       </div>
     </div>
     <!--弹出内容    修改-->
-    <modal :backdrop-closable="false" title="发票信息" :width="625" :is-show="isShow" transition="fadeDown"
+    <!-- <modal :backdrop-closable="false" title="发票信息" :width="625" :is-show="isShow" transition="fadeDown"
            @close="isShow=false" :show-footer="false">
       <div class="alert">
         <div class="fapiao"><span v-for="(item,index) in invoiceData.invoice_type" :key="index"
@@ -212,8 +277,9 @@
           <button @click="cancel">无需发票</button>
         </div>
       </div>
-    </modal>
+    </modal> -->
     <foot-com></foot-com>
+    <back-top></back-top>
   </div>
 </template>
 
@@ -282,7 +348,6 @@
     created() {
       this.getOrderData();
       this.getCouponInfo();
-      // let title = "确认订单" + this.$constant.webComContent;
        let title =  "确认订单" + '-' + this.$constant.webComContent;
       this.showScroll.scrollTitle(title);
     },
@@ -393,28 +458,6 @@
             translate: 0
           };
         }
-        // debugger;
-
-        // if (this.goodsreduce.length != 0) {
-        //     console.log("goodsreduce " + 1);
-        //   this.totalmoney = this.total + this.freight_price + Number(this.deliveryMoney) - Number(this.goodsreduce.expression);
-        // } else if (this.options.length!=0 ) {
-        //     console.log("options " + 2);
-        //   this.totalmoney = this.total + this.freight_price + Number(this.deliveryMoney)
-        // } else {
-        //   this.totalmoney = this.total + this.freight_price + Number(this.deliveryMoney)- Number(this.couponPrice)-Number((this.total|this.keep2Num)*(1-(Number(this.discountData.discount)/100)).toFixed(2));
-        //   console.log("xc" + 3);
-        // }
-        // if (this.goodsreduce.length != 0) {
-        //   console.log(1);
-        //   this.totalmoney = this.total + this.freight_price + Number(this.deliveryMoney) - Number(this.goodsreduce.expression);
-        // } else if (this.options.length!=0 && this.coupunData) {
-        //   console.log(2);
-        //   this.totalmoney = this.total + this.freight_price + Number(this.deliveryMoney)
-        // } else {
-        //   this.totalmoney = this.total + this.freight_price + Number(this.deliveryMoney)-Number((this.total|this.keep2Num)*(1-(Number(this.discountData.discount)/100)).toFixed(2));
-        //   console.log(3);
-        // }
         if (this.deliveryMoney == -1) {
           this.totalmoney = this.total -Number((this.total|this.keep2Num)*(1-(Number(this.discountData.discount)/100)).toFixed(2));
         }
@@ -481,9 +524,6 @@
           this.invoiceInit[this.store_id] = [this.isbg0, this.isbg1, this.isbg2];
           this.invoiceOff();
           this.invoiceTit[this.store_id] = [this.type_name, this.raised_name, this.content_name];
-          // this.type_name = '';
-          // this.raised_name = '';
-          // this.content_name = '';
           this.isShow = false;
         }).catch(() => {
 
@@ -498,9 +538,6 @@
           }
         }
       },
-      // toDetails() {
-      //   window.open(window.location.origin + '/shopsn_product?id=' + this.goodsData.id);
-      // },
       toDetails() {
         window.open(window.location.origin + '/shopsn_product?id=' + this.goodsData.p_id);
       },
@@ -543,11 +580,9 @@
             this.ship_key = this.shipping_data[a].id;
             this.ship_status = this.shipping_data[a].status;
           }
-          //  console.log("res",res);
         }).catch((res) => {
           this.not_distribution = false;
           this.error_message = res.data.message;
-          // this.$alert('当前地址卖家暂无配送', '提示', {
             this.$alert(res.data.message, '提示', {
             confirmButtonText: '确定',
             center: true,
@@ -572,7 +607,6 @@
           this.goodsImg = res.data.data.image;
           this.goodsreduce = res.data.data.reduction;
           this.discountData=res.data.data.discount
-          //   console.log(res.data.data.discount,112233);
           this.total = parseFloat(this.goodsData.price_member) * parseFloat(this.goodsData.goods_num);
         })
       },
@@ -686,26 +720,6 @@
 
   }
 </script>
-<style lang="less" scoped>
-  .service-wrapper {
-    cursor: pointer;
-    width:60px;
-    border: 1px solid #eeeeee;
-    background: #fbfbf1;
-    margin-left: 10px;
-    display: inline-block;
-    #dom {
-      span{
-        font-size: 10px;
-        margin-left: 5px;
-      }
-      img{
-        margin: 4px;
-        width: 14px;
-      }
-    }
-  }
-</style>
 <style>
   .el-message-box--center {
     padding-bottom: 30px !important;
@@ -742,9 +756,16 @@
     }
 
     p {
-      font-size: 24px;
-      float: left;
-      margin: 40px 0 0 29px;
+      // font-size: 24px;
+      // float: left;
+      // margin: 40px 0 0 29px;
+      font-size: 36px;
+      color: #333333;
+      position: absolute;
+      top: 75px;
+      left: 615px;
+      border-left: 1px solid #DDDDDD;
+      padding-left: 30px;
     }
   }
 
@@ -799,85 +820,12 @@
       color: #d02629 !important;
     }
   }
-
-  .dizhi {
-    overflow: hidden;
-
-    .biaoti {
-      font-size: 14px;
-      margin: 18px 0 20px;
-      width: 100%;
-    }
-
-    .dizhiul {
-      overflow: hidden;
-
-      li {
-        width: 279px;
-        height: 123px;
-        border: 1px solid #dedede;
-        margin-right: 25px;
-        cursor: pointer;
-        margin-bottom: 10px;
-
-        p {
-          font-size: 12px;
-          color: #333;
-          padding-left: 13px;
-          padding-right: 13px;
-        }
-
-        p:nth-of-type(1) {
-          line-height: 38px;
-          border-bottom: 1px solid #dedede;
-        }
-
-        p:nth-of-type(2) {
-          margin: 16px 0 10px;
-          height: 34px;
-        }
-
-        p:nth-of-type(3) {
-          color: #d02629;
-        }
-      }
-
-      .hover {
-        border-color: #d02629 !important;
-        background: url(../../assets/img/right.jpg) no-repeat right 0 bottom 0;
-      }
-
-      li:nth-child(4n) {
-        margin-right: 0;
-      }
-    }
-
-    .guanli {
-      overflow: hidden;
-      margin: 15px 0 12px 0;
-
-      button {
-        width: 84px;
-        height: 25px;
-        text-align: center;
-        line-height: 25px;
-        float: left;
-        font-size: 12px;
-        cursor: pointer;
-      }
-
-      button:nth-of-type(1) {
-        background: #d02629;
-        color: #fff;
-        margin-right: 18px;
-      }
-
-      button:nth-of-type(2) {
-        width: 84px;
-        height: 25px;
-        border: 1px solid #dedede;
-        color: #333;
-      }
+  .service-wrapper {
+    cursor: pointer;
+    margin-left: 10px;
+    display: inline-block;
+    img {
+      margin-block: 5px;
     }
   }
 
@@ -907,15 +855,15 @@
         }
 
         p:nth-of-type(2) {
-          margin: 0 103px 0 300px;
+          margin: 0 125px 0 335px;
         }
 
         p:nth-of-type(4) {
-          margin: 0 135px 0 131px;
+          margin: 0 135px 0 140px;
         }
 
         p:nth-of-type(6) {
-          margin-left: 189px;
+          margin-left: 140px;
         }
       }
     }
@@ -948,11 +896,11 @@
 
       .order-list {
         .order-info {
-          height: 80px;
+          // height: 80px;
           background: #fcfcfc;
           margin-bottom: 1px;
           display: flex;
-          align-items: center;
+          // align-items: center;
 
           img {
             margin: 16px 9px 0 13px;
@@ -967,10 +915,22 @@
             margin-top: 17px;
           }
 
+          // p:nth-of-type(1) {
+          //   width: 192px;
+          //   margin-right: 93px;
+          //   cursor: pointer;
+          // }
           p:nth-of-type(1) {
-            width: 192px;
-            margin-right: 93px;
+            width: 250px;
+            font-size: 12px;
+            color: #575757;
+            // margin-top: 29px;
+            margin-left: 30px;
             cursor: pointer;
+            line-height: 25px;
+          }
+          span {
+              float: left;
           }
 
           p:nth-of-type(1):hover {
@@ -1004,25 +964,69 @@
           margin: 17px 0 0 108px;
         }
 
-        .fapiao {
-          // height: 45px;
+        .delivery_method {
           line-height: 45px;
           font-size: 12px;
-          color: #616161;
+          color: #666666;
+          float: right;
+          margin-top: -120px;
+
+          .method_info {
+            color: #666666;
+            margin-right: 5px;
+          }
+
+          .method_toggle {
+            color: #666666;
+            cursor: pointer;
+            padding: 0 10px;
+          }
+
+          .method_no {
+            color: #666666;
+          }
+          .method_price {
+            color: #DD2727;
+            padding: 0 30px;
+					}
+        }
+
+        .store_total {
+          line-height: 45px;
+          font-size: 12px;
+          color: #666666;
+          float: right;
+          margin-top: -60px;
+
+          .total_info {
+            color: #DD2727;
+            font-size: 16px;
+            padding-right: 30px;
+          }
+        }
+
+        .fapiao {
+          line-height: 45px;
+          font-size: 12px;
+          color: #666666;
           padding-left: 15px;
 
           .invoice-info {
-            color: #313131;
+            color: #333333;
             margin-right: 5px;
           }
 
           .invoice-toggle {
-            color: #378ce4;
+            color: #005EA7;
             cursor: pointer;
+            padding: 0 20px;
           }
-
           .invoice-toggle:hover {
             color: red;
+          }
+          .invoice-no {
+            color: #FF6000;
+            cursor: pointer;
           }
           .error_message {
 						color: red;
@@ -1081,7 +1085,6 @@
 
               .freight {
                 color: #dd2727;
-                // margin: 0 45px 0 53px;
                 font-size: 15px;
               }
 
@@ -1153,8 +1156,8 @@
     p {
       text-align: right;
       width: 100%;
-      font-size: 12px;
-      color: #484848;
+      font-size: 14px;
+      color: #333333;
       margin-bottom: 7px;
       .delivery_price {
 				text-align: right;
@@ -1165,7 +1168,7 @@
 			}
 
       span {
-        color: #df7344;
+        color: #B61D1D;
       }
     }
   }
@@ -1176,14 +1179,14 @@
     text-align: right;
 
     .yingfu {
-      font-size: 15px;
-      color: #2e2e2e;
+      font-size: 14px;
+      color: #333333;
       margin: 23px 25px 0 0;
       width: 100%;
 
       span {
-        font-size: 19px;
-        color: #e82825;
+        font-size: 24px;
+        color: #DD2727;
       }
     }
 
@@ -1201,12 +1204,12 @@
   .submit {
     overflow: hidden;
     margin-top: 15px;
-    margin-bottom: 136px;
+    margin-bottom: 80px;
 
     p {
       width: 182px;
       height: 38px;
-      background: #ff5100;
+      background: #FF5100;
       text-align: center;
       line-height: 38px;
       color: #fff;
@@ -1217,6 +1220,7 @@
         width: 100%;
         height: 100%;
         color: #fff;
+        font-size: 16px;
       }
     }
   }
