@@ -1,8 +1,7 @@
 <template>
 	<div id="gouwu">
 		<common-header v-on:childToParent="onChildClick"></common-header>
-		<!-- <head-com :navid = '1'></head-com> -->
-		<head-com v-if="tempid" :navid = tempid></head-com>
+		<head-com></head-com>
 		<div id="top">
 			
 		</div>
@@ -14,7 +13,7 @@
 						<router-link to="home" class="l spot">首页</router-link>
 						<span class="l spot">></span>
 						<span class="l spot mdspot">定制下单 </span>
-						<span class="l spot"> > </span>
+						<span class="l spot"> > 纸箱</span>
 					</p>
 				</div>
 			<div class="adding">
@@ -221,6 +220,45 @@
 					<p>经济型：适用于普通周转箱，起到保护商品的作用 耐用型：可以用于多次周转搬运，相对比较耐用</p>
 					<el-tab-pane label="其他材质">Config</el-tab-pane>
 				</el-tabs>
+
+				<div class="shuliang">
+                        <span class="l">数量：</span>
+                        <div class="inp l">
+                            <input
+                                class="l"
+                                v-model="goodsNumber"
+                                type="text"
+                            />
+                            <span
+                                class="r btn-plus"
+                                :class="{ disabled: plusState }"
+                            >
+                                <i class="el-icon-plus"></i>
+                            </span>
+                            <span
+                                class="r btn-reduce"
+                                :class="{ disabled: reduceState }"
+                            >
+                                <i class="el-icon-minus"></i>
+                            </span>
+                        </div>
+                    </div>
+					<div class="leiji">
+						<p>
+                            <span>商品总价：￥0.00 × 1件 =<span>￥19.00</span></span>
+						</p>
+                    </div>
+					<div class="buy">
+                        <span>立即购买</span>
+                        <span>
+                            <img
+                                src="../../assets/img/gw.png"
+                                style="position: relative;"
+                            />
+                            加入购物车
+                        </span>
+                    </div>
+
 			</div>
 		</div>
 				  
@@ -261,13 +299,15 @@
 				page_size: 12, //每页显示多少条数据
 				tempid: '',
 				bannerHeight: "500px",
+				goodsNumber: 1,
+				plusState: false,
+            	reduceState: true,
 
 				
 			}
 		},
         created(){
 		   let title = "抢购" +'-'+this.$constant.webComContent;
-		// let title = this.$constant.webComContent;
 			this.showScroll.scrollTitle(title);
         },
 		mounted() {
@@ -361,9 +401,6 @@
 		margin: 20px;
 		line-height: 24px;
 	}
-	span{
-		
-	}
 </style>
 
 
@@ -384,12 +421,7 @@
 
 	#top {
 		width: 100%;
-		// height: 343px;
 		img {
-			// width: 100%;
-			// height: 100%;
-			// height: auto;
-			// object-fit:scale-down;
 			width:100%;
 			height:100%;
 		}
@@ -513,18 +545,124 @@
     						padding: 15px 0px;
 						}
 				}
-				// .title{
-				// 	border: 1px solid #c8c8c8;
-				// 	margin-left: 20px;
-				// 	border-radius: 0px;
-				// 	width: 815px;
-				// }
 				.right-Tabs{
 					width: 800px;
+					height: 1500px;
 					margin-left: 28px;
 					.material{
 						width:100%;
-						display: ;
+					}
+				}
+			}
+
+			.shuliang {
+				margin-top: 30px;
+				margin-bottom: 20px;
+				margin-left: 15px;
+				overflow: hidden;
+
+				span {
+					font-size: 14px;
+					color: #333333;
+					line-height: 32px;
+					padding-top: 2px;
+				}
+
+				.inp {
+					width: 123px;
+					height: 36px;
+					border: 1px solid #a7a7a7;
+					margin: 0 9px 0 20px;
+
+					input {
+						width: 105px;
+						height: 100%;
+						border-right: 1px solid #a7a7a7;
+						padding-left: 10px;
+					}
+
+					span {
+						width: 16px;
+						height: 17px;
+						background: #eef4f2;
+						color: #666;
+						cursor: pointer;
+
+						i {
+							font-size: 7px;
+							float: left;
+							margin-top: 4px;
+							margin-left: 4px;
+						}
+					}
+
+					.btn-plus {
+						border-bottom: 1px solid #a7a7a7;
+					}
+
+					span.disabled {
+						color: #ccc;
+						cursor: not-allowed;
+					}
+				}
+			}
+			.leiji {
+				height: 60px;
+				background: #F5F7FA;
+				margin-top: 20px;
+
+				p {
+					padding: 8px 15px;
+
+					span {
+						font-size: 14px;
+						color: #333333;
+						span {
+						font-size: 30px;
+						color: #D02629;
+						font-weight: 600;
+						}
+					}
+				}
+			}
+			.buy {
+				margin-top: 40px;
+
+				span {
+					cursor: pointer;
+					width: 160px;
+					height: 40px;
+					line-height: 38px;
+					font-size: 16px;
+					background: #ffeded;
+					border: 1px solid #d02629;
+					display: inline-block;
+					color: #d02629;
+					border-radius: 5px;
+				}
+
+				span:nth-of-type(1) {
+					text-align: center;
+				}
+
+				span:nth-of-type(2) {
+					margin-left: 9px;
+					background: #d02629;
+					color: #fff;
+
+					img {
+						float: left;
+						margin: 8px 10px 0 22px;
+					}
+				}
+
+				div {
+					line-height: 38px;
+					font-size: 12px;
+					color: #757575;
+
+					img {
+						margin-left: 7px;
 					}
 				}
 			}
