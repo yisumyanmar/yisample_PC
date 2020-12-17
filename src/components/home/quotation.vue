@@ -8,7 +8,7 @@
                 <p>查看报价单详情></p>
             </div>
         </div>
-        <div class="recommend">
+        <div class="recommend1">
             <div class="recommend_to">
                 <div class="recom_head">
                     <p></p>
@@ -105,7 +105,7 @@ export default {
             }
         }
     }
-    .recommend {
+    .recommend1 {
         position: relative;
         background: #f1f1f1;
         .recommend_to {
