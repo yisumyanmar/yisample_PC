@@ -1,18 +1,18 @@
 //  const request =  'http:// 192.168.123.6/shopsn_b2b2c_mobile_api/index.php/'
 // const request =  'http:// b2b2c.zybv.cn/'
 // const request = 'http://api.shopsn.net/index.php/'
-const request = 'http://api.shopsn.cn/pc/index.php/'
+const request = 'http://api.gtpacking.cn/custom-pc/index.php/'
 // const request = 'http://192.168.1.146/pc/index.php/'
 const imgRequest = 'http://center.shopsn.cn/'
 // const request = 'http://pc.local.com/'
 // const userModuleIndex = 'http://api.shopsn.net/admin.php/'
-const userModuleIndex = 'http://api.shopsn.cn/pc/admin.php/'
+const userModuleIndex = 'http://api.gtpacking.cn/custom-pc/admin.php/'
 // const userModuleIndex = 'http://192.168.1.146/pc/admin.php/'
 const uploadImage = 'upload.php/'
 //  const request = 'http:// test_b2b2c.shopsn.cn/'
 const config = {
     // 公共部分
-    getCommonHeader: userModuleIndex + 'HomeIndex/commonHeader', // 首页头部
+    // getCommonHeader: userModuleIndex + 'HomeIndex/commonHeader', // 首页头部
     getBalance: request + 'Balance/getBalance', // 账号余额
     getCooprativeList: request + 'CooperativePartner/getCooprativeList', // 底部合作伙伴
     getKeyWordsList: request + 'HotWords/getKeyWordsList', // 商品关键词

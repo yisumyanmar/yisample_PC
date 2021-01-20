@@ -827,13 +827,13 @@ const router = new Router({
                     name: "evaluation",
                     component: evaluation
                 },
-                {
-                    // 我的评价详情
-                    path: "/commentDetail",
-                    name: "commentDetail",
-                    component: () =>
-                        import("../components/personal/child/commentDetail")
-                },
+                // {
+                //     // 我的评价详情
+                //     path: "/commentDetail",
+                //     name: "commentDetail",
+                //     component: () =>
+                //         import("../components/personal/child/commentDetail")
+                // },
                 {
                     // 发布评价
                     path: "/publishComment",

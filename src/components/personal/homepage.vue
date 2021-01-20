@@ -52,7 +52,14 @@ export default {
         ],
         [
           { title: "供应商管理", url: "supplyManage" },
-          { title: "产品管理", url: "productManage" },
+          { title: "产品管理", url: "productManage",
+          // data: [{
+          //   title: "产品管理", url: "boughtStd",
+          //   data: [{
+          //     title: "产品管理", url: "customProduct",
+          //   }]
+          // }]
+           },
           { title: ". 买过的标准品", url: "boughtStd" },
           { title: ". 我的新增定制品", url: "customProduct" },
           { title: "发布询价", url: "releaseInquiry" },

@@ -122,7 +122,7 @@ export default {
 
 	},
 	created(){
-		this.getaddressLists();
+		// this.getaddressLists();
 		this.QRcede();
 	},
 	beforeDestroy() {
@@ -136,13 +136,13 @@ export default {
 					this.qrCode = res.data.data;
 				}).catch(()=>{})
 		},
-		getaddressLists(){
-			this.HTTP(this.$httpConfig.addressLists,{},'post').then((res)=>{
-				this.site = res.data.data[0].prov_name+" "+res.data.data[0].dist_name;
-			}).catch((e)=>{
-				console.log(e)
-			})
-		},
+		// getaddressLists(){
+		// 	this.HTTP(this.$httpConfig.addressLists,{},'post').then((res)=>{
+		// 		this.site = res.data.data[0].prov_name+" "+res.data.data[0].dist_name;
+		// 	}).catch((e)=>{
+		// 		console.log(e)
+		// 	})
+		// },
 		signOut(){
 			localStorage.setItem("loginuserdata", 'false');
 			this.no = true
@@ -206,11 +206,11 @@ export default {
 		toAddress(){
 			this.$router.push({name:'receive'});
 		},
-		getNav() {
-			this.HTTP(this.$httpConfig.commonHeader, {}, 'post').then((res) => {
-				console.log(res)
-			})
-		}
+		// getNav() {
+		// 	this.HTTP(this.$httpConfig.commonHeader, {}, 'post').then((res) => {
+		// 		console.log(res)
+		// 	})
+		// }
 	}
 }
 </script>
