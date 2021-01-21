@@ -3,18 +3,18 @@
         <div class="top">
             <div class="center">
                 <div class="erweima l">
-                    <!-- <img :src="URL + websiteInfo.init_qr_code" /> -->
-                    <img src="../assets/img/card1.png" />
+                    <img :src="URL + websiteInfo.init_qr_code" />
+                    <!-- <img src="../assets/img/card1.png" /> -->
                     <p>贡品商城官方微信服务号扫一扫，享更多优惠</p>
                 </div>
                 <div class="phone l">
-                    <!-- <span class="call">{{ websiteInfo.intnet_phone }}</span> -->
-                    <span class="call">021-2889059测试</span>
+                    <span class="call">{{ websiteInfo.intnet_phone }}</span>
+                    <!-- <span class="call">021-2889059测试</span> -->
                     <br />
                     <span class="workday">工作日(9:00-18:00)</span>
                 </div>
                 <div class="topul l">
-                    <!-- <div class="l" v-for="(item, k) in article_category" :key="k">
+                    <div class="l" v-for="(item, k) in article_category" :key="k">
                         <span @click="toLink(item.id, item.name)" class="c">
                             {{
                             item.name
@@ -31,8 +31,8 @@
                                 </span>
                             </li>
                         </ul>
-                    </div> -->
-                    <div class="l">
+                    </div>
+                    <!-- <div class="l">
                         <span class="c">帮助中心</span>
                         <ul>
                             <li><span>ddd</span></li>
@@ -66,7 +66,7 @@
                     </div>
                      <div class="l">
                         <span class="c">测试文章分类</span>
-                    </div>
+                    </div> -->
                 </div>
             </div>
         </div>
@@ -77,7 +77,7 @@
         </div>
         <div class="bottom">
             <div class="center">
-                <!-- <p class="pOne l">
+                <p class="pOne l">
                     ICP备{{
                     <a href="http://www.miitbeian.gov.cn">{{websiteInfo.record_number}}</a>
                     }}号|有任何问题请联系我们在线客服 电话：{{
@@ -90,22 +90,17 @@
                     <li v-for="item in partner" :key="item.id">
                         <img :src="URL + item.pic_url" />
                     </li>
-                </ul> -->
-                <p class="pOne l">
+                </ul>
+                <!-- <p class="pOne l">
                     ICP备{{
                     <a href="http://www.miitbeian.gov.cn">1888888测试</a>
                     }}号|有任何问题请联系我们在线客服 电话：021-2889059测试
                 </p>
                 <p class="pOne l">互联网出版许可证编号新出版网证(沪)字151号测试 | 出版物经营许可证 | 网络文化经营许可证京网文[2014]2048-348号测试</p>
                 <p class="pOne l">©2016-2019 ShopsN 版权所有 未授权不得商用测试测试</p>
-                <!-- <ul class="partner">
-                    <li v-for="item in partner" :key="item.id">
-                        <img :src="URL + item.pic_url" />
-                    </li>
-                </ul> -->
                 <ul class="partner">
-                        <img src="../assets/img/footer-yi.png" />
-                </ul>
+                    <img src="../assets/img/footer-yi.png" />
+                </ul> -->
             </div>
         </div>
     </footer>

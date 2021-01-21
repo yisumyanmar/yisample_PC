@@ -37,7 +37,7 @@ const config = {
     home: request + 'HomeIndex/home', //  首页信息获取
     getClass: request + 'GoodsClass/getClassByPid', // 首页商品分类
     getAllClass: request + 'GoodsClass/getAllClass', // 首页商品分类
-    goodsType: request + 'Goods/goodsType',
+    // goodsType: request + 'Goods/goodsType',
     homefLoor: request + 'Floor/homefLoor', // 首页楼层
     randStore: request + 'Store/storeShoppingList', // 首页店铺街换一批
     SearchIndex: request + 'SearchIndex/search', // 首页搜索

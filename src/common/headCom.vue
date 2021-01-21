@@ -37,19 +37,19 @@
                             />
                             <span class="search" @click="search">搜索</span>
                         </div>
-                        <!-- <ul>
+                        <ul>
                             <li v-for="(value, index) in keyWords" :key="index">
                                 <a @click="hotSearch(value)">{{
                                     value.hot_words
                                 }}</a>
                             </li>
-                        </ul> -->
-                        <ul>
+                        </ul>
+                        <!-- <ul>
                             <li>标准品</li>
                             <li>设计品</li>
                             <li>原材商</li>
                             <li>生产商</li>
-                        </ul>
+                        </ul> -->
                     </div>
                     <div class="dropdown-content r">
                         <my-shopping-cart></my-shopping-cart>
@@ -155,7 +155,7 @@
                             </div>
                         </div>
                     </div>
-                    <!-- <ul class="navul">
+                    <ul class="navul">
                         <li v-for="(item, index) in items" :key="index">
                             <router-link :to="{path: templink, query:{id: item.id}}">
                                 <a v-if="navid"
@@ -170,8 +170,8 @@
                                 >
                             </router-link>
                         </li>
-                    </ul> -->
-                    <ul class="navul">
+                    </ul>
+                    <!-- <ul class="navul">
                         <li>首页</li>
                         <li>询价采购</li>
                         <li>定制下单</li>
@@ -182,7 +182,7 @@
                         <li>向您推荐</li>
                         <li>企业服务</li>
                         <li>定制社区</li>
-                    </ul>
+                    </ul> -->
                 </div>
             </nav>
         </div>

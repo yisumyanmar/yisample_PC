@@ -10,13 +10,13 @@
                          arrow="always"
                         :height="bannerHeight"
                     >
-                        <!-- <el-carousel-item v-for="item in banner" :key="item.id">
+                        <el-carousel-item v-for="item in banner" :key="item.id">
                             <a :href="item.ad_link" style="pointer-events:auto; ">
                                 <img :src="URL + item.pic_url" />
                             </a>
-                        </el-carousel-item> -->
+                        </el-carousel-item>
 
-                        <img src="../../assets/img/Clip.png" />
+                        <!-- <img src="../../assets/img/Clip.png" /> -->
                         
                         <!-- <div id="apDiv2">
                             <div class="denglu r">
@@ -78,7 +78,7 @@
                         <div class="sk_list slider_list">
                             <div class="sk_list_inner">
                                 <swiper class="swiper" :options="swiperOption">
-                                    <!-- <swiper-slide
+                                    <swiper-slide
                                         v-for="(item, index) in panicList"
                                         :key="index">
                                         <div class="sk_item" @click="toRushBuy(item.goods_id)">
@@ -124,8 +124,8 @@
                                                     </div>
                                                 </div>
                                             </div>
-                                    </swiper-slide> -->
-                                    <swiper-slide>
+                                    </swiper-slide>
+                                    <!-- <swiper-slide>
                                         <div class="sk_item">
                                                 <div class="sk_item_lk">
                                                     <div class="goods-thumb">
@@ -214,7 +214,7 @@
                                                     </div>
                                                 </div>
                                             </div>
-                                    </swiper-slide>
+                                    </swiper-slide> -->
                                     <div class="swiper-button-prev" slot="button-prev"></div>
                                     <div class="swiper-button-next" slot="button-next"></div>
                                 </swiper>
@@ -229,7 +229,7 @@
                     <img class="l" src="../../assets/img/dianpu.jpg" />
                 </div>
                 <ul class="r">
-                    <!-- <li
+                    <li
                         class="l right"
                         v-for="(pinpai, index) in pinpais"
                         :key="index"
@@ -248,8 +248,8 @@
                                 >点击进入</span
                             >
                         </div>
-                    </li> -->
-                    <li class="l right">
+                    </li>
+                    <!-- <li class="l right">
                         <img src="../../assets/img/shop.jpg" />
                         <div class="click">
                             <span>点击进入</span>
@@ -265,7 +265,7 @@
                     <li class="another" @click="anotherFun">
                         <img :src="huanyipi" />
                         <p>换一批</p>
-                    </li>
+                    </li> -->
                 </ul>
             </div>
             <!-- <div class="various-lists">
@@ -283,7 +283,7 @@
                 </div>
             </div> -->
             
-            <!-- <div
+            <div
                 class="gongyi same"
                 v-for="(item, page) in allFloor"
                 :key="page"
@@ -377,7 +377,7 @@
                             </p>
                             <div class="jiage l">
                                 ￥
-                                <span>{{ thing.goods_price }}</span>
+                                <span>{{ thing.goods_price }}/只</span>
                                 <div
                                     style="margin-left:40px;display:inline-block;font-size:12px;color:#656565"
                                 >
@@ -420,7 +420,7 @@
                             </p>
                             <div class="jiage l">
                                 ￥
-                                <span>{{ thing.goods_price }}</span>
+                                <span>{{ thing.goods_price }}/只</span>
                                 <div
                                     style="margin-left:40px;display:inline-block;font-size:12px;color:#656565"
                                 >
@@ -436,8 +436,8 @@
                     :src="URL + item.button.pic_url"
                     @click="goto(item.button)"
                 />
-            </div> -->
-            <div class="gongyi same">
+            </div>
+            <!-- <div class="gongyi same">
                 <h1>1F 标准品</h1>
                 <ul class="l tabul">
                     <li class="l tab" style="color: red">新品推荐</li>
@@ -477,12 +477,6 @@
                                 src="../../assets/img/yi-7.png"
                             />
                             <p class="jieshao">
-                            <!-- <el-dropdown v-if="thing.store_grade_name">
-                                <span class="first-name">{{ thing.store_grade_name }}</span>
-                                <el-dropdown-menu slot="dropdown" v-if="thing.store_grade_classification">
-                                <el-dropdown-item>{{thing.store_grade_classification}}</el-dropdown-item>
-                                </el-dropdown-menu>
-                            </el-dropdown> -->
                             &nbsp;GR60水泵纸箱制造尺寸：26x15.2x18.5 cm</p>
                             <div class="jiage l">￥<span>5.90/只</span>
                                 <div style="margin-left:40px;display:inline-block;font-size:12px;color:#656565">已售2件</div>
@@ -591,12 +585,6 @@
                                 src="../../assets/img/yi-7.png"
                             />
                             <p class="jieshao">
-                            <!-- <el-dropdown v-if="thing.store_grade_name">
-                                <span class="first-name">{{ thing.store_grade_name }}</span>
-                                <el-dropdown-menu slot="dropdown" v-if="thing.store_grade_classification">
-                                <el-dropdown-item>{{thing.store_grade_classification}}</el-dropdown-item>
-                                </el-dropdown-menu>
-                            </el-dropdown> -->
                             &nbsp;GR60水泵纸箱制造尺寸：26x15.2x18.5 cm</p>
                             <div class="jiage l">￥<span>5.90/只</span>
                                 <div style="margin-left:40px;display:inline-block;font-size:12px;color:#656565">已售2件</div>
@@ -705,12 +693,6 @@
                                 src="../../assets/img/yi-7.png"
                             />
                             <p class="jieshao">
-                            <!-- <el-dropdown v-if="thing.store_grade_name">
-                                <span class="first-name">{{ thing.store_grade_name }}</span>
-                                <el-dropdown-menu slot="dropdown" v-if="thing.store_grade_classification">
-                                <el-dropdown-item>{{thing.store_grade_classification}}</el-dropdown-item>
-                                </el-dropdown-menu>
-                            </el-dropdown> -->
                             &nbsp;GR60水泵纸箱制造尺寸：26x15.2x18.5 cm</p>
                             <div class="jiage l">￥<span>5.90/只</span>
                                 <div style="margin-left:40px;display:inline-block;font-size:12px;color:#656565">已售2件</div>
@@ -773,7 +755,7 @@
                         </li>
                     </ul>
                 </div>
-            </div>
+            </div> -->
 
             <div class="more">
                 <span v-if="floorIndex > 0 && floorIndex <= floorCount" @click="getFloor"
@@ -874,12 +856,13 @@ export default {
             fromChild: '',
             isEnd: false,
             floorCount: null,
-             goodsType: [],
+            //  goodsType: [],
+            classImg: hp,
         };
     },
 
     created() {
-        this.getGoodsType();
+        // this.getGoodsType();
         this.floorCount = localStorage.getItem('countF')
         this.getFloor();
         if (sessionStorage.getItem('userHeaderImg') || sessionStorage.getItem('userName')) {
@@ -916,11 +899,11 @@ export default {
         });
     },
     methods: {
-        getGoodsType() {
-            this.HTTP(this.$httpConfig.goodsType, {}, 'post').then((res) => {
-				this.goodsType = res.data.data;
-            });
-        },
+        // getGoodsType() {
+        //     this.HTTP(this.$httpConfig.goodsType, {}, 'post').then((res) => {
+		// 		this.goodsType = res.data.data;
+        //     });
+        // },
         onChildClick (value) {
             this.fromChild = value
             if(this.fromChild == 'false') {
