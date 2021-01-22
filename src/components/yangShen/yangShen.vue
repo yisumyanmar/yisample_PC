@@ -1,9 +1,9 @@
 <template>
     <div class="yuyin">
-        <!-- <common-header v-on:childToParent="onChildClick"></common-header>
-        <head-com v-if="tempid" :navid = tempid></head-com> -->
-        <common-header></common-header>
-        <head-com></head-com>
+        <common-header v-on:childToParent="onChildClick"></common-header>
+        <head-com v-if="tempid" :navid = tempid></head-com>
+        <!-- <common-header></common-header> -->
+        <!-- <head-com></head-com> -->
         <div class="center">
             <div class="header">
                 <img class="l" src="../../assets/img/fangzi.jpg" />
@@ -11,8 +11,8 @@
                 <span class="xiala">滋补养身</span>
             </div>
             <!-- 热卖推荐 -->
-            <!-- <hot-sale></hot-sale> -->
-            <!-- <div class="choose">
+            <hot-sale></hot-sale>
+            <div class="choose">
                 <div class="g-main-n l">
                     <span class="l">品 &nbsp;牌：</span>
                     <div class="q_class_list l" :class="{ active: onoff }">
@@ -65,8 +65,8 @@
                         class="el-icon-arrow-down g-btn"
                     ></i>
                 </div>
-            </div> -->
-            <div class="choose">
+            </div>
+            <!-- <div class="choose">
                 <div class="g-main-n l">
                     <span class="l">品 &nbsp;牌：</span>
                     <div class="q_class_list l" :class="{ active: onoff }">
@@ -115,10 +115,10 @@
                         class="el-icon-arrow-down g-btn"
                     ></i>
                 </div>
-            </div>
+            </div> -->
 
             
-            <!-- <div class="new">
+            <div class="new">
                 <div class="left l">
                     <new-product></new-product>
                 </div>
@@ -211,20 +211,22 @@
                                         />
                                     </li>
                                 </ul>
+
                                 <p @click="toDetail(li.id)" class="l">
                                     {{ li.title }}
                                 </p>
                                 <div class="l pice">
-                                    <span>￥{{ li.price_member }}</span>
-                                    <span>￥{{ li.price_market }}</span>
+                                    <span>￥{{ li.price_member }}/只</span>
+                                    <!-- <span>￥{{ li.price_market }}</span> -->
+                                    <span style="display:inline-block;margin-left:20px;font-size:13px;color:#656565;float:right;margin-right:10px;">已售2件</span>
                                 </div>
                                 <div class="buy l">
-                                    <span @click.stop="compare(li.id)">
+                                    <!-- <span @click.stop="compare(li.id)">
                                         <label>
                                             <input class="l" type="checkbox" />
                                             <span>对比</span>
                                         </label>
-                                    </span>
+                                    </span> -->
                                     <span
                                         v-if="li.is_collect == 0"
                                         @click.stop="toCollect(li.id, i)"
@@ -242,7 +244,7 @@
                                         <span>已收藏</span>
                                     </span>
                                 </div>
-                                <i
+                                <!-- <i
                                     class="r car"
                                     @click.stop="
                                         addCar(
@@ -251,15 +253,14 @@
                                             li.store_id
                                         )
                                     "
-                                ></i>
+                                ></i> -->
                             </li>
                         </ul>
                     </div>
                 </div>
-            </div> -->
-            <div class="new">
+            </div>
+            <!-- <div class="new">
                 <div class="left l">
-                    <!-- 新品推荐 -->
                     <new-product></new-product>
                 </div>
                 <div class="right r">
@@ -365,10 +366,10 @@
                         </ul>
                     </div>
                 </div>
-            </div>
+            </div> -->
 
 
-            <!-- <div class="fenye" v-show="list.length !== 0">
+            <div class="fenye" v-show="list.length !== 0">
                 <div class="box2">
                     <el-pagination
                         @current-change="handleCurrentChange"
@@ -380,7 +381,7 @@
                     </el-pagination>
                 </div>
             </div>
-            <like-and-history></like-and-history> -->
+            <like-and-history></like-and-history>
         </div>
         <foot-com></foot-com>
         <back-top></back-top>

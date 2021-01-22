@@ -2,7 +2,7 @@
   <div class="newProduct">
     <div class="left l">
 
-      <div class="l up">
+      <!-- <div class="l up">
         <div class="headline">新品推荐</div>
         <ul>
           <li>
@@ -22,17 +22,17 @@
             </p>
           </li>
         </ul>
-      </div>
+      </div> -->
 
 
-      <!-- <div class="l up">
+      <div class="l up">
         <div class="headline">新品推荐</div>
         <span class="nullData">{{newProduct.length === 0 ? '暂无数据' : ''}}</span>
         <ul>
           <li v-for="(item, index) in newProduct" :key="index" @click="toDetail(item.id)">
             <img :src="URL + item.pic_url"/>
             <p>{{item.title}}</p>
-            <p>￥{{item.goods_price}}
+            <p>￥{{item.goods_price}}/只
               <span
                 style="display:inline-block;margin-left:20px;font-size:11px;color:#656565">已售{{item.sales_sum}}件</span>
             </p>
@@ -47,14 +47,14 @@
           <li v-for="(item, index) in tuijian" :key="index" @click="toDetail(item.id)">
             <img :src="URL + item.pic_url"/>
             <p>{{item.title}}</p>
-            <p>￥{{item.goods_price}}
+            <p>￥{{item.goods_price}}/只
               <span
                 style="display:inline-block;margin-left:20px;font-size:11px;color:#656565">已售{{item.sales_sum}}件</span>
             </p>
 
           </li>
         </ul>
-      </div> -->
+      </div>
     </div>
   </div>
 </template>

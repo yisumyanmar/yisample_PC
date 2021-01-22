@@ -2,8 +2,8 @@
 <div class="buycar" ref="buycart">
     <buy-header></buy-header>
     <div class="buyCart">
-    <!-- <div class="center" v-if="cartShow"> -->
-      <div class="center">
+    <div class="center" v-if="cartShow">
+      <!-- <div class="center"> -->
       <div id="cart-goods-list" ref="listHeight" >
         <div class="all">
           <p class="l active">商品列表</p>
@@ -11,35 +11,35 @@
             <router-link to="buyCarPackage">套餐列表</router-link>
           </p> -->
           <div class="r right">
-            <!-- <a :class="{ active: btnStyle }" class="r jie" @click="buy">结算</a> -->
-            <a class="r jie">结算</a>
+            <a :class="{ active: btnStyle }" class="r jie" @click="buy">结算</a>
+            <!-- <a class="r jie">结算</a> -->
             <div class="r">
               已选商品（不含运费）
-              <!-- <span>￥{{ selectedPrice | keep2Num }}</span> -->
-              <span>￥118.00</span>
+              <span>￥{{ selectedPrice | keep2Num }}</span>
+              <!-- <span>￥118.00</span> -->
             </div>
           </div>
         </div>
         <div class="xinxi">
           <div class="l left">
             <div id="check">
-              <!-- <input
-                type="checkbox"
-                class="input_check"
-                id="input"
-                :checked="CheckBoxCartGoodsList"
-                @click="checkedAll"
-              /> -->
               <input
                 type="checkbox"
                 class="input_check"
                 id="input"
                 :checked="CheckBoxCartGoodsList"
-            />
+                @click="checkedAll"
+              />
+              <!-- <input
+                type="checkbox"
+                class="input_check"
+                id="input"
+                :checked="CheckBoxCartGoodsList"
+              /> -->
               <label for="input"></label>
             </div>
-            <!-- <span @click="checkedAll" class="total-selection">全选</span> -->
-            <span class="total-selection">全选</span>
+            <span @click="checkedAll" class="total-selection">全选</span>
+            <!-- <span class="total-selection">全选</span> -->
             <span>商品信息</span>
           </div>
           <div class="right r">
@@ -50,31 +50,31 @@
           </div>
         </div>
         
-        <!-- <div class="dianpu" v-for="(store, index) in cartGoodsList" :key="index"> -->
-          <div class="dianpu">
+        <div class="dianpu" v-for="(store, index) in cartGoodsList" :key="index">
+          <!-- <div class="dianpu"> -->
           <div class="top">
             <div id="check">
-              <!-- <input
+              <input
                 type="checkbox"
                 class="input_check"
                 :id="store.store_id"
                 :checked="store.CheckBoxShop"
                 @click="allShop(index)"
-              /> -->
-              <input
+              />
+              <!-- <input
                   type="checkbox"
                   class="input_check"
-              />
-              <!-- <label :for="store.store_id"></label> -->
-              <label></label>
+              /> -->
+              <label :for="store.store_id"></label>
+              <!-- <label></label> -->
             </div>
             <span class="name">
               店铺：
-              <!-- <span class="store-name" @click="toStore(store.store_id)">{{ store.shop_name }}</span> -->
-              <span class="store-name">小米官方旗舰店</span>
+              <span class="store-name" @click="toStore(store.store_id)">{{ store.shop_name }}</span>
+              <!-- <span class="store-name">小米官方旗舰店</span> -->
             </span>
-            <!-- <div class="service-wrapper" @click="openkefu(store)"> -->
-              <div class="service-wrapper">
+            <div class="service-wrapper" @click="openkefu(store)">
+              <!-- <div class="service-wrapper"> -->
               <div id="dom">
                 <img src="@/assets/img/qq.jpg" />
                 <!-- <span>客服</span> -->
@@ -115,34 +115,38 @@
                 </el-dropdown-menu>
             </el-dropdown> -->
           </div>
-          <!-- <div class="bottom">
+          <div class="bottom">
+            <div class="down_div">
+              <div class="full_gift">满送活动</div>
+              <div class="free">满200元,送xxxxxxxxxxxx（赠完即止）</div>
+            </div>
             <div
               class="down"
               v-for="(item, i) in store.goods"
               :key="i"
               :class="item.CheckBoxGoods ? 'isSelect' : ''"
             >
-              <div id="check">
-                <input
+            <div id="check">
+              <input
                   type="checkbox"
                   class="input_check"
                   :id="item.id"
                   :checked="item.CheckBoxGoods"
                   @click="checkedGoods(index, i, item)"
-                />
-                <label :for="item.id"></label>
-              </div>
-              <img
+              />
+              <label :for="item.id"></label>
+            </div>
+            <img
                 @click="toDetails(item.goods_id)"
                 class="l ctrl-img"
                 :id="item.goods_id"
                 @mouseover="showBigImg(item)"
                 @mouseleave="hideBigImg(item)"
                 :src="URL + item.puc_url"
-              />
+            />
 
              
-                <div class="activity-list">
+                <!-- <div class="activity-list">
                       <div class="pro">
                           <div class="activity" v-if="item.promotion.gift.length != 0">
                             <div v-for="id in item.promotion.gift" :key="id">
@@ -156,17 +160,18 @@
                               <span class="both">&nbsp;&nbsp;(满{{ id.full }}元，数量{{id.give_count}}赠完即止)</span>
                               </div>
                           </div>
-                          <div class="activityy" v-if="item.promotion.reduction">
+                          <div class="activityy" v-if="item.promotion.reduction != 0">
                               <span class="jian">满减</span>
                                 <span class="both">满{{ item.promotion.reduction.full }}减{{ item.promotion.reduction.expression }}</span>
                           </div>
                       </div>
-                  </div>
+                  </div> -->
            
               
               <p @click="toDetails(item.goods_id)" class="l">{{ item.title }}</p>
             
-              <p class="l">分类</p>
+              <!-- <p class="l">分类</p> -->
+              <p class="l">产品分类：御贡膳品</p>
 
               <p class="l">
                 <span>￥{{ item.price_new }}</span>
@@ -191,73 +196,73 @@
               </div>
 
             </div>
+          </div>
+
+          <!-- <div class="bottom">
+            <div
+              class="down">
+              <div class="down_div">
+                  <div class="full_gift">满送活动</div>
+                  <div class="free">满200元,送xxxxxxxxxxxx（赠完即止）</div>
+              </div>
+              <div id="check">
+                  <input
+                  type="checkbox"
+                  class="input_check"/>
+                  <label></label>
+              </div>
+              <img
+                  class="l ctrl-img"
+                  src="../../assets/img/yi-14.png"
+              />
+              <p class="l">
+                  数码类7
+                  <span>
+                  材质: N435R-EB&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;箱型: 四半摇盖<br>
+                  打包方式: 绳捆打包&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;成型方式: 一页成型<br>
+                  印刷方式: 数码&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;面纸类型: 牛皮纸<br>
+                  版面设定: AA&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;成箱方式: 钉箱<br>
+                  存储环境: 正常&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;印刷面积: 30%以内<br>
+                  内装重量: 10kg&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;收取刀模费: 否<br>
+                  设计稿: 已有设计稿&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;折算系数: 1<br>
+                  数码表处: 水性光油&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;产品承压: 非承压<br>
+                  拼版方式: 单拼&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;尺寸类型: 制造尺寸<br>
+                  终端客户: 否&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;材质层数: 5<br>
+                  开槽模切: 开槽&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;仓储叠放: 15<br>
+                  层箱型规格: 50cm*60cm*70cm
+                  </span>
+              </p>
+              
+              <p class="l">产品分类：御贡膳品</p>
+
+              <p class="l">
+                  <span>￥196.00</span>
+                  <br />
+                  ￥59.00
+              </p>
+              <div class="l jishu">
+                  <el-input-number
+                  size="mini"
+                  v-model="num"
+                  :min="1"
+                  :max="200"
+                  ref="number"
+                  ></el-input-number>
+              </div>
+              <p class="l" ref="money">￥59.00</p>
+              <div class="r yiru">
+                  <span>移入收藏夹</span>
+                  <br />
+                  <span>删除</span>
+              </div>
+
+            </div>
           </div> -->
-
-          <div class="bottom">
-                        <div
-                        class="down">
-                        <div class="down_div">
-                            <div class="full_gift">满送活动</div>
-                            <div class="free">满200元,送xxxxxxxxxxxx（赠完即止）</div>
-                        </div>
-                        <div id="check">
-                            <input
-                            type="checkbox"
-                            class="input_check"/>
-                            <label></label>
-                        </div>
-                        <img
-                            class="l ctrl-img"
-                            src="../../assets/img/yi-14.png"
-                        />
-                        <p class="l">
-                            数码类7
-                            <span>
-                            材质: N435R-EB&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;箱型: 四半摇盖<br>
-                            打包方式: 绳捆打包&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;成型方式: 一页成型<br>
-                            印刷方式: 数码&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;面纸类型: 牛皮纸<br>
-                            版面设定: AA&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;成箱方式: 钉箱<br>
-                            存储环境: 正常&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;印刷面积: 30%以内<br>
-                            内装重量: 10kg&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;收取刀模费: 否<br>
-                            设计稿: 已有设计稿&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;折算系数: 1<br>
-                            数码表处: 水性光油&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;产品承压: 非承压<br>
-                            拼版方式: 单拼&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;尺寸类型: 制造尺寸<br>
-                            终端客户: 否&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;材质层数: 5<br>
-                            开槽模切: 开槽&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;仓储叠放: 15<br>
-                            层箱型规格: 50cm*60cm*70cm
-                            </span>
-                        </p>
-                        
-                        <p class="l">产品分类：御贡膳品</p>
-
-                        <p class="l">
-                            <span>￥196.00</span>
-                            <br />
-                            ￥59.00
-                        </p>
-                        <div class="l jishu">
-                            <el-input-number
-                            size="mini"
-                            v-model="num"
-                            :min="1"
-                            :max="200"
-                            ref="number"
-                            ></el-input-number>
-                        </div>
-                        <p class="l" ref="money">￥59.00</p>
-                        <div class="r yiru">
-                            <span>移入收藏夹</span>
-                            <br />
-                            <span>删除</span>
-                        </div>
-
-                        </div>
-                    </div>
 
         </div>
       </div>
 
-      <!-- <div class="jiesuan" :class="{ 'fixed-bottom': fixedBtn }" v-show="cartGoodsList.length != 0">
+      <div class="jiesuan" :class="{ 'fixed-bottom': fixedBtn }" v-show="cartGoodsList.length != 0">
         <div id="check">
           <input
             type="checkbox"
@@ -285,32 +290,33 @@
           已选商品
           <span>{{ this.selectedNumber }}</span>件
         </p>
+      </div>
+      
+      <!-- <div class="jiesuan">
+          <div id="check">
+            <input
+                type="checkbox"
+                class="input_check"
+                id="input"
+                :checked="CheckBoxCartGoodsList"
+            />
+            <label for="input"></label>
+          </div>
+          <p class="l">全选</p>
+          <p class="l">删除选中的商品</p>
+          <p class="l">移入收藏夹</p>
+          <p
+          class="r"
+          style="color: white; font-size: 16px; background: #D02629"
+          >结算</p>
+          <p class="r">
+          合计件&nbsp;&nbsp;<b style="color: red; font-size: 14px">2</b>&nbsp;（不含运费）：
+          <span>118.00</span>
+          </p>
+          <p class="r">
+          已选商品
+          </p>
       </div> -->
-      <div class="jiesuan">
-                <div id="check">
-                <input
-                    type="checkbox"
-                    class="input_check"
-                    id="input"
-                    :checked="CheckBoxCartGoodsList"
-                />
-                <label for="input"></label>
-                </div>
-                <p class="l">全选</p>
-                <p class="l">删除选中的商品</p>
-                <p class="l">移入收藏夹</p>
-                <p
-                class="r"
-                style="color: white; font-size: 16px; background: #D02629"
-                >结算</p>
-                <p class="r">
-                合计件&nbsp;&nbsp;<b style="color: red; font-size: 14px">2</b>&nbsp;（不含运费）：
-                <span>118.00</span>
-                </p>
-                <p class="r">
-                已选商品
-                </p>
-            </div>
 
       <div class="del" v-show="Object.keys(delGoodsInfo).length != 0">已删除商品，您可以重新购买或加关注</div>
       <div class="cargo" v-show="Object.keys(delGoodsInfo).length != 0">
@@ -333,7 +339,7 @@
       <!-- <like-and-history></like-and-history> -->
     </div>
   </div>
-    <!-- <div class="cart-empty" v-if="cartMeg">
+    <div class="cart-empty" v-if="cartMeg">
       <div class="photo">
        <img class="img-card" src="../../assets/img/no-login-icon.png">
       </div>
@@ -346,7 +352,7 @@
           </li>
         </ul>
       </div>
-    </div> -->
+    </div>
 
     <foot-com></foot-com>
     <back-top></back-top>
@@ -1206,6 +1212,7 @@ export default {
 
 .buyCart {
   background: #f1f1f1;
+  padding-top: 10px;
 .center {
   width: 1200px;
   margin: 0 auto;
@@ -1424,30 +1431,28 @@ export default {
        }
    
       }
-      
+    .down_div {
+      height: 65px;
+      border-bottom: 1px solid #E7E7E7;
+      padding: 20px;
+      display: flex;
+      .full_gift {
+          cursor: pointer;
+          width: 70px;
+          height: 25px;
+          background: #D02629;
+          color: #ffffff;
+          padding: 2px 0 0 7px;
+      }
+      .free {
+          color: #333333;
+          padding-left: 20px;
+      }
+    }  
     .down {
-      height: 445px;
+      height:150px;
       border-bottom: 1px solid #eee;
       position: relative;
-
-      .down_div {
-          height: 65px;
-          border-bottom: 1px solid #E7E7E7;
-          padding: 20px;
-          display: flex;
-          .full_gift {
-              cursor: pointer;
-              width: 70px;
-              height: 25px;
-              background: #D02629;
-              color: #ffffff;
-              padding: 2px 0 0 7px;
-          }
-          .free {
-              color: #333333;
-              padding-left: 20px;
-          }
-      }
      
       #check {
         margin: 20px;

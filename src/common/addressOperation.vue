@@ -96,28 +96,28 @@
 					this.selectAreaId = val.addressId;
 				}
 			},
-			// getAddressList() {
-			// 	this.HTTP(this.$httpConfig.addressLists, {}, 'post', false)
-			// 		.then((res) => {
-			// 			this.addressList = res.data.data;
-			// 			if (this.addressList.length === 0) {
-			// 				this.isShow = true;
-			// 				this.isopen = true;
-			// 			}
-			// 			for (let index = 0; index < this.addressList.length; index++) {
-			// 				if (this.addressList[index].status === '1') {
-			// 					this.$emit('transferAddress', this.addressList[index]);
-			// 				}
-			// 			}
-			// 		})
-			// },
-			// hit(index) {
-			// 	for (let i = 0; i < this.addressList.length; i++) {
-			// 		this.addressList[i].status = 0;
-			// 	}
-			// 	this.addressList[index].status = 1;
-			// 	this.$emit('transferAddress', this.addressList[index]);
-			// },
+			getAddressList() {
+				this.HTTP(this.$httpConfig.addressLists, {}, 'post', false)
+					.then((res) => {
+						this.addressList = res.data.data;
+						if (this.addressList.length === 0) {
+							this.isShow = true;
+							this.isopen = true;
+						}
+						for (let index = 0; index < this.addressList.length; index++) {
+							if (this.addressList[index].status === '1') {
+								this.$emit('transferAddress', this.addressList[index]);
+							}
+						}
+					})
+			},
+			hit(index) {
+				for (let i = 0; i < this.addressList.length; i++) {
+					this.addressList[i].status = 0;
+				}
+				this.addressList[index].status = 1;
+				this.$emit('transferAddress', this.addressList[index]);
+			},
 			//初始化数据
 			initData() {
 				this.addressInfo = {

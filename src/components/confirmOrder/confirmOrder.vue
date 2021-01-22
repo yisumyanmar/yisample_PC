@@ -1,7 +1,7 @@
 <template>
   <div class="account">
-    <!-- <common-header v-on:childToParent="onChildClick"></common-header> -->
-    <common-header></common-header>
+    <common-header v-on:childToParent="onChildClick"></common-header>
+    <!-- <common-header></common-header> -->
     <div class="logo">
       <router-link to="/home">
         <img src="../../assets/img/logo-yi.png"/>
@@ -31,14 +31,17 @@
             <p class="l">优惠方式</p>
             <p class="l">小计</p>
           </div>
-          <!-- <div class="dianpu">
+          <div class="dianpu">
             <p class="name">店铺：<span @click="toStore">{{storeData.shop_name}}</span>
             <div class="service-wrapper" @click="openkefu(goodsData)">
               <div id="dom">
-                <img
+                <!-- <img
                         src="@/assets/img/people_ser.png"
+                /> -->
+                <img
+                  src="@/assets/img/qq.jpg"
                 />
-                <span>客服</span>
+                <!-- <span>客服</span> -->
               </div>
             </div>
             </p>
@@ -47,13 +50,14 @@
               <li class="order-info">
                 <img @click="toDetails" class="l" :src="URL + goodsImg.pic_url" alt=""/>
                 <p @click="toDetails" class="l">{{goodsData.title}}</p>
-                <p class="l">无</p>
+                <!-- <p class="l">无</p> -->
+                <p class="l">身份：原材商</p>
                 <p class="l">{{goodsData.price_member}}</p>
                 <p class="l">{{goodsData.goods_num}}</p>
                 <p class="l" v-if="goodsreduce.length!=0">
                   满{{goodsreduce.full}}减{{goodsreduce.expression}}
                 </p>
-                <p class="l" v-else-if='options.length!=0'>
+                <!-- <p class="l" v-else-if='options.length!=0'>
                   <el-select v-model="value"
                              placeholder="请选择"
                              @change='selectChange'
@@ -66,18 +70,18 @@
                     >
                     </el-option>
                   </el-select>
-                </p>
+                </p> -->
                 <p v-else>
                   无
                 </p>
-                <p v-if="deliveryMoney == -1" class="r">免配送费</p>
+                <!-- <p v-if="deliveryMoney == -1" class="r">免配送费</p>
                 <p v-else-if="deliveryMoney" class="r">{{deliveryMoney|keep2Num}}</p>
 								<p v-else-if="freight_price == 0" class="r">卖家包邮</p>
-                <p v-else class="r">{{freight_price|keep2Num}}</p>
+                <p v-else class="r">{{freight_price|keep2Num}}</p> -->
+                <p class="r">￥{{goodsData.price_member}}</p>
               </li>
           
               <li class="order-info gift-info" v-for="(id, index) in giftData" :key="index">
-                
                 <img @click="toDetails" class="l" :src="URL + id.pic_url" alt=""/>
                 <p @click="toDetails" class="l">{{id.title}}</p>
                 <p class="l">无</p>
@@ -87,6 +91,22 @@
                 <p class="r">无</p>
               </li>
 
+              <li class="delivery_method">运送方式：
+                <span class="method_info">普通配送</span>
+                <span class="method_toggle">快递</span>
+                <span class="method_no"> 免邮</span>
+                <span class="method_price">0.00</span>
+              </li>
+
+              <li class="store_total">店铺合计(含运费)
+                <span class="total_info">￥{{goodsData.price_member}}</span>
+              </li>
+
+              <!-- <li class="fapiao">发票抬头：
+                <span class="invoice-info">湖南实力有限公司</span>
+                <span class="invoice-toggle">修改</span>
+                <span class="invoice-no">不开发票</span>
+              </li> -->
 
               <li class="fapiao">发票信息：<span class="invoice-info" v-if="invoiceTit[storeData.id]">{{invoiceTit[storeData.id][0]}}</span><span
                       class="invoice-info" v-if="invoiceTit[storeData.id]">{{invoiceTit[storeData.id][1]}}</span><span
@@ -96,7 +116,7 @@
                 <span class="invoice-toggle" @click="toggle(storeData.id)" v-else>无需发票</span>
                 <p class="error_message">{{error_message}}</p>
               </li>
-              <li class="order-item clearfix">
+              <!-- <li class="order-item clearfix">
                 <div class="order-memo l">
                   <div class="memo l">
                     <span class="memo-title">给卖家留言：</span>
@@ -118,10 +138,10 @@
 										<span v-else class="freight">{{freight_price|keep2Num}} 元</span>
 									</div>
                 </div>
-              </li>
+              </li> -->
             </ul>
-          </div> -->
-          <div class="dianpu">
+          </div>
+          <!-- <div class="dianpu">
             <p class="name">店铺：<span>小米官方旗舰店</span>
             <div class="service-wrapper">
               <div id="dom">
@@ -190,7 +210,7 @@
                 <span class="invoice-no">不开发票</span>
               </li>
             </ul>
-          </div>
+          </div> -->
 
           
         </div>
@@ -208,11 +228,23 @@
         </p>
       </div> -->
       <div class="jiesuan">
+        <p><span>￥{{goodsData.goods_num}} </span>件商品，商品总金额：{{total|keep2Num}} </p>
+        <p>￥{{Number(discountData.discount)/10|keep2Num}}</p>
+        <p v-if="coupunData">优惠券：-￥{{couponPrice|keep2Num}} </p>
+        <p v-else>优惠券：-￥0.00 </p>
+        <p v-if="deliveryMoney == -1">配送共计 ：免配送费</p>
+        <p v-else-if="deliveryMoney">配送共计 ：￥{{deliveryMoney|keep2Num}} </p>
+        <p v-else>
+          <span class="delivery_price" v-if="freight_price == 0">运费共计 ：卖家包邮</span>
+          <span class="delivery_price" v-else>运费共计 ：￥{{freight_price|keep2Num}} </span>
+        </p>
+      </div>
+      <!-- <div class="jiesuan">
         <p><span>1</span>件商品，总商品金额：￥19.80</p>
         <p>积分： -￥20.00</p>
         <p>优惠券： -￥10.00</p>
         <p>运费： ￥3.00</p>
-      </div>
+      </div> -->
 
 
       <!-- <div class="pay">
@@ -228,20 +260,32 @@
         </div>
       </div> -->
       <div class="pay">
-        <p class="yingfu r">应付总额：
-          <span>￥13.80</span>
+        <!-- <p class="yingfu r">应付金额：
+          <span v-if="deliveryMoney == -1">￥{{(total-Number(couponPrice)-Number((total)*(1-(Number(discountData.discount)/100)).toFixed(2)))|keep2Num}} </span>
+            <span v-else-if="deliveryMoney">￥{{(total+Number(deliveryMoney)-Number(couponPrice)-Number((total)*(1-(Number(discountData.discount)/100)).toFixed(2)))|keep2Num}} </span>
+            <span v-else>￥{{(total+freight_price-Number(couponPrice)-Number((total)*(1-(Number(discountData.discount)/100)).toFixed(2)))|keep2Num}} </span>
+        </p> -->
+        <p class="yingfu r">应付金额：
+          <span v-if="deliveryMoney == -1">￥{{(total-Number(couponPrice)-(Number(discountData.discount)/10).toFixed(2))|keep2Num}} </span>
+            <span v-else-if="deliveryMoney">￥{{(total+Number(deliveryMoney)-Number(couponPrice)-(Number(discountData.discount)/10).toFixed(2))|keep2Num}} </span>
+            <span v-else>￥{{(total+freight_price-Number(couponPrice)-(Number(discountData.discount)/10).toFixed(2))|keep2Num}} </span>
         </p>
-        <!-- <div class="r">
+        <div class="r">
           <p class="l">寄送至：<span>{{addressInfo.prov_name}}{{addressInfo.city_name}}{{addressInfo.dist_name}} {{addressInfo.address}}</span>
           </p>
           <p class="l">收货人：<span>{{addressInfo.realname}} {{addressInfo.mobile}}</span></p>
-        </div> -->
+        </div>
+      </div>
+      <!-- <div class="pay">
+        <p class="yingfu r">应付总额：
+          <span>￥13.80</span>
+        </p>
         <div class="r">
           <p class="l">寄送至：<span>上海市 普陀区百春园小区22栋四单元401</span>
           </p>
           <p class="l">收货人：<span>张小五 185****3665</span></p>
         </div>
-      </div>
+      </div> -->
 
 
       <div class="submit">
@@ -921,13 +965,14 @@
           //   cursor: pointer;
           // }
           p:nth-of-type(1) {
-            width: 250px;
+            width: 220px;
             font-size: 12px;
             color: #575757;
             // margin-top: 29px;
             margin-left: 30px;
             cursor: pointer;
             line-height: 25px;
+            margin-right: 35px;
           }
           span {
               float: left;
@@ -938,7 +983,7 @@
           }
 
           p:nth-of-type(3) {
-            margin: 17px 147px 0 123px;
+            margin: 17px 147px 0 110px;
           }
 
           p:nth-of-type(5) {
@@ -947,7 +992,7 @@
 
           p:last-child {
             color: #dd2727;
-            margin-left: 150px;
+            margin-left: 165px;
           }
         }
 
@@ -965,11 +1010,11 @@
         }
 
         .delivery_method {
-          line-height: 45px;
+          // line-height: 45px;
           font-size: 12px;
           color: #666666;
           float: right;
-          margin-top: -120px;
+          margin-top: -18px;
 
           .method_info {
             color: #666666;
@@ -992,11 +1037,11 @@
         }
 
         .store_total {
-          line-height: 45px;
+          // line-height: 45px;
           font-size: 12px;
           color: #666666;
           float: right;
-          margin-top: -60px;
+          margin: 12px 0;
 
           .total_info {
             color: #DD2727;
@@ -1010,6 +1055,8 @@
           font-size: 12px;
           color: #666666;
           padding-left: 15px;
+          margin-top: 10px;
+          float: left;
 
           .invoice-info {
             color: #333333;
