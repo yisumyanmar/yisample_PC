@@ -37,9 +37,9 @@
                         积分 即可升级至 钻石会员
                     </p>
                 </div>
-                <!-- <p class="l my-address" @click="toMyAddress">我的收货地址</p> -->
-                <p class="l my-address">我的收货地址</p>
-                <!-- <div class="r xinxi">
+                <p class="l my-address" @click="toMyAddress">我的收货地址</p>
+                <!-- <p class="l my-address">我的收货地址</p> -->
+                <div class="r xinxi">
                     <p class="l mine" @click="hits" :class="{ col: iscol }">
                         我的优惠信息<i class="el-icon-arrow-down"></i>
                     </p>
@@ -47,12 +47,12 @@
                         <p @click="GoTo">店铺优惠券：<span>1</span></p>
                         <p>平台积分：<span>200</span></p>
                     </span>
-                </div> -->
-                <div class="r xinxi">
+                </div>
+                <!-- <div class="r xinxi">
                     <p class="l mine">
                         我的优惠信息<i class="el-icon-arrow-down"></i>
                     </p>
-                </div>
+                </div> -->
                 <div class="r evaluate">
                     <ul>
                         <li class="l">
@@ -91,7 +91,7 @@
                         >更多</router-link
                     >
                 </div>
-                <!-- <div class="bottom">
+                <div class="bottom">
                     <ul class="clearfix" v-if="status">
                         <li
                             class="l"
@@ -116,8 +116,8 @@
                             <p class="text1-hidden">{{ item.shop_name }}</p>
                         </li>
                     </ul>
-                </div> -->
-                <div class="bottom">
+                </div>
+                <!-- <div class="bottom">
                     <ul class="clearfix">
                         <li
                             class="l"
@@ -129,7 +129,7 @@
                             <p>¥669.00</p>
                         </li>
                     </ul>
-                </div>
+                </div> -->
             </div>
             <div class="like">
                 <p class="top">
@@ -139,7 +139,7 @@
                         >换一批<img src="../../../assets/img/huanyipi.jpg"
                     /></span>
                 </p>
-                <!-- <ul>
+                <ul>
                     <li
                         class="l"
                         :key="i"
@@ -150,14 +150,14 @@
                         <p class="text1-hidden">{{ item.title }}</p>
                         <p>
                             {{ item.price_member }}
-                            <span
+                            <!-- <span
                                 style="margin-left:2px;color:#656565;font-size:11px"
                                 >已售{{ item.sales_sum }}件</span
-                            >
+                            > -->
                         </p>
                     </li>
-                </ul> -->
-                <ul>
+                </ul>
+                <!-- <ul>
                     <li
                         class="l"
                         :key="i"
@@ -169,7 +169,7 @@
                             ¥1280.00
                         </p>
                     </li>
-                </ul>
+                </ul> -->
             </div>
         </div>
         <div class="right r">
@@ -177,7 +177,7 @@
                 <div class="me l">
                     <p>我的购物车</p>
                 </div>
-                <!-- <ul class="l">
+                <ul class="l">
                     <li
                         class="l"
                         v-for="(item, index) in browseList"
@@ -186,14 +186,14 @@
                     >
                         <img v-lazy="URL + item.pic_url" />
                         <p>￥{{ item.price_member }}</p>
-                        <p
+                        <!-- <p
                             style="color:#656565;position:relative;top: -12px;font-size:11px"
                         >
                             已售{{ item.sales_sum }}件
-                        </p>
+                        </p> -->
                     </li>
-                </ul> -->
-                <ul class="l">
+                </ul>
+                <!-- <ul class="l">
                     <li
                         class="l"
                         v-for="i in 6"
@@ -202,12 +202,17 @@
                         <img src="../../../assets/img/giftone.png" />
                         <p>¥920.00</p>
                     </li>
-                </ul>
-                <!-- <div class="base l" @click="ToView">
+                </ul> -->
+                <div class="base1 l" @click="ToView">
                     查看全部<span>({{ browseList.length }})</span>
-                </div> -->
-                <div class="base1 l">
+                </div>
+                <!-- <div class="base1 l">
                     查看全部<span>(5)</span>
+                </div> -->
+            </div>
+            <div class="same1 l">
+            <div class="me1 l">
+                    <p>浏览记录</p>
                 </div>
                 <ul class="l">
                     <li
@@ -523,7 +528,8 @@ export default {
             }
         }
         .like {
-            height: 279px;
+            // height: 279px;
+            height: auto;
             background: #fff;
             margin-top: 13px;
             overflow: hidden;
@@ -554,8 +560,9 @@ export default {
                     // height: 195px;
                     // margin-right: 9px;
                     width: 160px;
-                    height: 200px;
+                    height: auto;
                     margin-right: 18px;
+                    padding-bottom: 20px;
                     img {
                         // width: 100%;
                         // height: 110px;
@@ -637,6 +644,48 @@ export default {
                 width: 100%;
                 span {
                     color: #d02629;
+                }
+            }
+        }
+        .same1 {
+            margin-bottom: 10px;
+            background: #fff;
+            margin-left: 15px;
+            .me1 {
+                height: 42px;
+                border-bottom: 1px solid #f5f8fa;
+                width: 235px;
+                p {
+                    line-height: 18px;
+                    width: 90px;
+                    border-left: 2px solid #d02629;
+                    text-align: center;
+                    margin-top: 14px;
+                    margin-left: 15px;
+                    float: left;
+                }
+            }
+            ul {
+                margin-top: 10px;
+                margin-left: 8px;
+                margin-bottom: 10px;
+                li {
+                    // width: 80px;
+                    // height: 134px;
+                    // margin: 0 15px;
+                    width: 80px;
+                    height: 110px;
+                    margin: 0 11px;
+                    img {
+                        width: 80px;
+                        height: 80px;
+                    }
+                    p {
+                        line-height: 30px;
+                        text-align: center;
+                        font-size: 10px;
+                        color: #666;
+                    }
                 }
             }
         }

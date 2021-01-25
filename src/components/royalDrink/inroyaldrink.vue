@@ -1,8 +1,8 @@
 <template>
     <div class="shopsn_product">
-        <!-- <common-header v-on:childToParent="onChildClick"></common-header> -->
-        <common-header></common-header>
-        <head-com></head-com>
+        <common-header v-on:childToParent="onChildClick"></common-header>
+        <!-- <common-header></common-header> -->
+        <head-com :inroyal="drink"></head-com>
         <div class="center">
 
             <div class="header">
@@ -15,38 +15,39 @@
                     <i class="el-icon-arrow-down"></i>
                 </a>
                 <span>{{ goodsData.title }}</span> -->
-                <a @click="$router.push('yangShen')" class="xiala">标准品</a>
-                <span style="color: #D02629; padding-left: 10px">传感器彩盒</span>
+                <a @click="GoTo" class="xiala">标准品</a>
+                <!-- <span style="color: #D02629; padding-left: 10px">传感器彩盒</span> -->
+                <span style="color: #D02629; padding-left: 10px">{{ goodsData.title }}</span>
             </div>
 
             <div class="top">
                 <div class="left l">
-                    <!-- <div class="bigImg" v-if="video && showVideo == false">
+                    <div class="bigImg" v-if="showVideo == false">
                         <img
                             v-if="defaultPicture"
                             :src="URL + defaultPicture"
                         />
                         <div id="winSelector"></div>
-                    </div> -->
-                     <div class="bigImg">
+                    </div>
+                    <!-- <div class="bigImg">
                         <img
                             src="../../assets/img/yi-16.png"
                         />
                         <div id="winSelector"></div>
-                    </div>
-                    <!-- <div class="see-video" v-if="video && showVideo == false" >
+                    </div> -->
+                    <div class="see-video" v-if="video && showVideo == false" >
                         <img src="../../assets/img/videoplay.png" class="playimg" @click="showvideo(video)"/>
                     </div>
-                    <div class="bigImg" v-show="video && showVideo == true">
+                    <div class="bigImg" v-show="showVideo == true">
                         <vue-core-video-player 
                             @ended="endedPlaying" class="playimg" :src="video"></vue-core-video-player>
-                    </div> -->
+                    </div>
                     <div class="smallImg spec-scroll">
                         <div class="scrollbutton smallImgUp disabled l">
                             <i class="el-icon-caret-left"></i>
                         </div>
                         <div id="imageMenu" class="img-list">
-                            <!-- <ul :style="{ width: imgList.length * 75 + 'px' }">
+                            <ul :style="{ width: imgList.length * 75 + 'px' }">
                                 <li
                                     @mouseover="styleChange(index, li.pic_url)"
                                     :key="index"
@@ -57,8 +58,8 @@
                                         :src="URL + li.pic_url"
                                     />
                                 </li>
-                            </ul> -->
-                            <ul>
+                            </ul>
+                            <!-- <ul>
                                 <li>
                                     <img src="../../assets/img/yi-16.png" />
                                 </li>
@@ -74,23 +75,23 @@
                                 <li>
                                     <img src="../../assets/img/yi-6.png" />
                                 </li>
-                            </ul>
+                            </ul> -->
                         </div>
-                        <!-- <div
+                        <div
                             class="scrollbutton smallImgDown r"
                             :class="{ disabled: imgList.length < 5 }"
                         >
                             <i class="el-icon-caret-right"></i>
-                        </div> -->
-                        <div class="scrollbutton smallImgDown r">
-                            <i class="el-icon-caret-right"></i>
                         </div>
+                        <!-- <div class="scrollbutton smallImgDown r">
+                            <i class="el-icon-caret-right"></i>
+                        </div> -->
                     </div>
-                    <!-- <div id="bigView" v-if="showVideo == false">
+                    <div id="bigView" v-if="showVideo == false">
                         <div class="big-img">
                             <img :src="URL + defaultPicture" />
                         </div>
-                    </div> -->
+                    </div>
                     <div class="fenxiang l">
                         <span class="share">
                             <i class="el-icon-share"></i>分享
@@ -121,8 +122,8 @@
                     </div>
                 </div>  
                 <div class="central l">
-                    <!-- <p class="goods-title">{{ goodsData.title }}</p> -->
-                    <p class="goods-title">传感器彩盒</p>
+                    <p class="goods-title">{{ goodsData.title }}</p>
+                    <!-- <p class="goods-title">传感器彩盒</p> -->
                     <!-- <p class="description">{{ goodsData.description }}</p> -->
                     <div class="price">
                         <!-- <span style="visibility: hidden;">hello</span> -->
@@ -262,16 +263,16 @@
 
                         <p class="send-to">
                             <span class="send-to-span">配送至</span>
-                            <!-- <span v-if="callStatus == 1">
+                            <span v-if="callStatus == 1">
                             <span v-if="deliveryCal == -1" class="yunfei">配送：免配送费</span>
                             <span v-else class="yunfei">配送：{{deliveryCal}} 元</span>
                             </span>
                             <span v-else>
                             <span v-if="freightCal == 0" class="yunfei">运费：卖家包邮</span>
                             <span v-else class="yunfei">运费：{{freightCal}} 元</span>
-                            </span> -->
+                            </span>
                             <span>
-                            <span class="yunfei">运费 ：￥10.00</span>
+                            <!-- <span class="yunfei">运费 ：￥10.00</span> -->
                             </span>
                             <div class="tab-input" @click="callingArea">
                             <input v-if="addressAll == ''" placeholder="请选择地区" type="tel" class="mint-field-core" disabled v-model="addressAllData">
@@ -346,25 +347,29 @@
 
                         <p class="g-service">
                             服 &nbsp;&nbsp;务
-                            <!-- <span v-if="merchantDelivery" class=""
-                                >由
+                            <span v-if="merchantDelivery" class="">
+                                由
                                 <span class="yellow"
-                                      @click="goStore(shop_data.store_id)"
-                                    >{{ shop_data.shop_name }} </span
-                                >负责供货,&nbsp;{{merchantDelivery}}</span
-                            >
-                            <span v-if="expressDelivery" class=""
-                                >由
+                                    @click="goStore(shop_data.store_id)">
+                                    {{ shop_data.shop_name }}
+                                </span>
+                                    负责供货,&nbsp;{{merchantDelivery}}
+                            </span>
+                            <span v-if="expressDelivery" class="">
+                                由
                                 <span class="yellow"
-                                      @click="goStore(shop_data.store_id)"
-                                    >{{ shop_data.shop_name }} </span
-                                >&nbsp;在&nbsp;{{expressDelivery.stock_name}}&nbsp;负责发货,&nbsp;{{expressDelivery.send_time}}小时内发货</span
-                            >  -->
-                            <span class=""
+                                    @click="goStore(shop_data.store_id)">
+                                    {{ shop_data.shop_name }}
+                                </span>
+                                <!-- &nbsp;在&nbsp;{{expressDelivery.stock_name}}&nbsp;负责发货,&nbsp;{{expressDelivery.send_time}}小时内发货 -->
+                                &nbsp;在&nbsp;{{expressDelivery.stock_name}}&nbsp;负责发货,&nbsp;{{expressDelivery.send_time}}并提供售后服务
+                            </span> 
+                            <!-- <span class=""
                                 >由
                                 <span class="yellow"
                                     >美玉美翡翠店</span
-                                >负责发货，&nbsp;并提供售后服务</span>
+                                >负责发货，&nbsp;并提供售后服务
+                            </span> -->
                         </p>
 
                         <p class="g-service">
@@ -380,24 +385,6 @@
                         </p>
 
                     </div>
-                    <!-- <div class="leiji">
-                        <p>
-                            累计评价
-                            <span>{{ info.count }}人评价</span>
-                        </p>
-                        <p>
-                            累计销量
-                            <span>{{ info.sales_sum || 0 }}</span>
-                        </p>
-                        <p>
-                            赠送积分
-                            <span>{{
-                                (
-                                    goodsData.price_member / info.integral
-                                ).toFixed(0) || 0
-                            }}</span>
-                        </p>
-                    </div> -->
                     <div class="shuliang">
                         <span class="l">数量</span>
                         <div class="inp l">
@@ -422,9 +409,27 @@
                                 <i class="el-icon-minus"></i>
                             </span>
                         </div>
-                        <!-- <span class="l">件 库存{{ goodsData.stock }}件</span> -->
-                        <span class="l">件 库存14件</span>
+                        <span class="l">件 库存{{ goodsData.stock }}件</span>
+                        <!-- <span class="l">件 库存14件</span> -->
                     </div>
+                     <!-- <div class="leiji">
+                        <p>
+                            累计评价
+                            <span>{{ info.count }}人评价</span>
+                        </p>
+                        <p>
+                            累计销量
+                            <span>{{ info.sales_sum || 0 }}</span>
+                        </p>
+                        <p>
+                            赠送积分
+                            <span>{{
+                                (
+                                    goodsData.price_member / info.integral
+                                ).toFixed(0) || 0
+                            }}</span>
+                        </p>
+                    </div> -->
 
                     <div class="leiji">
                         <p>
@@ -435,9 +440,12 @@
                         </p>
                     </div>
 
-                    <!-- <div class="buy">
-                        <span v-if="goodsData.shelves == 1" @click="purchase"
+                    <div class="buy">
+                        <!-- <span v-if="goodsData.shelves == 1" @click="purchase"
                             >立即购买</span
+                        > -->
+                        <span v-if="goodsData.shelves == 1" @click="purchase"
+                            >立即订购</span
                         >
                         <span
                             v-if="goodsData.shelves == 1"
@@ -447,18 +455,26 @@
                                     goodsData.store_id
                                 )
                             "
-                            ><img
+                            >
+                            <!-- <img
                                 src="../../assets/img/goshop.png"
                                 style="position: relative;
                                        top: -0.4rem;"
-                            />加入购物车</span
+                            /> -->
+                            <img
+                                src="../../assets/img/gw.png"
+                                style="position: relative"
+                            />
+                            <!-- 加入购物车</span
+                        > -->
+                        加入进货单</span
                         >
                         <span
                             v-if="goodsData.shelves == 0"
                             style="background: #e3e3e3;color: #999;border: none;"
                             >此商品已下架</span
                         >
-                        <div class="r">
+                        <!-- <div class="r">
                             手机购买<img
                                 @mouseenter="handleScan(goodsData.id, 1)"
                                 @mouseleave="handleLeave"
@@ -466,10 +482,10 @@
                                 alt=""
                             />
                         </div>
-                        <div id="qrCode" ref="qrCodeDiv"></div>
+                        <div id="qrCode" ref="qrCodeDiv"></div> -->
                     </div>
-                </div> -->
-                    <div class="buy">
+                <!-- </div> -->
+                    <!-- <div class="buy">
                         <span>立即订购</span>
                         <span>
                             <img
@@ -478,7 +494,7 @@
                             />
                             加入进货单
                         </span>
-                    </div>
+                    </div> -->
                 </div>
 
                 <!-- <div class="r right">
@@ -865,15 +881,16 @@
                                 <p class="p">工艺：不限</p>
                                 <p class="p">窑口：不限</p>
                             </div>
-                            <!-- <div
-                                class="down"
-                                id="detail-img"
-                                v-html="shopImage"
-                            ></div> -->
                             <div
                                 class="down"
                                 id="detail-img"
-                            ><img src="../../assets/img/yi-18.png" /></div>
+                                v-html="shopImage"
+                            ></div>
+                            <!-- <div
+                                class="down"
+                                id="detail-img">
+                                <img src="../../assets/img/yi-18.png" />
+                            </div> -->
                         </div>
                         <div v-show="only == 1" class="attribute">
                             <table class="table" cellspacing="0">
@@ -3281,9 +3298,9 @@ export default {
                 // left: 0;
                 left: 30px;
                 // width: 400px;
-                width: 300px;
+                width: 350px;
                 // height: 400px;
-                height: 390px;
+                height: 350px;
             }
 
             #winSelector {
