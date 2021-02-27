@@ -9,6 +9,9 @@ const imgRequest = 'http://center.shopsn.cn/'
 const userModuleIndex = 'http://api.gtpacking.cn/custom-pc/admin.php/'
 // const userModuleIndex = 'http://192.168.1.146/pc/admin.php/'
 const uploadImage = 'upload.php/'
+
+const userUpload = 'http://admin.gtpacking.cn/upload.php/'
+
 //  const request = 'http:// test_b2b2c.shopsn.cn/'
 const config = {
     // 公共部分
@@ -32,6 +35,16 @@ const config = {
     backPwdSendSms: request + 'Register/backPwdSendSms', // 找回密码--短信发送
     backPwd: request + 'Register/backPwd', // 找回密码
     outLogin: userModuleIndex + 'LogOut/logOut', // 退出登录
+
+    inquiryPublicityList: request + 'Project/inquiryPublicityList',
+    inquiryPublicityDetail: request + 'Project/inquiryPublicityDetail',
+    myCustomizedList: userModuleIndex + 'OrderGoods/myCustomizedList',
+    myCustomizedDel: userModuleIndex + 'CustomTemplate/myCustomizedDel',
+    addCustomized: userModuleIndex + 'CustomTemplate/addCustomized',
+    customTemplateList: userModuleIndex + 'CustomTemplate/customTemplateList',
+    customTemplateDetail: userModuleIndex + 'CustomTemplate/customTemplateDetail',
+    winningList: userModuleIndex + 'CustomTemplate/winningList',
+    CustomizedDel: userModuleIndex + 'CustomTemplate/myCustomizedDel',
 
     //  首页
     home: request + 'HomeIndex/home', //  首页信息获取
@@ -203,7 +216,9 @@ const config = {
     regionLists: request + 'Region/regionLists', // 地区列表
     cityList: request + 'Region/regionLists', //  城市四级联动
     //  招商入驻
-    upLoadImage: request + 'UploadImage/uploadImage', // 上传图片
+    // upLoadImage: request + 'UploadImage/uploadImage', // 上传图片
+    upLoadImage: userUpload + 'FileUpload/uploadImageToLocal',
+    getGoodsImageConfig: userUpload + 'FileUpload/getGoodsImageConfig',
     delPic: request + 'UploadImage/delPic', // 删除图片
     perfectInfo: request + 'StoreInformation/perfectInfo', // 入驻提交
     companyProgress: userModuleIndex + 'CompanyStoreAduitProgress/getStoreByUser', // 企业入驻进度

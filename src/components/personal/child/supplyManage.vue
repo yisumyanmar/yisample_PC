@@ -61,8 +61,46 @@ export default {
     name: 'supplyManage',
     data() {
         return {
+            winList: []
         };
     },
+    created() {
+          this.GetWinningList();
+    },
+    methods: {
+        GetWinningList() {
+            this.HTTP(this.$httpConfig.winningList, {}, "post")
+                .then(res => {
+                    this.winList = res.data.data.data;
+                })
+                .catch(e => {
+                    console.log(e);
+                });
+        },
+        deleteList(id) {
+            this.$confirm("您确定要删除该订单吗?", "提示", {
+            confirmButtonText: "确定",
+            cancelButtonText: "取消",
+            type: "warning",
+            lockScroll: false,
+            center: true,
+            closeOnClickModal: false
+            })
+            .then(() => {
+                this.HTTP(
+                this.$httpConfig.CustomizedDel,
+                {
+                    id: id
+                },
+                "post"
+                ).then(res => {
+                    this.GetWinningList();
+                });
+            })
+            .catch(() => {
+            });
+        }
+    }
 };
 </script>
 

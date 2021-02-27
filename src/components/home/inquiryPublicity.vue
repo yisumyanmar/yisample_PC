@@ -20,7 +20,7 @@
                     <p class="l">发布时间</p>
                     <p class="l">操作</p>
                 </div>
-                <div v-for="i in 12" :key="i">
+                <!-- <div v-for="i in 12" :key="i">
                     <div class="thead_body">
                         <p class="l">中铁电气化局贵阳轨道交通2号线车站装修及机电安装5标零星材料采购100602-询价公示</p>
                         <p class="l">中铁电气化局西安电气化工程有限公司</p>
@@ -39,6 +39,15 @@
                         <p class="l">2020.10.09 15:59</p>
                         <p class="l" @click="ToinqInner">查看详情</p>
                     </div>
+                </div> -->
+                <div v-for="(item, index) in PublicityList" :key="index">
+                    <div class="thead_body">
+                        <p v-if="item.title == null" class="l">-</p>
+                        <p v-else class="l">{{item.title}}</p>
+                        <p class="l">{{item.user_name}}</p>
+                        <p class="l">{{item.create_time | formatDate}}</p>
+                        <p class="l" @click="ToinqInner(item.id)">查看详情</p>
+                    </div>
                 </div>
             </div>
         </div>
@@ -52,15 +61,31 @@ export default {
     name: 'inquiryPublicity',
     data() {
         return {
-            
+            PublicityList: [],
         }
     },
+    created() {
+        this.getInquiryPublicityList();
+    },
     methods: {
-        ToinqInner() {
+        ToinqInner(id) {
             this.$router.push({
-                name: "inqInner"
+                name: "inqInner",
+                query: {
+                    id: id
+                }
             });
-        }
+        },
+        getInquiryPublicityList() {
+            this.HTTP(
+                this.$httpConfig.inquiryPublicityList, {}, "post")
+                .then(res => {
+                    this.PublicityList = res.data.data.data;
+                })
+                .catch(err => {
+                    console.log(err.data.message)
+                });
+        },
     }
 }
 </script>
@@ -166,6 +191,7 @@ export default {
                 p:nth-of-type(2) {
                     margin: 0 20px;
                     width: 240px;
+                    text-align: center;
                 }
                 p:nth-of-type(3) {
                     margin: 0 20px;

@@ -31,6 +31,26 @@ export default {
         return {
             
         }
+    },
+    created() {
+        this.getInquiryPublicityDetail();
+    },
+    methods: {
+        getInquiryPublicityDetail() {
+            this.HTTP(
+                this.$httpConfig.inquiryPublicityDetail, 
+                {
+                    id: this.$route.query.id
+                    },
+                    "post"
+                    )
+                .then(res => {
+                    this.PublicityDetail = res.data.data;
+                })
+                .catch(err => {
+                    console.log(err.data.message)
+                });
+        },
     }
 }
 </script>

@@ -9,42 +9,95 @@
             <p class="l">单价</p>
             <p class="l">交易操作</p>
         </div>
-        <div class="alike">
+        <div class="alike" v-for="(item, index) in cusList" :key="index">
             <div class="both">
             <input class="l" type="checkbox" />
-            <p class="l">2020-12-02</p>
+            <!-- <p class="l">2020-12-02</p> -->
+            <p class="l">{{ item.create_time | formatDate }}</p>
             </div>
             <div class="order-item clearfix">
                 <div class="order-info l">
                     <div class="zuo">
                         <div class="huowu">
-                            <p>87845</p>
+                            <!-- <p>87845</p>
                             <p>中铁建大桥局三公司杭州<br>
                             地铁8号线车辆段采购<br>
                             灰砂砖一批
                             </p>
                             <p>48x58.5cm</p>
                             <p>包装</p>
-                            <p>￥50</p>
+                            <p>￥50</p> -->
+                            <p>{{item.id}}</p>
+                            <p>{{item.title}}</p>
+                            <p>48x58.5cm</p>
+                            <p>{{item.class_name}}</p>
+                            <p>{{item.goods_price}}</p>
                             <button>发布询价</button>
                             <button>修改</button>
                         </div>
-                        <button class="delete_btn">删除</button>
+                        <button @click="deleteOrder(item.id)" class="delete_btn">删除</button>
                     </div>
                 </div>
             </div>
         </div>
-        <button class="btn"><i class="el-icon-plus"></i>新增定制品</button>
+        <button @click="addProduct" class="btn"><i class="el-icon-plus"></i>新增定制品</button>
     </div>
 </template>
 
 <script>
+import { Message } from "element-ui";
   export default {
       name: 'customProduct',
       data() {
           return {
-
+              cusList: []
           }
+      },
+      created() {
+          this.GetMyCustomizedList();
+      },
+      methods: {
+            GetMyCustomizedList() {
+                this.HTTP(this.$httpConfig.myCustomizedList, {}, "post")
+                    .then(res => {
+                        this.cusList = res.data.data.data;
+                    })
+                    .catch(e => {
+                        console.log(e);
+                    });
+            },
+            deleteOrder(id) {
+            // 删除订单
+            this.$confirm("您确定要删除该订单吗?", "提示", {
+            confirmButtonText: "确定",
+            cancelButtonText: "取消",
+            type: "warning",
+            lockScroll: false,
+            center: true,
+            closeOnClickModal: false
+            })
+            .then(() => {
+                this.HTTP(
+                this.$httpConfig.myCustomizedDel,
+                {
+                    id: id
+                },
+                "post"
+                ).then(res => {
+                    this.GetMyCustomizedList();
+                });
+            })
+            .catch(() => {
+            });
+        },
+        addProduct() {
+            this.$router.push({
+                name: "productManage",
+                query: {
+                x: 0
+            }
+            });
+        }
       }
     
   }
@@ -63,7 +116,7 @@
     height: 100%;
 }
 .customProduct {
-    height: 800px;
+    height: auto;
     width: 980px;
     background: #fff;
     margin-top: 16px;
@@ -137,12 +190,19 @@
                         width: 147px;
                         margin: 0 15px 0 0;
                     }
+                    p:nth-of-type(2) {
+                        width: 100px;
+                        overflow: hidden;
+                        height: 60px;
+                        line-height: 60px;
+                    }
                     p:nth-of-type(3) {
                         margin: 0 125px 0 40px;
                         width: 40px;
                     }
                     p:nth-of-type(5) {
-                        margin: 0 50px 0 75px;
+                        margin: 0 34px 0 75px;
+                        width: 50px;
                     }
                     button {
                         color: #ffffff;
@@ -178,7 +238,8 @@
         width: 125px;
         height: 40px;
         background: #02A3FE;
-        margin: 25px 0 0 18px;
+        margin: 25px 0 35px 18px;
+        cursor: pointer;
         .el-icon-plus {
             padding-right: 6px;
         }
