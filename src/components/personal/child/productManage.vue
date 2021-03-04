@@ -73,7 +73,7 @@
                     </el-select> -->
                     <el-select class="el-select1" v-model="value3" placeholder="">
                         <el-option
-                        v-for="(item, index) in cusList"
+                        v-for="(item, index) in cusTemList"
                         :key="index"
                         :label="item.name"
                         :value="item.id">
@@ -84,7 +84,7 @@
                     <img src="../../../assets/img/yi-19.png" />
                     <span class="parameter">新增参数</span>
                 </p>
-                <div class="show_data">
+                <div class="show_data" v-show="showData">
                 <!-- <div class="show_data" v-show="showData" v-for="(item, index) in cusDetail" :key="index"> -->
                     <!-- <p>
                         <span>*</span>产品承压：
@@ -136,17 +136,51 @@
                         <el-input class="el-input1" v-model="input10"></el-input>
                         <img src="../../../assets/img/yi-19.png" />
                     </p> -->
+
+                    <p v-if="checkName0">
+                        <span></span>{{checkName0}}
+                        <el-input class="el-input0" v-model="checkId0" disabled></el-input>
+                        <el-input class="el-input2" v-model="checkValue0"></el-input>
+                    </p>
+                    <p v-if="checkName1">
+                        <span></span>{{checkName1}}
+                        <el-input class="el-input0" v-model="checkId1" disabled></el-input>
+                        <el-input class="el-input2" v-model="checkValue1"></el-input>
+                    </p>
+                    <p v-if="checkName2">
+                        <span></span>{{checkName2}}
+                        <el-input class="el-input0" v-model="checkId2" disabled></el-input>
+                        <el-input class="el-input2" v-model="checkValue2"></el-input>
+                    </p>
+                    <p v-if="checkName3">
+                        <span></span>{{checkName3}}
+                        <el-input class="el-input0" v-model="checkId3" disabled></el-input>
+                        <el-input class="el-input2" v-model="checkValue3"></el-input>
+                    </p>
+                    <p v-if="checkName4">
+                        <span></span>{{checkName4}}
+                        <el-input class="el-input0" v-model="checkId4" disabled></el-input>
+                        <el-input class="el-input2" v-model="checkValue4"></el-input>
+                    </p>
+
                     <!-- <p>
                         <el-checkbox v-model="checked">{{item.name}}</el-checkbox>
                     </p> -->
-                    <!-- <p>
+
+                    <!-- <p v-for="(item, index) in cusDetail" :key="index">
                         <label for="checked">{{item.name}}</label>
                         <input :type="item.type" id="checked" name="checked" value="">
                     </p> -->
-                    <p v-show="showData" v-for="(item, index) in cusDetail" :key="index">
+                    <!-- <p v-for="(item, index) in cusDetail" :key="index">
+                        <label for="checked">{{item.name}}</label>
+                        <input :type="item.type" :checked="checkInput">
+                    </p> -->
+
+                    <!-- <p v-for="(item, index) in cusDetail" :key="index">
                         <span></span>{{item.name}}
                         <el-input class="el-input2" v-model="nameValue"></el-input>
-                    </p>
+                    </p> -->
+
                 </div>
                 <!-- <p class="five">空间：
                     <el-input
@@ -227,7 +261,7 @@ export default {
             cusTem: [],
             cusTem1: [],
             cusTem2: [],
-            cusList: [],
+            cusTemList: [],
             selectData1: false,
             selectData2: false,
             showData: false,
@@ -246,7 +280,23 @@ export default {
             dialogVisible: false,
             figureCollection:[],
             nameId: '',
-            nameValue: ''
+            nameValue: '',
+            checkName0: '',
+            checkName1: '',
+            checkName2: '',
+            checkName3: '',
+            checkName4: '',
+            checkId0: '',
+            checkId1: '',
+            checkId2: '',
+            checkId3: '',
+            checkId4: '',
+            checkValue0: '',
+            checkValue1: '',
+            checkValue2: '',
+            checkValue3: '',
+            checkValue4: '',
+            checkInput: false
         };
     },
     created() {
@@ -296,7 +346,7 @@ export default {
         getCustomTemplate() {
             this.HTTP(this.$httpConfig.customTemplateList, {},"post")
                 .then(res => {
-                    this.cusList = res.data.data;
+                    this.cusTemList = res.data.data;
                 }
             )
             .catch((err) => {
@@ -309,6 +359,16 @@ export default {
             },"post")
                 .then(res => {
                     this.cusDetail = res.data.data;
+                    this.checkName0 = this.cusDetail[0].name;
+                    this.checkName1 = this.cusDetail[1].name;
+                    this.checkName2 = this.cusDetail[2].name;
+                    this.checkName3 = this.cusDetail[3].name;
+                    this.checkName4= this.cusDetail[4].name;
+                    this.checkId0 = this.cusDetail[0].id;
+                    this.checkId1 = this.cusDetail[1].id;
+                    this.checkId2 = this.cusDetail[2].id;
+                    this.checkId3 = this.cusDetail[3].id;
+                    this.checkId4 = this.cusDetail[4].id;
                 }
             )
             .catch((err) => {
@@ -347,9 +407,29 @@ export default {
             this.$message.warning('做多五张图片');
         },
         getAddCustomized() {
+            if(this.checkId0 && this.checkValue0) {
+                var checkId = [this.checkId0];
+                var checkValue = [this.checkValue0];
+            }
+            if(this.checkId0 && this.checkValue0 && this.checkId1 && this.checkValue1) {
+                var checkId = [this.checkId0, this.checkId1];
+                var checkValue = [this.checkValue0, this.checkValue1];
+            }
+            if(this.checkId0 && this.checkValue0 && this.checkId1 && this.checkValue1 && this.checkId2 && this.checkValue2) {
+                var checkId = [this.checkId0, this.checkId1, this.checkId2];
+                var checkValue = [this.checkValue0, this.checkValue1, this.checkValue2];
+            }
+            if(this.checkId0 && this.checkValue0 && this.checkId1 && this.checkValue1 && this.checkId2 && this.checkValue2 && this.checkId3 && this.checkValue3) {
+                var checkId = [this.checkId0, this.checkId1, this.checkId2, this.checkId3];
+                var checkValue = [this.checkValue0, this.checkValue1, this.checkValue2, this.checkValue3];
+            }
+            if(this.checkId0 && this.checkValue0 && this.checkId1 && this.checkValue1 && this.checkId2 && this.checkValue2 && this.checkId3 && this.checkValue3 && this.checkId4 && this.checkValue4) {
+                var checkId = [this.checkId0, this.checkId1, this.checkId2, this.checkId3, this.checkId4];
+                var checkValue = [this.checkValue0, this.checkValue1, this.checkValue2, this.checkValue3, this.checkValue4];
+            }
             var data = {
-                id: this.nameId,
-                value: this.nameValue
+                id: checkId,
+                value: checkValue
             }
             this.HTTP(this.$httpConfig.addCustomized,
                 {
@@ -367,6 +447,12 @@ export default {
                 "post"
                 )
                 .then(res => {
+                    this.$router.push({
+                        name: "customProduct",
+                        query: {
+                            x:0
+                        }
+                    });
                 }
             )
             .catch((err) => {
@@ -400,6 +486,13 @@ export default {
     font-size: 14px;
     display: inline-block;
     width: 40%;
+    padding-left: 11px;
+}
+.el-input0 {
+    position: relative;
+    font-size: 14px;
+    display: inline-block;
+    width: 10%;
     padding-left: 11px;
 }
 .input_type {

@@ -33,7 +33,7 @@
                             <p>{{item.class_name}}</p>
                             <p>{{item.goods_price}}</p>
                             <button>发布询价</button>
-                            <button>修改</button>
+                            <button @click="editOrder(item.id)">修改</button>
                         </div>
                         <button @click="deleteOrder(item.id)" class="delete_btn">删除</button>
                     </div>
@@ -65,6 +65,14 @@ import { Message } from "element-ui";
                     .catch(e => {
                         console.log(e);
                     });
+            },
+            editOrder(id) {
+                this.$router.push({
+                    name: "cusProEdit",
+                    query: {
+                        id: id
+                    }
+                });
             },
             deleteOrder(id) {
             // 删除订单

@@ -128,6 +128,8 @@ import boughtStd from "../components/personal/child/boughtStd.vue";
 
 import customProduct from "../components/personal/child/customProduct.vue";
 
+import cusProEdit from "../components/personal/child/cusProEdit.vue";
+
 import releaseInquiry from "../components/personal/child/releaseInquiry.vue";
 
 import releaseList from "../components/personal/child/releaseList.vue";
@@ -742,6 +744,11 @@ const router = new Router({
                     path: "/customProduct",
                     name: "customProduct",
                     component: customProduct
+                },
+                {
+                    path: "/cusProEdit",
+                    name: "cusProEdit",
+                    component: cusProEdit
                 },
                 {
                     // 我的订单

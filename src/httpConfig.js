@@ -39,6 +39,8 @@ const config = {
     inquiryPublicityList: request + 'Project/inquiryPublicityList',
     inquiryPublicityDetail: request + 'Project/inquiryPublicityDetail',
     myCustomizedList: userModuleIndex + 'OrderGoods/myCustomizedList',
+    myCustomizedInfo: userModuleIndex + 'CustomTemplate/myCustomizedInfo',
+    myCustomizedModify: userModuleIndex + 'CustomTemplate/myCustomizedModify',
     myCustomizedDel: userModuleIndex + 'CustomTemplate/myCustomizedDel',
     addCustomized: userModuleIndex + 'CustomTemplate/addCustomized',
     customTemplateList: userModuleIndex + 'CustomTemplate/customTemplateList',
