@@ -334,7 +334,11 @@ export default {
             p.thirteen {
                 margin-left: 166px;
                 margin-top: -15px;
+                img {
+                    cursor: pointer;
+                }
                 button {
+                    cursor: pointer;
                     background: #00A0E9;
                     color: #ffffff;
                     padding: 8px 0;
@@ -352,6 +356,7 @@ export default {
             p.sixteen {
                 margin-left: 166px;
                 button {
+                    cursor: pointer;
                     width: 200px;
                     height: 45px;
                     color: #ffffff;
@@ -423,6 +428,7 @@ export default {
                     }
                 }
                 button {
+                    cursor: pointer;
                     background: #D02629;
                     color: #fff;
                     font-size: 14px;
@@ -492,6 +498,7 @@ export default {
                     }
                 }
                 button {
+                    cursor: pointer;
                     font-size: 14px;
                     width: 100px;
                     height: 38px;

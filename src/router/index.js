@@ -270,6 +270,7 @@ import Header from "../common/Header.vue"; // 顶部的头部
 import backTop from "../common/backTop.vue"; // 回到顶部
 import receivingAddress from "../common/receivingAddress.vue"; // 选择地址
 import myShoppingCart from "../common/myShoppingCart.vue"; // 我的购物车
+import myShoppingCart1 from "../common/myShoppingCart1.vue";
 import addressOperation from "../common/addressOperation.vue"; // 地址操作
 import selectionArea from "../common/selectionArea.vue"; // 地址选择
 import likeAndHistory from "../common/likeAndHistory.vue"; // 猜你喜欢
@@ -283,6 +284,7 @@ Vue.component("common-header", Header);
 Vue.component("back-top", backTop);
 Vue.component("receiving-address", receivingAddress);
 Vue.component("my-shopping-cart", myShoppingCart);
+Vue.component("my-shopping-cart-1", myShoppingCart1);
 Vue.component("address-operation", addressOperation);
 Vue.component("selection-area", selectionArea);
 Vue.component("like-and-history", likeAndHistory);

@@ -136,6 +136,7 @@ export default {
                         margin: 0 47px 0 40px;
                     }
                     .buy {
+                        cursor: pointer;
                         color: #ffffff;
                         padding: 6px 12px;
                         border-radius: 4px;
@@ -147,6 +148,7 @@ export default {
                     float: right;
                     padding: 3px 1px 0 0;
                     .purchase {
+                        cursor: pointer;
                         color: #ffffff;
                         padding: 6px 12px;
                         border-radius: 4px;

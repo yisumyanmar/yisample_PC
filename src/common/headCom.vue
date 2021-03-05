@@ -52,7 +52,7 @@
                         </ul> -->
                     </div>
                     <div class="dropdown-content r">
-                        <my-shopping-cart></my-shopping-cart>
+                        <my-shopping-cart-1></my-shopping-cart-1>
                         <my-shopping-cart></my-shopping-cart>
                     </div>
                 </div>

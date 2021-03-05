@@ -9,7 +9,7 @@
             <p class="l">单价</p>
             <p class="l">交易操作</p>
         </div>
-        <div class="alike" v-for="(item, index) in cusList" :key="index">
+        <div class="alike" v-for="(item, index) in cusList.data" :key="index">
             <div class="both">
             <input class="l" type="checkbox" />
             <!-- <p class="l">2020-12-02</p> -->
@@ -29,7 +29,8 @@
                             <p>￥50</p> -->
                             <p>{{item.id}}</p>
                             <p>{{item.title}}</p>
-                            <p>48x58.5cm</p>
+                            <!-- <p>48x58.5cm</p> -->
+                            <p></p>
                             <p>{{item.class_name}}</p>
                             <p>{{item.goods_price}}</p>
                             <button>发布询价</button>
@@ -39,6 +40,14 @@
                     </div>
                 </div>
             </div>
+        </div>
+        <div class="pagation" v-if="cusList.count">
+            <el-pagination
+                background
+                layout="total, prev, pager, next"
+                :total="parseInt(cusList.count)"
+                @current-change="currentPage">
+            </el-pagination>
         </div>
         <button @click="addProduct" class="btn"><i class="el-icon-plus"></i>新增定制品</button>
     </div>
@@ -57,15 +66,20 @@ import { Message } from "element-ui";
           this.GetMyCustomizedList();
       },
       methods: {
-            GetMyCustomizedList() {
-                this.HTTP(this.$httpConfig.myCustomizedList, {}, "post")
+            GetMyCustomizedList(p) {
+                this.HTTP(this.$httpConfig.myCustomizedList, {
+                    page:p
+                }, "post")
                     .then(res => {
-                        this.cusList = res.data.data.data;
+                        this.cusList = res.data.data;
                     })
                     .catch(e => {
                         console.log(e);
                     });
             },
+            currentPage (val) {
+				this.GetMyCustomizedList(val);
+    	    },
             editOrder(id) {
                 this.$router.push({
                     name: "cusProEdit",
@@ -173,6 +187,7 @@ import { Message } from "element-ui";
             line-height: 42px;
             background: #f1f1f1;
             input {
+                cursor: pointer;
                 margin: 16px 14px 0 13px;
             }
             p {
@@ -213,6 +228,7 @@ import { Message } from "element-ui";
                         width: 50px;
                     }
                     button {
+                        cursor: pointer;
                         color: #ffffff;
                         padding: 8px 12px;
                         border-radius: 4px;
@@ -228,6 +244,7 @@ import { Message } from "element-ui";
                     }
                 }
                 .delete_btn {
+                    cursor: pointer;
                     color: #ffffff;
                     padding: 8px 12px;
                     border-radius: 4px;
@@ -238,6 +255,10 @@ import { Message } from "element-ui";
                 }
             }
         }
+    }
+    .pagation{
+        text-align: right;
+        margin-top: 30px;
     }
     .btn {
         color: #ffffff;

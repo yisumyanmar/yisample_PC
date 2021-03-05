@@ -106,6 +106,7 @@
             line-height: 42px;
             background: #f1f1f1;
             input {
+                cursor: pointer;
                 margin: 16px 14px 0 13px;
             }
             p {
@@ -139,6 +140,7 @@
                         margin: 0 37px 0 90px;
                     }
                     button {
+                        cursor: pointer;
                         color: #ffffff;
                         padding: 8px 12px;
                         border-radius: 4px;

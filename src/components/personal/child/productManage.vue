@@ -621,6 +621,7 @@ export default {
             }
         }
         .btn {
+            cursor: pointer;
             width: 200px;
             height: 42px;
             color: #ffffff;

@@ -40,7 +40,7 @@
                         <p class="l" @click="ToinqInner">查看详情</p>
                     </div>
                 </div> -->
-                <div v-for="(item, index) in PublicityList" :key="index">
+                <div v-for="(item, index) in PublicityList.data" :key="index">
                     <div class="thead_body">
                         <p v-if="item.title == null" class="l">-</p>
                         <p v-else class="l">{{item.title}}</p>
@@ -48,6 +48,14 @@
                         <p class="l">{{item.create_time | formatDate}}</p>
                         <p class="l" @click="ToinqInner(item.id)">查看详情</p>
                     </div>
+                </div>
+                <div class="pagation" v-if="PublicityList.count">
+                    <el-pagination
+                        background
+                        layout="total, prev, pager, next"
+                        :total="parseInt(PublicityList.count)"
+                        @current-change="currentPage">
+                    </el-pagination>
                 </div>
             </div>
         </div>
@@ -76,15 +84,20 @@ export default {
                 }
             });
         },
-        getInquiryPublicityList() {
+        getInquiryPublicityList(p) {
             this.HTTP(
-                this.$httpConfig.inquiryPublicityList, {}, "post")
+                this.$httpConfig.inquiryPublicityList, {
+                    page:p
+                }, "post")
                 .then(res => {
-                    this.PublicityList = res.data.data.data;
+                    this.PublicityList = res.data.data;
                 })
                 .catch(err => {
                     console.log(err.data.message)
                 });
+        },
+        currentPage (val) {
+            this.getInquiryPublicityList(val);
         },
     }
 }
@@ -203,6 +216,10 @@ export default {
                     width: 80px;
                     padding-left: 10px;
                 }
+            }
+            .pagation{
+                text-align: right;
+                margin-top: 30px;
             }
         }
     }

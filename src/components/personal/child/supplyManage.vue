@@ -169,6 +169,7 @@ export default {
             line-height: 42px;
             background: #f1f1f1;
             input {
+                cursor: pointer;
                 margin: 16px 14px 0 13px;
             }
             p {
@@ -206,6 +207,7 @@ export default {
                         padding: 8px 12px;
                         border-radius: 4px;
                         width: 80px;
+                        cursor: pointer;
                     }
                     button:nth-of-type(1) {
                         background: #FF6000;

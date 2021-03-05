@@ -105,16 +105,6 @@
                         <el-input class="el-input0" v-model="space_data[4].space_id" disabled></el-input>
                         <el-input class="el-input2" v-model="space_data[4].value"></el-input>
                     </p>
-                    <p v-if="checkName5">
-                        <span></span>{{checkName5}}
-                        <el-input class="el-input0" v-model="space_data[5].space_id" disabled></el-input>
-                        <el-input class="el-input2" v-model="space_data[5].value"></el-input>
-                    </p>
-                    <p v-if="checkName6">
-                        <span></span>{{checkName6}}
-                        <el-input class="el-input0" v-model="space_data[6].space_id" disabled></el-input>
-                        <el-input class="el-input2" v-model="space_data[6].value"></el-input>
-                    </p>
                 </div>
                 <p class="six">描述：
                     <el-input
@@ -177,6 +167,7 @@ export default {
             cusTem1: [],
             cusTem2: [],
             cusTemList: [],
+            cusTemList1: [],
             dialogImageUrl: '',
             dialogVisible: false,
             figureCollection:[],
@@ -185,8 +176,6 @@ export default {
             checkName2: '',
             checkName3: '',
             checkName4: '',
-            checkName5: '',
-            checkName6: '',
             // checkId0: '',
             // checkId1: '',
             // checkId2: '',
@@ -214,7 +203,9 @@ export default {
             // first_data: '',
             // second_data: '',
             // third_data: '',
-            data_id: ''
+            data_id: '',
+            tem_id: '',
+            cusTemId: ''
         };
     },
     created() {
@@ -231,19 +222,19 @@ export default {
                     this.cusInfo = res.data.data;
                     this.data_id = res.data.data.id;
                     this.space_data = res.data.data.space;
+                    this.tem_id = res.data.data.template_id;
                     this.checkName0 = this.space_data[0].name;
                     this.checkName1 = this.space_data[1].name;
                     this.checkName2 = this.space_data[2].name;
                     this.checkName3 = this.space_data[3].name;
                     this.checkName4 = this.space_data[4].name;
-                    this.checkName5 = this.space_data[5].name;
-                    this.checkName6 = this.space_data[6].name;
                     // this.first_Id = res.data.data.class_id;
                     // this.second_Id = res.data.data.class_two;
                     // this.third_Id = res.data.data.class_three;
                     // this.getShowClass();
                     // this.getShowClass1();
                     // this.getShowClass2();
+                    this.getCustomTemplate1();
                 }
             )
             .catch((err) => {
@@ -304,6 +295,22 @@ export default {
         //     console.log(err);
         //     });
         // },
+        getCustomTemplate1() {
+            this.HTTP(this.$httpConfig.customTemplateList, {},"post")
+                .then(res => {
+                    this.cusTemList1 = res.data.data;
+                    for(let a in this.cusTemList1) {
+                        this.cusTemId = this.cusTemList1[a].id;
+                        if(this.cusTemId == this.tem_id) {
+                            this.value3 = this.cusTemList1[a].name;
+                        }
+                    }
+                }
+            )
+            .catch((err) => {
+            console.log(err);
+            });
+        },
         getCustomClass() {
             this.HTTP(this.$httpConfig.getClass, {
                 id: 0
