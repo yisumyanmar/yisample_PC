@@ -47,6 +47,7 @@ const config = {
     customTemplateDetail: userModuleIndex + 'CustomTemplate/customTemplateDetail',
     winningList: userModuleIndex + 'CustomTemplate/winningList',
     CustomizedDel: userModuleIndex + 'CustomTemplate/myCustomizedDel',
+    addIssueInquiry: userModuleIndex + 'ProjectGoods/addIssueInquiry',
 
     //  首页
     home: request + 'HomeIndex/home', //  首页信息获取

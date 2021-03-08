@@ -4,7 +4,7 @@
         <div class="thead">
             <p class="l">产品编号</p>
             <p class="l"> 产品名称</p>
-            <p class="l">产品规格</p>
+            <!-- <p class="l">产品规格</p> -->
             <p class="l">产品分类</p>
             <p class="l">单价</p>
             <p class="l">交易操作</p>
@@ -30,10 +30,9 @@
                             <p>{{item.id}}</p>
                             <p>{{item.title}}</p>
                             <!-- <p>48x58.5cm</p> -->
-                            <p></p>
                             <p>{{item.class_name}}</p>
                             <p>{{item.goods_price}}</p>
-                            <button>发布询价</button>
+                            <button @click="goToRelease">发布询价</button>
                             <button @click="editOrder(item.id)">修改</button>
                         </div>
                         <button @click="deleteOrder(item.id)" class="delete_btn">删除</button>
@@ -119,6 +118,14 @@ import { Message } from "element-ui";
                 x: 0
             }
             });
+        },
+        goToRelease() {
+            this.$router.push({
+                name: "releaseInquiry",
+                query: {
+                x: 0
+            }
+            });
         }
       }
     
@@ -172,10 +179,10 @@ import { Message } from "element-ui";
             margin: 0 145px 0 30px;
         }
         p:nth-of-type(3) {
-            margin: 0 100px;
+            margin: 0 130px 0 120px;
         }
         p:nth-of-type(5) {
-            margin: 0 125px 0 65px;
+            margin-left: 160px;
         }
     }
     .alike {
@@ -211,22 +218,22 @@ import { Message } from "element-ui";
                     }
                     p:nth-of-type(1) {
                         width: 147px;
-                        margin: 0 15px 0 0;
+                        margin: 0 50px 0 0;
                     }
                     p:nth-of-type(2) {
-                        width: 100px;
+                        width: 165px;
                         overflow: hidden;
                         height: 60px;
                         line-height: 60px;
                     }
                     p:nth-of-type(3) {
-                        margin: 0 125px 0 40px;
-                        width: 40px;
-                    }
-                    p:nth-of-type(5) {
-                        margin: 0 34px 0 75px;
+                        margin-right: 125px;
                         width: 50px;
                     }
+                    // p:nth-of-type(5) {
+                    //     margin: 0 34px 0 75px;
+                    //     width: 50px;
+                    // }
                     button {
                         cursor: pointer;
                         color: #ffffff;
@@ -236,7 +243,7 @@ import { Message } from "element-ui";
                     }
                     button:nth-of-type(1) {
                         background: #FF6000;
-                        margin: 0 0 0 30px;
+                        margin: 0 0 0 144px;
                     }
                     button:nth-of-type(2) {
                         background:#02A3FE;

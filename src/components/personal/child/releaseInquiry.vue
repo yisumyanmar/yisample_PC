@@ -4,30 +4,31 @@
         <div class="show">
             <div class="one">
                 <p class="two">标题：
-                    <el-input></el-input>
+                    <el-input v-model="title"></el-input>
                 </p>
                 <p class="three">期望收货日期：
-                    <el-input></el-input>
+                    <el-date-picker v-model="e_time" type="date" value-format="yyyy-MM-dd" placeholder=""></el-date-picker>
                 </p>
                 <p class="four">交货期：
-                    <el-input></el-input>
+                    <el-date-picker v-model="d_time" type="date" value-format="yyyy-MM-dd" placeholder=""></el-date-picker>
                 </p>
                 <p class="five">报价截止日期：
-                    <el-input></el-input>
+                    <el-date-picker v-model="l_time" type="date" value-format="yyyy-MM-dd" placeholder=""></el-date-picker>
                 </p>
                 <p class="six">联系人：
-                    <el-input></el-input>
+                    <el-input v-model="name"></el-input>
                 </p>
                 <p class="seven">联系电话：
-                    <el-input></el-input>
+                    <el-input v-model="mobile"></el-input>
                 </p>
                 <p class="eight">报价要求：
-                    <el-checkbox v-model="checked1">需要报含税价</el-checkbox>
+                    <!-- <el-checkbox v-model="checked1">需要报含税价</el-checkbox>
                     <el-checkbox v-model="checked2">允许对询价单部分物料报价</el-checkbox>
-                    <el-checkbox v-model="checked3">报价需要包含运费</el-checkbox>
+                    <el-checkbox v-model="checked3">报价需要包含运费</el-checkbox> -->
+                    <el-radio v-for="(item, index) in radio_type" :key="index" v-model="radio" :label="item.id">{{item.type_name}}</el-radio>
                 </p>
                 <p class="nine">收货地：
-                    <el-select v-model="value" placeholder="">
+                    <!-- <el-select v-model="value" placeholder="">
                         <el-option
                         v-for="item in options"
                         :key="item.value"
@@ -49,6 +50,30 @@
                         :key="item.value"
                         :label="item.label"
                         :value="item.value">
+                        </el-option>
+                    </el-select> -->
+                    <el-select @change="getCity" v-model="value" placeholder="">
+                        <el-option
+                        v-for="(item, index) in provList"
+                        :key="index"
+                        :label="item.name"
+                        :value="item.id">
+                        </el-option>
+                    </el-select>
+                    <el-select @change="getDist" v-model="value1" placeholder="" v-show="selectData1">
+                        <el-option
+                        v-for="(item, index) in cityList"
+                        :key="index"
+                        :label="item.name"
+                        :value="item.id">
+                        </el-option>
+                    </el-select>
+                    <el-select v-model="value2" placeholder="" v-show="selectData2">
+                        <el-option
+                        v-for="(item, index) in distList"
+                        :key="index"
+                        :label="item.name"
+                        :value="item.id">
                         </el-option>
                     </el-select>
                 </p>
@@ -73,17 +98,17 @@
                  <p class="twelve">
                     <span>物料名称</span>
                     <span>产品编号</span>
-                    <span>产品属性</span>
+                    <!-- <span>产品属性</span>
                     <span>需求属性</span>
-                    <span>上传附件</span>
+                    <span>上传附件</span> -->
                 </p>
                 <p class="thirteen">
                     <img src="../../../assets/img/yi-19.png" />
+                    <el-input class="el-input1" v-model="goodsId"></el-input>
+                    <el-input class="el-input1" type="number" v-model="goodsNum"></el-input>
+                    <!-- <el-input class="el-input1"></el-input>
                     <el-input class="el-input1"></el-input>
-                    <el-input class="el-input1"></el-input>
-                    <el-input class="el-input1"></el-input>
-                    <el-input class="el-input1"></el-input>
-                    <button>上传</button>
+                    <button>上传</button> -->
                 </p>
                 <p class="fourteen">供应商要求：
                     <el-input
@@ -104,7 +129,8 @@
                     </el-input>
                 </p>
                 <p class="sixteen">
-                    <button @click="popVisible">发布询价</button>
+                    <!-- <button @click="popVisible">发布询价</button> -->
+                    <button @click="GetIssue">发布询价</button>
                 </p>
             </div>
         </div>
@@ -163,7 +189,7 @@
                 </div>
                 <div class="inquiry_foot1">
                     <button>放弃询价</button>
-                    <button>支付并询价</button>
+                    <button @click="close">支付并询价</button>
                 </div>
             </div>
         </div>
@@ -175,31 +201,58 @@ export default {
     name: 'releaseInquiry',
     data() {
         return {
-            checked1: true,
-            checked2: true,
-            checked3: true,
-            options: [{
-                value: 'aaaaa',
-                label: 'aaaaa'
+            title: '',
+            e_time: '',
+            d_time: '',
+            l_time: '',
+            name: '',
+            mobile: '',
+            // checked1: true,
+            // checked2: true,
+            // checked3: true,
+            radio: '',
+            radio_type: [{
+                id: '0',
+                type_name: '需要报含税价'
                 }, {
-                value: 'bbbbb',
-                label: 'bbbbb'
+                id: '1',
+                type_name: '允许对询价单部分物料报价'
                 }, {
-                value: 'ccccc',
-                label: 'ccccc'
-                }],
+                id: '2',
+                type_name: '报价需要包含运费'
+            }],
+            // options: [{
+            //     value: 'aaaaa',
+            //     label: 'aaaaa'
+            //     }, {
+            //     value: 'bbbbb',
+            //     label: 'bbbbb'
+            //     }, {
+            //     value: 'ccccc',
+            //     label: 'ccccc'
+            // }],
+            provList: [],
+            cityList: [],
+            distList: [],
+            selectData1: false,
+            selectData2: false,
             value: '',
             value1: '',
             value2: '',
             textarea: '',
             textarea1: '',
+            goodsId: '',
+            goodsNum: '',
             textarea2: '',
             textarea3: '',
             visible: false,
             visible1: false,
             checked: true,
-            checked4: false
+            checked4: false,
         }
+    },
+    created() {
+        this.getProvince();
     },
     methods: {
         popVisible() {
@@ -212,7 +265,67 @@ export default {
         next() {
             this.visible1 = true;
             this.visible = false;
-        }
+        },
+        getProvince() {
+            this.HTTP(this.$httpConfig.regionLists, {}, 'get')
+                .then((res) => {
+                    this.provList = res.data.data;
+                })
+        },
+        getCity(id) {
+            this.HTTP(this.$httpConfig.regionLists, {
+                id: id
+            },'get')
+                .then(res => {
+                    this.cityList = res.data.data;
+                    this.selectData1 = true;
+                }
+            )
+            .catch((err) => {
+            console.log(err);
+            });
+        },
+        getDist(id) {
+            this.HTTP(this.$httpConfig.regionLists, {
+                id: id
+            },'get')
+                .then(res => {
+                    this.distList = res.data.data;
+                    this.selectData2 = true;
+                }
+            )
+            .catch((err) => {
+            console.log(err);
+            });
+        },
+        GetIssue() {
+            var data = {
+                id: [this.goodsId],
+                number: [this.goodsNum]
+            }
+            this.HTTP(this.$httpConfig.addIssueInquiry, {
+                title: this.title,
+                expect_time: this.e_time,
+                delivery_time: this.d_time,
+                deadline_time: this.l_time,
+                name: this.name,
+                mobile: this.mobile,
+                offer_type: this.radio,
+                prov: this.value,
+                city: this.value1,
+                dist: this.value2,
+                address: this.textarea,
+                notes: this.textarea1,
+                goods: data,
+                requirements: this.textarea2,
+                quality: this.textarea3,
+            }, "post")
+                .then(res => {
+                })
+                .catch(e => {
+                    console.log(e);
+                });
+        },
     }
 }
 </script>
