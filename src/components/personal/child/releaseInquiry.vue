@@ -103,13 +103,17 @@
                     <span>上传附件</span> -->
                 </p>
                 <p class="thirteen">
-                    <img src="../../../assets/img/yi-19.png" />
+                    <img @click="showItem" src="../../../assets/img/yi-19.png" />
                     <el-input class="el-input1" v-model="goodsId"></el-input>
                     <el-input class="el-input1" type="number" v-model="goodsNum"></el-input>
                     <!-- <el-input class="el-input1"></el-input>
                     <el-input class="el-input1"></el-input>
                     <button>上传</button> -->
                 </p>
+                <div class="show_item" v-show="showItenData">
+                    <el-input class="el-input1" v-model="goodsId1"></el-input>
+                    <el-input class="el-input1" type="number" v-model="goodsNum1"></el-input>
+                </div>
                 <p class="fourteen">供应商要求：
                     <el-input
                         class="el-textarea3"
@@ -243,6 +247,9 @@ export default {
             textarea1: '',
             goodsId: '',
             goodsNum: '',
+            showItenData: false,
+            goodsId1: '',
+            goodsNum1: '',
             textarea2: '',
             textarea3: '',
             visible: false,
@@ -265,6 +272,9 @@ export default {
         next() {
             this.visible1 = true;
             this.visible = false;
+        },
+        showItem() {
+            this.showItenData = true;
         },
         getProvince() {
             this.HTTP(this.$httpConfig.regionLists, {}, 'get')
@@ -300,8 +310,8 @@ export default {
         },
         GetIssue() {
             var data = {
-                id: [this.goodsId],
-                number: [this.goodsNum]
+                id: [this.goodsId, this.goodsId1],
+                number: [this.goodsNum, this.goodsNum1]
             }
             this.HTTP(this.$httpConfig.addIssueInquiry, {
                 title: this.title,
@@ -459,6 +469,9 @@ export default {
                     width: 65px;
                     margin-left: 10px;
                 }
+            }
+            .show_item {
+                margin: 0 0 30px 185px;
             }
             p.fourteen {
                 margin-left: 81px;
