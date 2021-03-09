@@ -97,7 +97,7 @@
                 </p>
                  <p class="twelve">
                     <span>物料名称</span>
-                    <span>产品编号</span>
+                    <span>物料数量</span>
                     <!-- <span>产品属性</span>
                     <span>需求属性</span>
                     <span>上传附件</span> -->
@@ -111,8 +111,42 @@
                     <button>上传</button> -->
                 </p>
                 <div class="show_item" v-show="showItenData">
-                    <el-input class="el-input1" v-model="goodsId1"></el-input>
-                    <el-input class="el-input1" type="number" v-model="goodsNum1"></el-input>
+                    <p>
+                        <el-input class="el-input1" v-model="goodsId1"></el-input>
+                        <el-input class="el-input1" type="number" v-model="goodsNum1"></el-input>
+                    </p>
+                    <p>
+                        <el-input class="el-input1" v-model="goodsId2"></el-input>
+                        <el-input class="el-input1" type="number" v-model="goodsNum2"></el-input>
+                    </p>
+                    <p>
+                        <el-input class="el-input1" v-model="goodsId3"></el-input>
+                        <el-input class="el-input1" type="number" v-model="goodsNum3"></el-input>
+                    </p>
+                    <p>
+                        <el-input class="el-input1" v-model="goodsId4"></el-input>
+                        <el-input class="el-input1" type="number" v-model="goodsNum4"></el-input>
+                    </p>
+                    <p>
+                        <el-input class="el-input1" v-model="goodsId5"></el-input>
+                        <el-input class="el-input1" type="number" v-model="goodsNum5"></el-input>
+                    </p>
+                    <p>
+                        <el-input class="el-input1" v-model="goodsId6"></el-input>
+                        <el-input class="el-input1" type="number" v-model="goodsNum6"></el-input>
+                    </p>
+                    <p>
+                        <el-input class="el-input1" v-model="goodsId7"></el-input>
+                        <el-input class="el-input1" type="number" v-model="goodsNum7"></el-input>
+                    </p>
+                    <p>
+                        <el-input class="el-input1" v-model="goodsId8"></el-input>
+                        <el-input class="el-input1" type="number" v-model="goodsNum8"></el-input>
+                    </p>
+                    <p>
+                        <el-input class="el-input1" v-model="goodsId9"></el-input>
+                        <el-input class="el-input1" type="number" v-model="goodsNum9"></el-input>
+                    </p>
                 </div>
                 <p class="fourteen">供应商要求：
                     <el-input
@@ -250,6 +284,22 @@ export default {
             showItenData: false,
             goodsId1: '',
             goodsNum1: '',
+            goodsId2: '',
+            goodsNum2: '',
+            goodsId3: '',
+            goodsNum3: '',
+            goodsId4: '',
+            goodsNum4: '',
+            goodsId5: '',
+            goodsNum5: '',
+            goodsId6: '',
+            goodsNum6: '',
+            goodsId7: '',
+            goodsNum7: '',
+            goodsId8: '',
+            goodsNum8: '',
+            goodsId9: '',
+            goodsNum9: '',
             textarea2: '',
             textarea3: '',
             visible: false,
@@ -309,9 +359,49 @@ export default {
             });
         },
         GetIssue() {
+            if(this.goodsId && this.goodsNum) {
+                var goodsIdData = [this.goodsId];
+                var goodsNumData = [this.goodsNum];
+            }
+            if(this.goodsId && this.goodsNum && this.goodsId1 && this.goodsNum1) {
+                var goodsIdData = [this.goodsId, this.goodsId1];
+                var goodsNumData = [this.goodsNum, this.goodsNum1];
+            }
+            if(this.goodsId && this.goodsNum && this.goodsId1 && this.goodsNum1 && this.goodsId2 && this.goodsNum2) {
+                var goodsIdData = [this.goodsId, this.goodsId1, this.goodsId2];
+                var goodsNumData = [this.goodsNum, this.goodsNum1, this.goodsNum2];
+            }
+            if(this.goodsId && this.goodsNum && this.goodsId1 && this.goodsNum1 && this.goodsId2 && this.goodsNum2 && this.goodsId3 && this.goodsNum3) {
+                var goodsIdData = [this.goodsId, this.goodsId1, this.goodsId2, this.goodsId3];
+                var goodsNumData = [this.goodsNum, this.goodsNum1, this.goodsNum2, this.goodsNum3];
+            }
+            if(this.goodsId && this.goodsNum && this.goodsId1 && this.goodsNum1 && this.goodsId2 && this.goodsNum2 && this.goodsId3 && this.goodsNum3 && this.goodsId4 && this.goodsNum4) {
+                var goodsIdData = [this.goodsId, this.goodsId1, this.goodsId2, this.goodsId3, this.goodsId4];
+                var goodsNumData = [this.goodsNum, this.goodsNum1, this.goodsNum2, this.goodsNum3, this.goodsNum4];
+            }
+            if(this.goodsId && this.goodsNum && this.goodsId1 && this.goodsNum1 && this.goodsId2 && this.goodsNum2 && this.goodsId3 && this.goodsNum3 && this.goodsId4 && this.goodsNum4 && this.goodsId5 && this.goodsNum5) {
+                var goodsIdData = [this.goodsId, this.goodsId1, this.goodsId2, this.goodsId3, this.goodsId4, this.goodsId5];
+                var goodsNumData = [this.goodsNum, this.goodsNum1, this.goodsNum2, this.goodsNum3, this.goodsNum4, this.goodsNum5];
+            }
+            if(this.goodsId && this.goodsNum && this.goodsId1 && this.goodsNum1 && this.goodsId2 && this.goodsNum2 && this.goodsId3 && this.goodsNum3 && this.goodsId4 && this.goodsNum4 && this.goodsId5 && this.goodsNum5 && this.goodsId6 && this.goodsNum6) {
+                var goodsIdData = [this.goodsId, this.goodsId1, this.goodsId2, this.goodsId3, this.goodsId4, this.goodsId5, this.goodsId6];
+                var goodsNumData = [this.goodsNum, this.goodsNum1, this.goodsNum2, this.goodsNum3, this.goodsNum4, this.goodsNum5, this.goodsNum6];
+            }
+            if(this.goodsId && this.goodsNum && this.goodsId1 && this.goodsNum1 && this.goodsId2 && this.goodsNum2 && this.goodsId3 && this.goodsNum3 && this.goodsId4 && this.goodsNum4 && this.goodsId5 && this.goodsNum5 && this.goodsId6 && this.goodsNum6 && this.goodsId7 && this.goodsNum7) {
+                var goodsIdData = [this.goodsId, this.goodsId1, this.goodsId2, this.goodsId3, this.goodsId4, this.goodsId5, this.goodsId6, this.goodsId7];
+                var goodsNumData = [this.goodsNum, this.goodsNum1, this.goodsNum2, this.goodsNum3, this.goodsNum4, this.goodsNum5, this.goodsNum6, this.goodsNum7];
+            }
+            if(this.goodsId && this.goodsNum && this.goodsId1 && this.goodsNum1 && this.goodsId2 && this.goodsNum2 && this.goodsId3 && this.goodsNum3 && this.goodsId4 && this.goodsNum4 && this.goodsId5 && this.goodsNum5 && this.goodsId6 && this.goodsNum6 && this.goodsId7 && this.goodsNum7 && this.goodsId8 && this.goodsNum8) {
+                var goodsIdData = [this.goodsId, this.goodsId1, this.goodsId2, this.goodsId3, this.goodsId4, this.goodsId5, this.goodsId6, this.goodsId7, this.goodsId8];
+                var goodsNumData = [this.goodsNum, this.goodsNum1, this.goodsNum2, this.goodsNum3, this.goodsNum4, this.goodsNum5, this.goodsNum6, this.goodsNum7, this.goodsNum8];
+            }
+            if(this.goodsId && this.goodsNum && this.goodsId1 && this.goodsNum1 && this.goodsId2 && this.goodsNum2 && this.goodsId3 && this.goodsNum3 && this.goodsId4 && this.goodsNum4 && this.goodsId5 && this.goodsNum5 && this.goodsId6 && this.goodsNum6 && this.goodsId7 && this.goodsNum7 && this.goodsId8 && this.goodsNum8 && this.goodsId9 && this.goodsNum9) {
+                var goodsIdData = [this.goodsId, this.goodsId1, this.goodsId2, this.goodsId3, this.goodsId4, this.goodsId5, this.goodsId6, this.goodsId7, this.goodsId8, this.goodsId9];
+                var goodsNumData = [this.goodsNum, this.goodsNum1, this.goodsNum2, this.goodsNum3, this.goodsNum4, this.goodsNum5, this.goodsNum6, this.goodsNum7, this.goodsNum8, this.goodsNum9];
+            }
             var data = {
-                id: [this.goodsId, this.goodsId1],
-                number: [this.goodsNum, this.goodsNum1]
+                id: goodsIdData,
+                number: goodsNumData
             }
             this.HTTP(this.$httpConfig.addIssueInquiry, {
                 title: this.title,
@@ -381,7 +471,7 @@ export default {
     margin-left: 10px;
 }
 .releaseInquiry {
-    height: 1250px;
+    height: auto;
     width: 980px;
     background: #fff;
     margin-top: 16px;
@@ -401,7 +491,7 @@ export default {
     }
     .show {
         .one {
-            padding: 30px 0;
+            padding: 30px 0 80px 0;
             p {
                 font-size: 12px;
                 color: #666;
