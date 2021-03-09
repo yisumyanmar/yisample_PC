@@ -111,42 +111,48 @@
                     <button>上传</button> -->
                 </p>
                 <div class="show_item" v-show="showItenData">
-                    <p>
-                        <el-input class="el-input1" v-model="goodsId1"></el-input>
-                        <el-input class="el-input1" type="number" v-model="goodsNum1"></el-input>
-                    </p>
-                    <p>
-                        <el-input class="el-input1" v-model="goodsId2"></el-input>
-                        <el-input class="el-input1" type="number" v-model="goodsNum2"></el-input>
-                    </p>
-                    <p>
-                        <el-input class="el-input1" v-model="goodsId3"></el-input>
-                        <el-input class="el-input1" type="number" v-model="goodsNum3"></el-input>
-                    </p>
-                    <p>
-                        <el-input class="el-input1" v-model="goodsId4"></el-input>
-                        <el-input class="el-input1" type="number" v-model="goodsNum4"></el-input>
-                    </p>
-                    <p>
-                        <el-input class="el-input1" v-model="goodsId5"></el-input>
-                        <el-input class="el-input1" type="number" v-model="goodsNum5"></el-input>
-                    </p>
-                    <p>
-                        <el-input class="el-input1" v-model="goodsId6"></el-input>
-                        <el-input class="el-input1" type="number" v-model="goodsNum6"></el-input>
-                    </p>
-                    <p>
-                        <el-input class="el-input1" v-model="goodsId7"></el-input>
-                        <el-input class="el-input1" type="number" v-model="goodsNum7"></el-input>
-                    </p>
-                    <p>
-                        <el-input class="el-input1" v-model="goodsId8"></el-input>
-                        <el-input class="el-input1" type="number" v-model="goodsNum8"></el-input>
-                    </p>
-                    <p>
-                        <el-input class="el-input1" v-model="goodsId9"></el-input>
-                        <el-input class="el-input1" type="number" v-model="goodsNum9"></el-input>
-                    </p>
+                    <img @click="showItem1" src="../../../assets/img/yi-19.png" />
+                    <el-input class="el-input1" v-model="goodsId1"></el-input>
+                    <el-input class="el-input1" type="number" v-model="goodsNum1"></el-input>
+                </div>
+                <div class="show_item" v-show="showItenData1">
+                    <img @click="showItem2" src="../../../assets/img/yi-19.png" />
+                    <el-input class="el-input1" v-model="goodsId2"></el-input>
+                    <el-input class="el-input1" type="number" v-model="goodsNum2"></el-input>
+                </div>
+                <div class="show_item" v-show="showItenData2">
+                    <img @click="showItem3" src="../../../assets/img/yi-19.png" />
+                    <el-input class="el-input1" v-model="goodsId3"></el-input>
+                    <el-input class="el-input1" type="number" v-model="goodsNum3"></el-input>
+                </div>
+                <div class="show_item" v-show="showItenData3">
+                    <img @click="showItem4" src="../../../assets/img/yi-19.png" />
+                    <el-input class="el-input1" v-model="goodsId4"></el-input>
+                    <el-input class="el-input1" type="number" v-model="goodsNum4"></el-input>
+                </div>
+                <div class="show_item" v-show="showItenData4">
+                    <img @click="showItem5" src="../../../assets/img/yi-19.png" />
+                    <el-input class="el-input1" v-model="goodsId5"></el-input>
+                    <el-input class="el-input1" type="number" v-model="goodsNum5"></el-input>
+                </div>
+                <div class="show_item" v-show="showItenData5">
+                    <img @click="showItem6" src="../../../assets/img/yi-19.png" />
+                    <el-input class="el-input1" v-model="goodsId6"></el-input>
+                    <el-input class="el-input1" type="number" v-model="goodsNum6"></el-input>
+                </div>
+                <div class="show_item" v-show="showItenData6">
+                    <img @click="showItem7" src="../../../assets/img/yi-19.png" />
+                    <el-input class="el-input1" v-model="goodsId7"></el-input>
+                    <el-input class="el-input1" type="number" v-model="goodsNum7"></el-input>
+                </div>
+                <div class="show_item" v-show="showItenData7">
+                    <img @click="showItem8" src="../../../assets/img/yi-19.png" />
+                    <el-input class="el-input1" v-model="goodsId8"></el-input>
+                    <el-input class="el-input1" type="number" v-model="goodsNum8"></el-input>
+                </div>
+                <div class="show_item1" v-show="showItenData8">
+                    <el-input class="el-input1" v-model="goodsId9"></el-input>
+                    <el-input class="el-input1" type="number" v-model="goodsNum9"></el-input>
                 </div>
                 <p class="fourteen">供应商要求：
                     <el-input
@@ -282,6 +288,14 @@ export default {
             goodsId: '',
             goodsNum: '',
             showItenData: false,
+            showItenData1: false,
+            showItenData2: false,
+            showItenData3: false,
+            showItenData4: false,
+            showItenData5: false,
+            showItenData6: false,
+            showItenData7: false,
+            showItenData8: false,
             goodsId1: '',
             goodsNum1: '',
             goodsId2: '',
@@ -325,6 +339,30 @@ export default {
         },
         showItem() {
             this.showItenData = true;
+        },
+        showItem1() {
+            this.showItenData1 = true;
+        },
+        showItem2() {
+            this.showItenData2 = true;
+        },
+        showItem3() {
+            this.showItenData3 = true;
+        },
+        showItem4() {
+            this.showItenData4 = true;
+        },
+        showItem5() {
+            this.showItenData5 = true;
+        },
+        showItem6() {
+            this.showItenData6 = true;
+        },
+        showItem7() {
+            this.showItenData7 = true;
+        },
+        showItem8() {
+            this.showItenData8 = true;
         },
         getProvince() {
             this.HTTP(this.$httpConfig.regionLists, {}, 'get')
@@ -561,6 +599,9 @@ export default {
                 }
             }
             .show_item {
+                margin: 0 0 20px 166px;
+            }
+            .show_item1 {
                 margin: 0 0 30px 185px;
             }
             p.fourteen {
