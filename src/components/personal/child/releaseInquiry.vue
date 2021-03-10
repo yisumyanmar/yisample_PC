@@ -4,28 +4,35 @@
         <div class="show">
             <div class="one">
                 <p class="two">标题：
-                    <el-input v-model="title"></el-input>
+                    <el-input v-model="title" @change="changeWarning(1)"></el-input>
+                    <el-alert v-show="tip1" title="请填写标题" type="error" show-icon :closable="false"></el-alert>
                 </p>
                 <p class="three">期望收货日期：
-                    <el-date-picker v-model="e_time" type="date" value-format="yyyy-MM-dd" placeholder=""></el-date-picker>
+                    <el-date-picker v-model="e_time" @change="changeWarning(2)" type="date" value-format="yyyy-MM-dd" placeholder=""></el-date-picker>
+                    <el-alert v-show="tip2" title="请填写期望收货日期" type="error" show-icon :closable="false"></el-alert>
                 </p>
                 <p class="four">交货期：
-                    <el-date-picker v-model="d_time" type="date" value-format="yyyy-MM-dd" placeholder=""></el-date-picker>
+                    <el-date-picker v-model="d_time" @change="changeWarning(3)" type="date" value-format="yyyy-MM-dd" placeholder=""></el-date-picker>
+                    <el-alert v-show="tip3" title="请填写交货期" type="error" show-icon :closable="false"></el-alert>
                 </p>
                 <p class="five">报价截止日期：
-                    <el-date-picker v-model="l_time" type="date" value-format="yyyy-MM-dd" placeholder=""></el-date-picker>
+                    <el-date-picker v-model="l_time" @change="changeWarning(4)" type="date" value-format="yyyy-MM-dd" placeholder=""></el-date-picker>
+                    <el-alert v-show="tip4" title="请填写报价截止日期" type="error" show-icon :closable="false"></el-alert>
                 </p>
                 <p class="six">联系人：
-                    <el-input v-model="name"></el-input>
+                    <el-input v-model="name" @change="changeWarning(5)"></el-input>
+                    <el-alert v-show="tip5" title="请填写联系人" type="error" show-icon :closable="false"></el-alert>
                 </p>
                 <p class="seven">联系电话：
-                    <el-input v-model="mobile"></el-input>
+                    <el-input v-model="mobile" @change="changeWarning(6)"></el-input>
+                    <el-alert v-show="tip6" title="请填写联系电话" type="error" show-icon :closable="false"></el-alert>
                 </p>
                 <p class="eight">报价要求：
                     <!-- <el-checkbox v-model="checked1">需要报含税价</el-checkbox>
                     <el-checkbox v-model="checked2">允许对询价单部分物料报价</el-checkbox>
                     <el-checkbox v-model="checked3">报价需要包含运费</el-checkbox> -->
-                    <el-radio v-for="(item, index) in radio_type" :key="index" v-model="radio" :label="item.id">{{item.type_name}}</el-radio>
+                    <el-radio v-for="(item, index) in radio_type" :key="index" v-model="radio" @change="changeWarning(7)" :label="item.id">{{item.type_name}}</el-radio>
+                    <el-alert v-show="tip7" title="请填写报价要求" type="error" show-icon :closable="false"></el-alert>
                 </p>
                 <p class="nine">收货地：
                     <!-- <el-select v-model="value" placeholder="">
@@ -83,8 +90,10 @@
                         type="textarea"
                         :rows="2"
                         placeholder="详细地址"
-                        v-model="textarea">
+                        v-model="textarea"
+                        @change="changeWarning(8)">
                     </el-input>
+                    <el-alert v-show="tip8" title="请填写详细地址" type="error" show-icon :closable="false"></el-alert>
                 </p>
                 <p class="eleven">补充说明描述：
                     <el-input
@@ -92,8 +101,10 @@
                         type="textarea"
                         :rows="2"
                         placeholder=""
-                        v-model="textarea1">
+                        v-model="textarea1"
+                        @change="changeWarning(9)">
                     </el-input>
+                    <el-alert v-show="tip9" title="请填写补充说明描述" type="error" show-icon :closable="false"></el-alert>
                 </p>
                  <p class="twelve">
                     <span>物料名称</span>
@@ -104,8 +115,9 @@
                 </p>
                 <p class="thirteen">
                     <img @click="showItem" src="../../../assets/img/yi-19.png" />
-                    <el-input class="el-input1" v-model="goodsId"></el-input>
-                    <el-input class="el-input1" type="number" v-model="goodsNum"></el-input>
+                    <el-input class="el-input1" v-model="goodsId" @change="changeWarning(10)"></el-input>
+                    <el-input class="el-input1" type="number" @change="changeWarning(10)" v-model="goodsNum"></el-input>
+                    <el-alert v-show="tip10" title="请填写数据" type="error" show-icon :closable="false"></el-alert>
                     <!-- <el-input class="el-input1"></el-input>
                     <el-input class="el-input1"></el-input>
                     <button>上传</button> -->
@@ -160,8 +172,10 @@
                         type="textarea"
                         :rows="3"
                         placeholder=""
-                        v-model="textarea2">
+                        v-model="textarea2"
+                        @change="changeWarning(11)">
                     </el-input>
+                    <el-alert v-show="tip11" title="请填写供应商要求" type="error" show-icon :closable="false"></el-alert>
                 </p>
                 <p class="fifteen">品质要求：
                     <el-input
@@ -169,8 +183,10 @@
                         type="textarea"
                         :rows="2"
                         placeholder=""
-                        v-model="textarea3">
+                        v-model="textarea3"
+                        @change="changeWarning(12)">
                     </el-input>
+                    <el-alert v-show="tip12" title="请填写品质要求" type="error" show-icon :closable="false"></el-alert>
                 </p>
                 <p class="sixteen">
                     <button @click="popVisible">发布询价</button>
@@ -206,10 +222,10 @@
                 </div>
                 <div class="inquiry_foot">
                     <el-checkbox v-model="checked"></el-checkbox>
-                    <span>我已阅读并同意<a>《定制服务系统运营商城服务协议（供应商版）》</a></span>
+                    <span style="line-height: 40px;">我已阅读并同意<a>《定制服务系统运营商城服务协议（供应商版）》</a></span><br>
                     <el-alert
-                        v-show="tip"
-                        class="address-tip"
+                        v-show="agreement"
+                        class="el-alert1 address-tip1 el-alert--error1 is-light1"
                         title="请点击同意以上协议"
                         type="error"
                         show-icon
@@ -237,10 +253,10 @@
                 </div>
                 <div class="inquiry_foot1">
                     <el-checkbox v-model="checked1"></el-checkbox>
-                    <span>我已阅读并同意<a>《定制服务系统运营商城服务协议（供应商版）》</a></span>
+                    <span style="line-height: 40px;">我已阅读并同意<a>《定制服务系统运营商城服务协议（供应商版）》</a></span><br>
                     <el-alert
-                        v-show="tip1"
-                        class="address-tip"
+                        v-show="agreement1"
+                        class="el-alert1 address-tip1 el-alert--error1 is-light1"
                         title="请点击同意以上协议"
                         type="error"
                         show-icon
@@ -248,8 +264,8 @@
                     ></el-alert>
                 </div>
                 <div class="inquiry_foot1">
-                    <button @click="close">放弃询价</button>
-                    <button @click="close1">支付并询价</button>
+                    <button @click="cancel">放弃询价</button>
+                    <button @click="callAPI">支付并询价</button>
                 </div>
             </div>
         </div>
@@ -336,48 +352,172 @@ export default {
             visible: false,
             visible1: false,
             checked: false,
-            tip: false,
+            agreement: false,
             checked1: false,
-            tip1: false,
+            agreement1: false,
             checked4: false,
+            tip1: false,
+            tip2: false,
+            tip3: false,
+            tip4: false,
+            tip5: false,
+            tip6: false,
+            tip7: false,
+            tip8: false,
+            tip9: false,
+            tip10: false,
+            tip11: false,
+            tip12: false,
         }
     },
     created() {
         this.getProvince();
     },
     methods: {
+        changeWarning(sign) {
+            switch (sign) {
+                case 1:
+                    if (this.title !== '') {
+                        this.tip1 = false;
+                    }
+                    break;
+                case 2:
+                    if (this.e_time !== '') {
+                        this.tip2 = false;
+                    }
+                    break;
+                case 3:
+                    if (this.d_time !== '') {
+                        this.tip3 = false;
+                    }
+                    break;
+                case 4:
+                    if (this.l_time !== '') {
+                        this.tip4 = false;
+                    }
+                    break;
+                case 5:
+                    if (this.name !== '') {
+                        this.tip5 = false;
+                    }
+                    break;
+                case 6:
+                    if ((/^((0\d{2,3}-\d{7,8})|(1[345789]\d{9}))$/.test(this.mobile))) {
+                        this.tip6 = false;
+                    }
+                    break;
+                case 7:
+                    if (this.radio !== '') {
+                        this.tip7 = false;
+                    }
+                    break;
+                case 8:
+                    if (this.textarea !== '') {
+                        this.tip8 = false;
+                    }
+                    break;
+                case 9:
+                    if (this.textarea1 !== '') {
+                        this.tip9 = false;
+                    }
+                    break;
+                case 10:
+                    if (this.goodsId !== '' && this.goodsNum !== '') {
+                        this.tip10 = false;
+                    }
+                    break;
+                case 11:
+                    if (this.textarea2 !== '') {
+                        this.tip11 = false;
+                    }
+                    break;
+                case 12:
+                    if (this.textarea3 !== '') {
+                        this.tip12 = false;
+                    }
+                    break;
+				}
+			},
         popVisible() {
-            if(this.checked4 == true) {
-                this.visible = false;
-                this.visible1 = true;
+            if (this.title == '') {
+                this.tip1 = true;
+            }
+            if (this.e_time == '') {
+                this.tip2 = true;
+            }
+            if (this.d_time == '') {
+                this.tip3 = true;
+            }
+            if (this.l_time == '') {
+                this.tip4 = true;
+            }
+            if (this.name == '') {
+                this.tip5 = true;
+            }
+            if (!(/^((0\d{2,3}-?)?\d{7,8}|(1[3584]\d{9}))$/.test(this.mobile))) {
+                this.tip6 = true;
+            }
+            if (this.radio == '') {
+                this.tip7 = true;
+            }
+            if (this.textarea == '') {
+                this.tip8 = true;
+            }
+            if (this.textarea1 == '') {
+                this.tip9 = true;
+            }
+            if (this.goodsId == '' && this.goodsNum == '') {
+                this.tip10 = true;
+            }
+            if (this.textarea2 == '') {
+                this.tip11 = true;
+            }
+            if (this.textarea3 == '') {
+                this.tip12 = true;
             }
             else {
-                this.visible = true;
+                if(this.checked4 == true) {
+                    this.visible = false;
+                    this.visible1 = true;
+                }
+                else {
+                    this.visible = true;
+                }
             }
         },
         close() {
             this.visible = false;
             this.visible1 = false;
         },
-        close1() {
+        cancel() {
             if(this.checked1 == true) {
                 this.visible = false;
                 this.visible1 = false;
-                this.tip1 = false;
+                this.agreement1 == false;
+            }
+            else {
+                this.agreement1 = true;
+            }
+        },
+        callAPI() {
+            if(this.checked1 == true) {
+                this.visible = false;
+                this.visible1 = false;
+                this.agreement1 = false;
                 this.GetIssue();
             }
             else {
-                this.tip1 = true;
+                this.agreement1 = true;
             }
         },
         next() {
             if(this.checked == true) {
                 this.visible1 = true;
                 this.visible = false;
-                this.tip = false;
+                this.agreement = false;
             }
             else {
-                this.tip = true;
+                this.agreement = true;
             }
         },
         showItem() {
@@ -553,11 +693,21 @@ export default {
     width: 68.9%;
     margin-left: 10px;
 }
+.el-alert {
+    display: inline;
+    margin-left: 15px;
+    padding: 0;
+}
+.el-alert--error {
+    background-color: transparent;
+}
 .el-alert--error.is-light {
     background-color: #fff;
     color: #F56C6C;
-    margin-left: 150px;
-    width: 300px;
+}
+.el-alert--error1.is-light1 {
+    background-color: #fff;
+    color: #F56C6C;
 }
 .releaseInquiry {
     height: auto;
