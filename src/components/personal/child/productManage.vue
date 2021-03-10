@@ -376,7 +376,7 @@ export default {
             });
         },
         difficulty(){
-            return this.$httpConfig.upLoadImage;
+            return this.$httpConfig.uploadImageToLocal;
         },
         succeed(response, file, fileList){
             this.figureCollection.push(file.response.data);

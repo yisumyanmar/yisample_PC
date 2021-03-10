@@ -48,6 +48,7 @@ const config = {
     winningList: userModuleIndex + 'CustomTemplate/winningList',
     CustomizedDel: userModuleIndex + 'CustomTemplate/myCustomizedDel',
     addIssueInquiry: userModuleIndex + 'ProjectGoods/addIssueInquiry',
+    issueInquiryList: userModuleIndex + 'ProjectGoods/issueInquiryList',
 
     //  首页
     home: request + 'HomeIndex/home', //  首页信息获取
@@ -219,8 +220,8 @@ const config = {
     regionLists: request + 'Region/regionLists', // 地区列表
     cityList: request + 'Region/regionLists', //  城市四级联动
     //  招商入驻
-    // upLoadImage: request + 'UploadImage/uploadImage', // 上传图片
-    upLoadImage: userUpload + 'FileUpload/uploadImageToLocal',
+    upLoadImage: request + 'UploadImage/uploadImage', // 上传图片
+    uploadImageToLocal: userUpload + 'FileUpload/uploadImageToLocal',
     getGoodsImageConfig: userUpload + 'FileUpload/getGoodsImageConfig',
     delPic: request + 'UploadImage/delPic', // 删除图片
     perfectInfo: request + 'StoreInformation/perfectInfo', // 入驻提交

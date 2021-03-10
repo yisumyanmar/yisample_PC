@@ -173,8 +173,8 @@
                     </el-input>
                 </p>
                 <p class="sixteen">
-                    <!-- <button @click="popVisible">发布询价</button> -->
-                    <button @click="GetIssue">发布询价</button>
+                    <button @click="popVisible">发布询价</button>
+                    <!-- <button @click="GetIssue">发布询价</button> -->
                 </p>
             </div>
         </div>
@@ -207,6 +207,14 @@
                 <div class="inquiry_foot">
                     <el-checkbox v-model="checked"></el-checkbox>
                     <span>我已阅读并同意<a>《定制服务系统运营商城服务协议（供应商版）》</a></span>
+                    <el-alert
+                        v-show="tip"
+                        class="address-tip"
+                        title="请点击同意以上协议"
+                        type="error"
+                        show-icon
+                        :closable="false"
+                    ></el-alert>
                 </div>
                 <div class="inquiry_foot">
                     <el-checkbox v-model="checked4"></el-checkbox>
@@ -228,12 +236,20 @@
                     <p>询价收费：<span style="color: #D80707;">￥10.00</span></p>
                 </div>
                 <div class="inquiry_foot1">
-                    <el-checkbox v-model="checked"></el-checkbox>
+                    <el-checkbox v-model="checked1"></el-checkbox>
                     <span>我已阅读并同意<a>《定制服务系统运营商城服务协议（供应商版）》</a></span>
+                    <el-alert
+                        v-show="tip1"
+                        class="address-tip"
+                        title="请点击同意以上协议"
+                        type="error"
+                        show-icon
+                        :closable="false"
+                    ></el-alert>
                 </div>
                 <div class="inquiry_foot1">
-                    <button>放弃询价</button>
-                    <button @click="close">支付并询价</button>
+                    <button @click="close">放弃询价</button>
+                    <button @click="close1">支付并询价</button>
                 </div>
             </div>
         </div>
@@ -242,6 +258,7 @@
 
 <script>
 export default {
+    inject: ['reload'],
     name: 'releaseInquiry',
     data() {
         return {
@@ -318,7 +335,10 @@ export default {
             textarea3: '',
             visible: false,
             visible1: false,
-            checked: true,
+            checked: false,
+            tip: false,
+            checked1: false,
+            tip1: false,
             checked4: false,
         }
     },
@@ -327,15 +347,38 @@ export default {
     },
     methods: {
         popVisible() {
-            this.visible = true;
+            if(this.checked4 == true) {
+                this.visible = false;
+                this.visible1 = true;
+            }
+            else {
+                this.visible = true;
+            }
         },
         close() {
             this.visible = false;
             this.visible1 = false;
         },
+        close1() {
+            if(this.checked1 == true) {
+                this.visible = false;
+                this.visible1 = false;
+                this.tip1 = false;
+                this.GetIssue();
+            }
+            else {
+                this.tip1 = true;
+            }
+        },
         next() {
-            this.visible1 = true;
-            this.visible = false;
+            if(this.checked == true) {
+                this.visible1 = true;
+                this.visible = false;
+                this.tip = false;
+            }
+            else {
+                this.tip = true;
+            }
         },
         showItem() {
             this.showItenData = true;
@@ -459,6 +502,8 @@ export default {
                 quality: this.textarea3,
             }, "post")
                 .then(res => {
+                    this.reload();
+                    this.$message(`${res.data.message}`);
                 })
                 .catch(e => {
                     console.log(e);
@@ -507,6 +552,12 @@ export default {
 .el-textarea4 {
     width: 68.9%;
     margin-left: 10px;
+}
+.el-alert--error.is-light {
+    background-color: #fff;
+    color: #F56C6C;
+    margin-left: 150px;
+    width: 300px;
 }
 .releaseInquiry {
     height: auto;
@@ -638,7 +689,7 @@ export default {
             left: 29%;
             top: 13%;
             width: 800px;
-            height: 685px;
+            height: auto;
             background: #ffffff;
             padding: 20px;
             .inquiry_head {
@@ -710,7 +761,7 @@ export default {
             left: 33%;
             top: 30%;
             width: 600px;
-            height: 350px;
+            height: auto;
             background: #ffffff;
             padding: 20px;
             .inquiry_head1 {
@@ -761,6 +812,7 @@ export default {
                     height: 38px;
                     border-radius: 3px;
                     margin-right: 10px;
+                    margin-bottom: 30px;
                 }
                 button:nth-of-type(1) {
                     color: #333333;

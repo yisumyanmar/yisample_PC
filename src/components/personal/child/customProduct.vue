@@ -67,7 +67,7 @@ import { Message } from "element-ui";
       methods: {
             GetMyCustomizedList(p) {
                 this.HTTP(this.$httpConfig.myCustomizedList, {
-                    page:p
+                    page: p
                 }, "post")
                     .then(res => {
                         this.cusList = res.data.data;
