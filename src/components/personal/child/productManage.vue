@@ -221,7 +221,7 @@
                     </el-input>
                     <el-alert v-show="tip9" title="请填写补充说明" type="error" show-icon :closable="false"></el-alert>
                 </p>
-                <p class="eight l">上传附件：
+                <p class="eight">上传附件：
                     <!-- <button class="upload">上传</button> -->
 
                     <!-- <el-upload
@@ -243,15 +243,37 @@
                         <img width="100%" :src="dialogImageUrl" alt="">
                     </el-dialog> -->
 
-                    <span class="add-image r">
+                    <!-- <span class="add-image r">
                         <input v-if="uploadShow" @change="addImg($event)" type="file" class="btn_file">
                         <img @click="del" v-else :src="URL + taxpayer_img"/>
                         <div class="load-animation" v-show="load">上传中<i class="el-icon-loading"></i></div>
                     </span>
-					<el-alert v-if="tip10" title="请填写上传附件" type="error" show-icon :closable="false"></el-alert>
+					<el-alert v-if="tip10" title="请填写上传附件" type="error" show-icon :closable="false"></el-alert> -->
+
+                    <el-upload :action="action"
+                        class="upload_pic"
+                        list-type="picture-card" 
+                        accept=".jpg,.png,.jpeg" 
+                        name="fileData"
+                        :on-preview="handlePictureCardPreview" 
+                        :file-list="fileList" 
+                        :on-success="success"
+                        :http-request="UploadImage" 
+                        :on-change="fileChange" 
+                        multiple
+                        >
+                        <i class="el-icon-plus"></i>
+                    </el-upload>
+                    <p class="image_type">文件格式 GIF, JPG, JPEG, PNG 文件大小80k 以内，建议尺寸宽度介于{{imageConf.min_width}}~{{imageConf.max_width}},高度介于{{imageConf.min_height}}~{{imageConf.max_height}}</p>
+                    <el-dialog :visible.sync="dialogVisible">
+                        <img width="100%" :src="dialogImageUrl" alt="">
+                    </el-dialog>
+
                 </p>
-            </div><br>
-            <button @click="getAddCustomized" class="btn">确认提交</button>
+            </div>
+            <div>
+                <button @click="getAddCustomized" class="btn">确认提交</button>
+            </div>
         </div>
     </div>
 </template>
@@ -327,10 +349,26 @@ export default {
             tip7: '',
             tip8: '',
             tip9: '',
-            tip10: '',
-            uploadShow: true,
-            taxpayer_img: '',
-            load: false,
+            // tip10: '',
+            // uploadShow: true,
+            // taxpayer_img: '',
+            // load: false,
+            // imgData: {
+            //     accept: 'image/gif, image/jpeg, image/png, image/jpg',
+            // },
+            action: this.$httpConfig.uploadImageToLocal,
+            dialogImageUrl: "",
+			dialogVisible: false,
+			uploadData: {
+				sessionToken: "",
+				imageToken: ""
+			},
+			fileList: [],
+			imageConf: {},
+			imageToken: "",
+			sToken: "",
+			uploadFile: [],
+			newUrl: '1'
         };
     },
     created() {
@@ -440,48 +478,110 @@ export default {
         // beyond () {
         //     this.$message.warning('做多五张图片');
         // },
-        del() {
-            this.HTTP(this.$httpConfig.delPic, {
-                fileName: this.taxpayer_img
-            }, 'post').then((res) => {
-                this.uploadShow = true;
-                this.taxpayer_img = '';
-            }).catch((res) => {
-                alert(res.data.message)
-            })
-        },
-        addImg(e) {
-            let that = this;   
-            let file = e.target.files[0];
-            let type = file.type;
-            if (this.imgData.accept.indexOf(type) == -1) {
-                this.$set(this.tip, 'tip10', true);
-                return false;
-            }
-            this.load = true;
-            let  form  =  new  FormData();
-            form.append('adv_content', file, file.name);  
-            let config = {
-                headers: {
-                    "Content-Type": "multipart/form-data"
-                }
-            };   
-            this.$ajax.post(this.$httpConfig.upLoadImage, form, config)
-                .then(res => {
-                    if (res.data.status == 10001) {
-                        this.$router.push("/passwordLogin");
-                    } else {
-                        if (res.data.status === 1) {
-                            that.taxpayer_img = res.data.data;
-                            that.uploadShow = false;
-                            that.load = false;
-                        } else {
-                            alert(res.data.message);
-                            that.load = false;
-                        }
-                    }
-                })
-        },
+        // del() {
+        //     this.HTTP(this.$httpConfig.delPic, {
+        //         fileName: this.taxpayer_img
+        //     }, 'post').then((res) => {
+        //         this.uploadShow = true;
+        //         this.taxpayer_img = '';
+        //     }).catch((res) => {
+        //         alert(res.data.message)
+        //     })
+        // },
+        // addImg(e) {
+        //     let that = this;   
+        //     let file = e.target.files[0];
+        //     let type = file.type;
+        //     if (this.imgData.accept.indexOf(type) == -1) {
+        //         this.$set(this.tip, 'tip10', true);
+        //         return false;
+        //     }
+        //     this.load = true;
+        //     let  form  =  new  FormData();
+        //     form.append('adv_content', file, file.name);  
+        //     let config = {
+        //         headers: {
+        //             "Content-Type": "multipart/form-data"
+        //         }
+        //     };   
+        //     this.$ajax.post(this.$httpConfig.upLoadImage, form, config)
+        //         .then(res => {
+        //             if (res.data.status == 10001) {
+        //                 this.$router.push("/passwordLogin");
+        //             } else {
+        //                 if (res.data.status === 1) {
+        //                     that.taxpayer_img = res.data.data;
+        //                     that.uploadShow = false;
+        //                     that.load = false;
+        //                 } else {
+        //                     alert(res.data.message);
+        //                     that.load = false;
+        //                 }
+        //             }
+        //         })
+        // },
+        fileChange(file) {
+			this.fileList.push({name: file.name, url: file.url});
+		},
+		UploadImage(param) {
+			this.HTTP(this.$httpConfig.getGoodsImageConfig, {}, 'post').then(res => {
+				let data = res.data.data;
+				this.imageConf = data.config;
+				this.imageToken = data.token;
+				this.sToken = data.s_token;
+
+				this.uploadData.sessionToken = data.s_token;
+				this.uploadData.imageToken = data.token;
+
+				const isLt2M = param.file.size / 1024 / 1024 < 3;
+				if (!isLt2M) {
+					this.$layer.msg("上传头像图片大小不能超过 2MB!");
+					return
+				}
+
+				var formData = new FormData();
+				formData.append("fileData", param.file);
+				formData.append("imageToken", data.token);
+				formData.append("sessionToken", data.s_token);
+				this.$ajax.post(this.$httpConfig.uploadImageToLocal, formData).then((res) => {
+					if (res.data.status == 0) {
+						this.$message({
+							duration: 1000,
+							type: "error",
+							message: res.data.message
+						});
+						this.fileList.splice(this.fileList.length-1);
+					} else {
+						this.newUrl = res.data.data;
+						this.fileList[this.fileList.length - 1].url = this.URL + res.data.data
+						this.uploadFile.push(res.data.data);
+					}
+				})
+			}).catch((res) => {
+				let data = res.data.data;
+				this.$layer.msg(data.token);
+			});
+		},
+        handlePictureCardPreview(file) {
+			this.dialogImageUrl = file.url;
+			this.dialogVisible = true;
+		},
+		// 上传成功
+		success(response, file, fileList) {
+			// console.log(response)
+			this.$message.success(response.message);
+			if (response.status == 0) {
+				let length = fileList.length;
+				let i = 0;
+				for (i; i < length; i++) {
+					if (fileList[i].name === file.name) {
+						fileList.splice(i, 1);
+					}
+				}
+			} else {
+				this.uploadFile.push(response.data);
+			}
+		},
         changeWarning(sign) {
             switch (sign) {
                 case 1:
@@ -529,11 +629,11 @@ export default {
                         this.tip9 = false;
                     }
                     break;
-                case 10:
-                    if (this.taxpayer_img !== '') {
-                        this.tip10 = false;
-                    }
-                    break;
+                // case 10:
+                //     if (this.taxpayer_img !== '') {
+                //         this.tip10 = false;
+                //     }
+                //     break;
 				}
 			},
         getAddCustomized() {
@@ -564,9 +664,9 @@ export default {
             if (this.textarea1 == '') {
                 this.tip9 = true;
             }
-            if (this.taxpayer_img == '') {
-                this.tip10 = true;
-            }
+            // if (this.taxpayer_img == '') {
+            //     this.tip10 = true;
+            // }
             if(this.checkId0 && this.checkValue0) {
                 var checkId = [this.checkId0];
                 var checkValue = [this.checkValue0];
@@ -670,9 +770,9 @@ export default {
     width: 66.6%;
     padding-left: 12px;
 }
-// .upload_pic {
-//     margin-left: 73px;
-// }
+.upload_pic {
+    margin-left: 73px;
+}
 .el-alert {
     display: inline;
     margin-left: 15px;
@@ -766,40 +866,43 @@ export default {
                 //     border-radius: 5px;
                 //     margin-left: 12px;
                 // }
-                .add-image {
-                    position: relative;
-                    background: url(../../../assets/img/shangchuan.png) no-repeat 50% 50%;
-                    border: 1px dashed #ccc;
-                    margin: 40px 42px 0 14px;
-                    width: 163px;
-                    height: 122px;
-                    input {
-                        padding: 0;
-                        margin: 0;
-                        width: 100%!important;
-                        height: 100%;
-                        opacity: 0;
-                    }
-                    img {
-                        display: block;
-                        width: 100%;
-                        height: 100%;
-                        background-color: #fff;
-                    }
-                    .load-animation {
-                        position: absolute;
-                        top: 0;
-                        left: 0;
-                        bottom: 0;
-                        right: 0;
-                        background: #060606;
-                        text-align: center;
-                        padding: 45px 0;
-                        opacity: .4;
-                        font-size: 14px;
-                        color: #fff;
-                    }
-                }
+                // .add-image {
+                //     position: relative;
+                //     background: url(../../../assets/img/shangchuan.png) no-repeat 50% 50%;
+                //     border: 1px dashed #ccc;
+                //     margin: 40px 42px 0 14px;
+                //     width: 163px;
+                //     height: 122px;
+                //     .btn_file {
+                //         padding: 0;
+                //         margin: 0;
+                //         width: 100%!important;
+                //         height: 100%;
+                //         opacity: 0;
+                //     }
+                //     img {
+                //         display: block;
+                //         width: 100%;
+                //         height: 100%;
+                //         background-color: #fff;
+                //     }
+                //     .load-animation {
+                //         position: absolute;
+                //         top: 0;
+                //         left: 0;
+                //         bottom: 0;
+                //         right: 0;
+                //         background: #060606;
+                //         text-align: center;
+                //         padding: 45px 0;
+                //         opacity: .4;
+                //         font-size: 14px;
+                //         color: #fff;
+                //     }
+                // }
+            }
+            p.image_type {
+                margin-left: 118px;
             }
             .show_data {
                 padding-left: 119px;
