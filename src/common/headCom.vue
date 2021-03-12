@@ -877,7 +877,7 @@ nav {
 
             li {
                 float: left;
-                margin-right: 32px;
+                margin-right: 25px;
                 cursor: pointer;
 
                 a {

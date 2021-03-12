@@ -267,7 +267,7 @@ export default {
     },
     //上传路径
     difficulty(){
-      return this.$httpConfig.uploadImageToLocal;
+      return this.$httpConfig.upLoadImage;
     },
 
     //删除图片

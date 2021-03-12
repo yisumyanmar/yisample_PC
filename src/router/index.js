@@ -48,6 +48,8 @@ import setMealCar from "../components/royalDrink/setMealCar.vue";
 import gift from "../components/gift/gift.vue";
 // 滋补养身
 import yangshen from "../components/yangShen/yangShen.vue";
+
+import standardProduct from "../components/yangShen/standardProduct.vue";
 // 珠宝玉器
 import gem from "../components/gem/gem.vue";
 // 喜庆物品
@@ -488,6 +490,11 @@ const router = new Router({
             name: "yangshen",
             component: yangshen
         }, //noheader
+        {
+            path: "/standardProduct",
+            name: "standardProduct",
+            component: standardProduct
+        },
         // 珠宝玉器
         {
             path: "/gem",

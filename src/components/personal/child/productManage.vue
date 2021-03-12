@@ -8,8 +8,10 @@
                         class="input_type"
                         type="text"
                         placeholder=""
-                        v-model="title">
+                        v-model="title"
+                        @change="changeWarning(1)">
                     </el-input>
+                    <el-alert v-show="tip1" title="请填写标题" type="error" show-icon :closable="false"></el-alert>
                 </p>
                 <p class="two">商品分类：
                     <!-- <el-select v-model="value" placeholder="">
@@ -71,7 +73,7 @@
                         :value="item.value">
                         </el-option>
                     </el-select> -->
-                    <el-select class="el-select1" v-model="value3" placeholder="">
+                    <el-select class="el-select1" v-model="value3" @change="changeWarning(2)" placeholder="">
                         <el-option
                         v-for="(item, index) in cusTemList"
                         :key="index"
@@ -79,6 +81,8 @@
                         :value="item.id">
                         </el-option>
                     </el-select>
+                    <el-alert v-show="tip2" title="请填写选择模板" type="error" show-icon :closable="false"></el-alert>
+                    
                 </p>
                 <p class="four" @click="addParameter">
                     <img src="../../../assets/img/yi-19.png" />
@@ -139,28 +143,33 @@
 
                     <p v-if="checkName0">
                         <span></span>{{checkName0}}
-                        <el-input class="el-input0" v-model="checkId0" disabled></el-input>
-                        <el-input class="el-input2" v-model="checkValue0"></el-input>
+                        <el-input class="el-input0" style="display: none;" v-model="checkId0" disabled></el-input>
+                        <el-input class="el-input2" v-model="checkValue0" @change="changeWarning(3)"></el-input>
+                        <el-alert v-show="tip3" title="请填写数据" type="error" show-icon :closable="false"></el-alert>
                     </p>
                     <p v-if="checkName1">
                         <span></span>{{checkName1}}
-                        <el-input class="el-input0" v-model="checkId1" disabled></el-input>
-                        <el-input class="el-input2" v-model="checkValue1"></el-input>
+                        <el-input class="el-input0" style="display: none;" v-model="checkId1" disabled></el-input>
+                        <el-input class="el-input2" v-model="checkValue1" @change="changeWarning(4)"></el-input>
+                        <el-alert v-show="tip4" title="请填写数据" type="error" show-icon :closable="false"></el-alert>
                     </p>
                     <p v-if="checkName2">
                         <span></span>{{checkName2}}
-                        <el-input class="el-input0" v-model="checkId2" disabled></el-input>
-                        <el-input class="el-input2" v-model="checkValue2"></el-input>
+                        <el-input class="el-input0" style="display: none;" v-model="checkId2" disabled></el-input>
+                        <el-input class="el-input2" v-model="checkValue2" @change="changeWarning(5)"></el-input>
+                        <el-alert v-show="tip5" title="请填写数据" type="error" show-icon :closable="false"></el-alert>
                     </p>
                     <p v-if="checkName3">
                         <span></span>{{checkName3}}
-                        <el-input class="el-input0" v-model="checkId3" disabled></el-input>
-                        <el-input class="el-input2" v-model="checkValue3"></el-input>
+                        <el-input class="el-input0" style="display: none;" v-model="checkId3" disabled></el-input>
+                        <el-input class="el-input2" v-model="checkValue3" @change="changeWarning(6)"></el-input>
+                        <el-alert v-show="tip6" title="请填写数据" type="error" show-icon :closable="false"></el-alert>
                     </p>
                     <p v-if="checkName4">
                         <span></span>{{checkName4}}
-                        <el-input class="el-input0" v-model="checkId4" disabled></el-input>
-                        <el-input class="el-input2" v-model="checkValue4"></el-input>
+                        <el-input class="el-input0" style="display: none;" v-model="checkId4" disabled></el-input>
+                        <el-input class="el-input2" v-model="checkValue4" @change="changeWarning(7)"></el-input>
+                        <el-alert v-show="tip7" title="请填写数据" type="error" show-icon :closable="false"></el-alert>
                     </p>
 
                     <!-- <p>
@@ -196,8 +205,10 @@
                         type="textarea"
                         :rows="2"
                         placeholder=""
-                        v-model="textarea">
+                        v-model="textarea"
+                        @change="changeWarning(8)">
                     </el-input>
+                    <el-alert v-show="tip8" title="请填写描述" type="error" show-icon :closable="false"></el-alert>
                 </p>
                 <p class="seven">补充说明：
                     <el-input
@@ -205,12 +216,15 @@
                         type="textarea"
                         :rows="2"
                         placeholder=""
-                        v-model="textarea1">
+                        v-model="textarea1"
+                        @change="changeWarning(9)">
                     </el-input>
+                    <el-alert v-show="tip9" title="请填写补充说明" type="error" show-icon :closable="false"></el-alert>
                 </p>
-                <p class="eight">上传附件：
+                <p class="eight l">上传附件：
                     <!-- <button class="upload">上传</button> -->
-                    <el-upload
+
+                    <!-- <el-upload
                         class="upload_pic"
                         :action="difficulty()"
                         list-type="picture-card"
@@ -227,9 +241,16 @@
                     </el-upload>
                     <el-dialog :visible.sync="dialogVisible">
                         <img width="100%" :src="dialogImageUrl" alt="">
-                    </el-dialog>
+                    </el-dialog> -->
+
+                    <span class="add-image r">
+                        <input v-if="uploadShow" @change="addImg($event)" type="file" class="btn_file">
+                        <img @click="del" v-else :src="URL + taxpayer_img"/>
+                        <div class="load-animation" v-show="load">上传中<i class="el-icon-loading"></i></div>
+                    </span>
+					<el-alert v-if="tip10" title="请填写上传附件" type="error" show-icon :closable="false"></el-alert>
                 </p>
-            </div>
+            </div><br>
             <button @click="getAddCustomized" class="btn">确认提交</button>
         </div>
     </div>
@@ -276,9 +297,9 @@ export default {
             // input9: '',
             // input10: '',
             cusDetail: [],
-            dialogImageUrl: '',
-            dialogVisible: false,
-            figureCollection:[],
+            // dialogImageUrl: '',
+            // dialogVisible: false,
+            // figureCollection:[],
             nameId: '',
             nameValue: '',
             checkName0: '',
@@ -296,7 +317,20 @@ export default {
             checkValue2: '',
             checkValue3: '',
             checkValue4: '',
-            checkInput: false
+            checkInput: false,
+            tip1: '',
+            tip2: '',
+            tip3: '',
+            tip4: '',
+            tip5: '',
+            tip6: '',
+            tip7: '',
+            tip8: '',
+            tip9: '',
+            tip10: '',
+            uploadShow: true,
+            taxpayer_img: '',
+            load: false,
         };
     },
     created() {
@@ -375,38 +409,164 @@ export default {
             console.log(err);
             });
         },
-        difficulty(){
-            return this.$httpConfig.uploadImageToLocal;
-        },
-        succeed(response, file, fileList){
-            this.figureCollection.push(file.response.data);
-            if (this.figureCollection.length > 0) {
-                this.have_pic = 1;
-            } else {
-                this.have_pic =0;
-            }
-        },
-        handlePictureCardPreview(file) {
-            this.dialogImageUrl = file.url;
-            this.dialogVisible = true;
-        },
-        handleRemove(file, fileList) {
-            let index=this.figureCollection.indexOf(file.response.data);
-            if(index>-1){
-            this.figureCollection.splice(index,1)
-            }
-            this.HTTP(this.$httpConfig.delPic,{
-            fileName:file.response.data
-            },'post').then((e)=>{
-            console.log(res)
-            }).catch((e)=>{
-            console.log(e)
+        // difficulty(){
+        //     return this.$httpConfig.getGoodsImageConfig;
+        // },
+        // succeed(response, file, fileList){
+        //     this.figureCollection.push(file.response.data);
+        //     if (this.figureCollection.length > 0) {
+        //         this.have_pic = 1;
+        //     } else {
+        //         this.have_pic =0;
+        //     }
+        // },
+        // handlePictureCardPreview(file) {
+        //     this.dialogImageUrl = file.url;
+        //     this.dialogVisible = true;
+        // },
+        // handleRemove(file, fileList) {
+        //     let index=this.figureCollection.indexOf(file.response.data);
+        //     if(index>-1){
+        //     this.figureCollection.splice(index,1)
+        //     }
+        //     this.HTTP(this.$httpConfig.delPic,{
+        //     fileName:file.response.data
+        //     },'post').then((e)=>{
+        //     console.log(res)
+        //     }).catch((e)=>{
+        //     console.log(e)
+        //     })
+        // },
+        // beyond () {
+        //     this.$message.warning('做多五张图片');
+        // },
+        del() {
+            this.HTTP(this.$httpConfig.delPic, {
+                fileName: this.taxpayer_img
+            }, 'post').then((res) => {
+                this.uploadShow = true;
+                this.taxpayer_img = '';
+            }).catch((res) => {
+                alert(res.data.message)
             })
         },
-        beyond () {
-            this.$message.warning('做多五张图片');
+        addImg(e) {
+            let that = this;   
+            let file = e.target.files[0];
+            let type = file.type;
+            if (this.imgData.accept.indexOf(type) == -1) {
+                this.$set(this.tip, 'tip10', true);
+                return false;
+            }
+            this.load = true;
+            let  form  =  new  FormData();
+            form.append('adv_content', file, file.name);  
+            let config = {
+                headers: {
+                    "Content-Type": "multipart/form-data"
+                }
+            };   
+            this.$ajax.post(this.$httpConfig.upLoadImage, form, config)
+                .then(res => {
+                    if (res.data.status == 10001) {
+                        this.$router.push("/passwordLogin");
+                    } else {
+                        if (res.data.status === 1) {
+                            that.taxpayer_img = res.data.data;
+                            that.uploadShow = false;
+                            that.load = false;
+                        } else {
+                            alert(res.data.message);
+                            that.load = false;
+                        }
+                    }
+                })
         },
+        changeWarning(sign) {
+            switch (sign) {
+                case 1:
+                    if (this.title !== '') {
+                        this.tip1 = false;
+                    }
+                    break;
+                case 2:
+                    if (this.value3 !== '') {
+                        this.tip2 = false;
+                    }
+                    break;
+                case 3:
+                    if (this.checkValue0 !== '') {
+                        this.tip3 = false;
+                    }
+                    break;
+                case 4:
+                    if (this.checkValue1 !== '') {
+                        this.tip4 = false;
+                    }
+                    break;
+                case 5:
+                    if (this.checkValue2 !== '') {
+                        this.tip5 = false;
+                    }
+                    break;
+                case 6:
+                    if (this.checkValue3 !== '') {
+                        this.tip6 = false;
+                    }
+                    break;
+                case 7:
+                    if (this.checkValue4 !== '') {
+                        this.tip7 = false;
+                    }
+                    break;
+                case 8:
+                    if (this.textarea !== '') {
+                        this.tip8 = false;
+                    }
+                    break;
+                case 9:
+                    if (this.textarea1 !== '') {
+                        this.tip9 = false;
+                    }
+                    break;
+                case 10:
+                    if (this.taxpayer_img !== '') {
+                        this.tip10 = false;
+                    }
+                    break;
+				}
+			},
         getAddCustomized() {
+            if (this.title == '') {
+                this.tip1 = true;
+            }
+            if (this.value3 == '') {
+                this.tip2 = true;
+            }
+            if (this.checkValue0 == '') {
+                this.tip3 = true;
+            }
+            if (this.checkValue1 == '') {
+                this.tip4 = true;
+            }
+            if (this.checkValue2 == '') {
+                this.tip5 = true;
+            }
+            if (this.checkValue3 == '') {
+                this.tip6 = true;
+            }
+            if (this.checkValue4 == '') {
+                this.tip7 = true;
+            }
+            if (this.textarea == '') {
+                this.tip8 = true;
+            }
+            if (this.textarea1 == '') {
+                this.tip9 = true;
+            }
+            if (this.taxpayer_img == '') {
+                this.tip10 = true;
+            }
             if(this.checkId0 && this.checkValue0) {
                 var checkId = [this.checkId0];
                 var checkValue = [this.checkValue0];
@@ -510,8 +670,20 @@ export default {
     width: 66.6%;
     padding-left: 12px;
 }
-.upload_pic {
-    margin-left: 73px;
+// .upload_pic {
+//     margin-left: 73px;
+// }
+.el-alert {
+    display: inline;
+    margin-left: 15px;
+    padding: 0;
+}
+.el-alert--error {
+    background-color: transparent;
+}
+.el-alert--error.is-light {
+    background-color: #fff;
+    color: #F56C6C;
 }
 .l {
     float: left;
@@ -586,13 +758,47 @@ export default {
             }
             p.eight {
                 margin-left: 45px;
-                .upload {
-                    background: #02A3FE;
-                    color: #fff;
-                    width: 70px;
-                    height: 30px;
-                    border-radius: 5px;
-                    margin-left: 12px;
+                // .upload {
+                //     background: #02A3FE;
+                //     color: #fff;
+                //     width: 70px;
+                //     height: 30px;
+                //     border-radius: 5px;
+                //     margin-left: 12px;
+                // }
+                .add-image {
+                    position: relative;
+                    background: url(../../../assets/img/shangchuan.png) no-repeat 50% 50%;
+                    border: 1px dashed #ccc;
+                    margin: 40px 42px 0 14px;
+                    width: 163px;
+                    height: 122px;
+                    input {
+                        padding: 0;
+                        margin: 0;
+                        width: 100%!important;
+                        height: 100%;
+                        opacity: 0;
+                    }
+                    img {
+                        display: block;
+                        width: 100%;
+                        height: 100%;
+                        background-color: #fff;
+                    }
+                    .load-animation {
+                        position: absolute;
+                        top: 0;
+                        left: 0;
+                        bottom: 0;
+                        right: 0;
+                        background: #060606;
+                        text-align: center;
+                        padding: 45px 0;
+                        opacity: .4;
+                        font-size: 14px;
+                        color: #fff;
+                    }
                 }
             }
             .show_data {

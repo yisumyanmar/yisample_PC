@@ -1,9 +1,8 @@
 <template>
     <div class="yuyin">
         <common-header v-on:childToParent="onChildClick"></common-header>
-        <head-com v-if="tempid" :navid = tempid></head-com>
-        <!-- <common-header></common-header> -->
         <!-- <head-com></head-com> -->
+        <head-com v-if="tempid" :navid = tempid></head-com>
         <div class="center">
             <div class="header">
                 <img class="l" src="../../assets/img/fangzi.jpg" />
@@ -65,61 +64,19 @@
                         class="el-icon-arrow-down g-btn"
                     ></i>
                 </div>
+                <!-- <div class="g-main-n l">
+        <span class="l">颜 &nbsp;色：</span>
+        <div class="q_class_list l">
+          <ul class="l">
+            <li class="l" v-for="(color, index) in selectGoods.color" :key="index" @click="selectColor(index)" :class="selected.colorIndex === index ? 'active' : '' ">{{color}}</li>
+          </ul>
+        </div>
+        <i class="el-icon-arrow-down g-btn"></i>
+      </div> -->
             </div>
-            <!-- <div class="choose">
-                <div class="g-main-n l">
-                    <span class="l">品 &nbsp;牌：</span>
-                    <div class="q_class_list l" :class="{ active: onoff }">
-                        <ul class="l" ref="brandHeight">
-                            <li
-                                class="l text1-hidden">设计商
-                            </li>
-                            <li
-                                class="l text1-hidden">原材商
-                            </li>
-                            <li
-                                class="l text1-hidden">生产商
-                            </li>
-                            <li
-                                class="l text1-hidden">企业服务 
-                            </li>
-                        </ul>
-                    </div>
-                    <i
-                        @click="open(1)"
-                        v-if="show"
-                        :class="{ 'el-icon-arrow-up': onoff }"
-                        class="el-icon-arrow-down g-btn"
-                    ></i>
-                </div>
-                <div class="g-main-n l">
-                    <span class="l">价 &nbsp;格：</span>
-                    <div class="q_class_list l" :class="{ active: onoff1 }">
-                        <ul class="l" ref="priceHeight">
-                            <li
-                                class="l">纸箱
-                            </li>
-                            <li
-                                class="l">飞机盒
-                            </li>
-                            <li
-                                class="l">纸盒
-                            </li>
-                        </ul>
-                    </div>
-                    <img class="down-arrow" src="../../assets/img/down-arrow.png" />
-                    <i
-                        @click="open(2)"
-                        v-if="show1"
-                        :class="{ 'el-icon-arrow-up': onoff1 }"
-                        class="el-icon-arrow-down g-btn"
-                    ></i>
-                </div>
-            </div> -->
-
-            
             <div class="new">
                 <div class="left l">
+                    <!-- 新品推荐 -->
                     <new-product></new-product>
                 </div>
                 <div class="right r">
@@ -211,22 +168,20 @@
                                         />
                                     </li>
                                 </ul>
-
                                 <p @click="toDetail(li.id)" class="l">
                                     {{ li.title }}
                                 </p>
                                 <div class="l pice">
-                                    <span>￥{{ li.price_member }}/只</span>
-                                    <!-- <span>￥{{ li.price_market }}</span> -->
-                                    <span style="display:inline-block;margin-left:20px;font-size:13px;color:#656565;float:right;margin-right:10px;">已售2件</span>
+                                    <span>￥{{ li.price_member }}</span>
+                                    <span>￥{{ li.price_market }}</span>
                                 </div>
                                 <div class="buy l">
-                                    <!-- <span @click.stop="compare(li.id)">
+                                    <span @click.stop="compare(li.id)">
                                         <label>
                                             <input class="l" type="checkbox" />
                                             <span>对比</span>
                                         </label>
-                                    </span> -->
+                                    </span>
                                     <span
                                         v-if="li.is_collect == 0"
                                         @click.stop="toCollect(li.id, i)"
@@ -244,7 +199,7 @@
                                         <span>已收藏</span>
                                     </span>
                                 </div>
-                                <!-- <i
+                                <i
                                     class="r car"
                                     @click.stop="
                                         addCar(
@@ -253,122 +208,12 @@
                                             li.store_id
                                         )
                                     "
-                                ></i> -->
+                                ></i>
                             </li>
                         </ul>
                     </div>
                 </div>
             </div>
-            <!-- <div class="new">
-                <div class="left l">
-                    <new-product></new-product>
-                </div>
-                <div class="right r">
-                    <div class="top">
-                        <ul class="theard l">
-                            <li>排列方式：</li>
-                            <li class="actives">
-                                默认
-                            </li>
-                            <li
-                                class="li">
-                                <span>销量</span>
-                                <img
-                                    src="../../assets/img/xiajiantou.png"
-                                    alt=""
-                                />
-                            </li>
-                            <li
-                                class="li">
-                                <span>人气</span>
-                                <img
-                                    src="../../assets/img/xiajiantou.png"
-                                    alt=""
-                                />
-                            </li>
-                            <li
-                                class="li">
-                                <span>价格</span>
-                                <img
-                                    src="../../assets/img/xiajiantou.png"
-                                    alt=""
-                                />
-                            </li>
-                        </ul>
-                        <div class="ziying l">
-                            <input
-                                class="l"
-                                type="checkbox"
-                                :checked="selfSupportChecked"
-                            />平台自营
-                        </div>
-                        <div class="l shangpin">
-                            商品所在地：
-                            <select class="r" name="">
-                                <option value="">不限地区</option>
-                                <option>不限地区</option>
-                                <option>不限地区</option>
-                                <option>不限地区</option>
-                                <option>不限地区</option>
-                            </select>
-                        </div>
-                        <div class="r next">
-                            <span class="button">上一页</span>
-                            <span class="button">下一页</span>
-                        </div>
-                    </div>
-                    <div class="bottom">
-                        <ul class="l">
-                            <li class="bagli l">
-                                <img class="bag" src="../../assets/img/yi-7.png" />
-                                <ul class="samllul l">
-                                    <li class="l">
-                                        <img class="samll" src="../../assets/img/yi-7.png" />
-                                    </li>
-                                    <li class="l">
-                                        <img class="samll" src="../../assets/img/yi-12.png" />
-                                    </li>
-                                </ul>
-                                <p class="l">数码印刷<br>尺寸类型：制造尺寸</p>
-                                <div class="l pice">
-                                    <span>￥ 3.57/只</span>
-                                    <span style="display:inline-block;margin-left:20px;font-size:13px;color:#656565;float:right;margin-right:10px;">已售2件</span>
-                                </div>
-                                <div class="buy l">
-                                    <span class="g-collection">
-                                        <i class="l like"></i>
-                                        <span>收藏</span>
-                                    </span>
-                                </div>
-                            </li>
-                            <li class="bagli l">
-                                <img class="bag" src="../../assets/img/yi-12.png" />
-                                <ul class="samllul l">
-                                    <li class="l">
-                                        <img class="samll" src="../../assets/img/yi-12.png" />
-                                    </li>
-                                    <li class="l">
-                                        <img class="samll" src="../../assets/img/yi-7.png" />
-                                    </li>
-                                </ul>
-                                <p class="l">数码印刷<br>尺寸类型：制造尺寸</p>
-                                <div class="l pice">
-                                    <span>￥ 3.57/只</span>
-                                    <span style="display:inline-block;margin-left:20px;font-size:13px;color:#656565;float:right;margin-right:10px;">已售2件</span>
-                                </div>
-                                <div class="buy l">
-                                    <span class="g-collection">
-                                        <i class="l like"></i>
-                                        <span>收藏</span>
-                                    </span>
-                                </div>
-                            </li>
-                        </ul>
-                    </div>
-                </div>
-            </div> -->
-
-
             <div class="fenye" v-show="list.length !== 0">
                 <div class="box2">
                     <el-pagination
@@ -384,7 +229,6 @@
             <like-and-history></like-and-history>
         </div>
         <foot-com></foot-com>
-        <back-top></back-top>
     </div>
 </template>
 
@@ -452,6 +296,7 @@ export default {
     },
     created() {
         this.drinkNo = JSON.parse(localStorage.getItem("class"));
+        // let title = "生活用品" + this.$constant.webComContent;
          let title = "生活用品" + '-' + this.$constant.webComContent;
         this.showScroll.scrollTitle(title);
     },
@@ -549,6 +394,15 @@ export default {
                     index,
                     this.selected.theard[index]
                 );
+
+                /*
+            1:销量由高到低
+            2:销量由低到高
+            3:评论次数人气由高到低
+            4:评论次数人气由低到高
+            5:价格由高到低
+            6:价格由低到高
+          */
                 console.log(this.selected.theard);
                 switch (index) {
                     case 0:
@@ -642,6 +496,8 @@ export default {
                 } else {
                     this.list[index].is_collect = 0;
                 }
+
+                // this.$forceUpdate();
             });
         },
         // 去详情页
@@ -748,15 +604,10 @@ export default {
     img {
         margin: 17px 7px 0 0;
     }
-    .shouye {
-        cursor: pointer;
-    }
     .xiala {
-        color: #D02629;
         display: inline-block;
         width: 82px;
-        // height: 23px;
-        height: 25px;
+        height: 23px;
         border: 1px solid #d1d1d1;
         text-align: center;
         line-height: 23px;
@@ -802,6 +653,7 @@ export default {
             overflow: hidden;
             ul {
                 li {
+                    // margin-right: 47px;
                     line-height: 55px;
                     margin-right: 20px;
                     cursor: pointer;
@@ -810,10 +662,6 @@ export default {
                     }
                 }
             }
-        }
-        .down-arrow {
-            float: right;
-            padding: 30px 20px 0 0;
         }
         .q_class_list.active {
             height: auto;
@@ -836,6 +684,7 @@ export default {
 }
 .new {
     overflow: hidden;
+    /*height: 300px;*/
     .right {
         width: 982px;
         .top {
@@ -859,7 +708,13 @@ export default {
                 li:nth-of-type(2) {
                     width: 49px;
                 }
+                // .li {
+                //   background: url(../../assets/img/xiajiantou.png) no-repeat top 17px
+                //     right 8px;
+                // }
                 .active {
+                    // background: #fff url(../../assets/img/Xiajiantou1.png) no-repeat top
+                    //   17px right 8px !important;
                     background: white;
                 }
                 .actives {
@@ -945,14 +800,13 @@ export default {
                         margin-left: 5px;
                         span:nth-of-type(1) {
                             color: #de2d35;
-                            // font-size: 16px;
-                            font-size: 13px;
+                            font-size: 16px;
                         }
-                        // span:nth-of-type(2) {
-                        //     color: #9c9c9c;
-                        //     font-size: 9px;
-                        //     text-decoration: line-through;
-                        // }
+                        span:nth-of-type(2) {
+                            color: #9c9c9c;
+                            font-size: 9px;
+                            text-decoration: line-through;
+                        }
                     }
                     p {
                         cursor: pointer;
@@ -980,21 +834,12 @@ export default {
                         }
                         span {
                             color: #717171;
-                            // font-size: 12px;
-                            font-size: 13px;
+                            font-size: 12px;
                             float: left;
                             cursor: pointer;
-                            margin-top: 3px;
                         }
                         .g-collection {
                             margin-left: 10px;
-                            .like {
-                                width: 25px;
-                                height: 25px;
-                                background: url(../../assets/img/heat_null.png) no-repeat;
-                                background-size: 100% 100%;
-                                margin-right: 2px;
-                            }
                         }
                         img {
                             width: 17px;
@@ -1008,6 +853,7 @@ export default {
                     }
                     &:hover {
                         border-color: #d02629;
+                        // box-shadow: 1px 2px 3px #999;
                     }
                 }
                 .bagli:nth-of-type(1) {

@@ -220,9 +220,10 @@ const config = {
     regionLists: request + 'Region/regionLists', // 地区列表
     cityList: request + 'Region/regionLists', //  城市四级联动
     //  招商入驻
-    upLoadImage: request + 'UploadImage/uploadImage', // 上传图片
+    // upLoadImage: request + 'UploadImage/uploadImage', // 上传图片
     uploadImageToLocal: userUpload + 'FileUpload/uploadImageToLocal',
-    getGoodsImageConfig: userUpload + 'FileUpload/getGoodsImageConfig',
+    // getGoodsImageConfig: userUpload + 'FileUpload/getGoodsImageConfig',
+    upLoadImage: userUpload + 'FileUpload/getGoodsImageConfig',
     delPic: request + 'UploadImage/delPic', // 删除图片
     perfectInfo: request + 'StoreInformation/perfectInfo', // 入驻提交
     companyProgress: userModuleIndex + 'CompanyStoreAduitProgress/getStoreByUser', // 企业入驻进度
