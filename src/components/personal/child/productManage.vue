@@ -702,7 +702,7 @@ export default {
                     description: this.textarea,
                     explain: this.textarea1,
                     // pic_url: this.figureCollection,
-                    pic_url: 111,
+                    pic_url: this.uploadFile,
                 },
                 "post"
                 )
