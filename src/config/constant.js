@@ -5,9 +5,9 @@ export const constant = {
     // URL: "http://b2b2c.shopsn.cn/#/", // PC端最终地址
     // agentURL: "http://agent.shopsn.cn/", // 商户中心地址
     // s_url: "http://b2b2c.shopsn.cn/", // 店铺首页导航地址
-    URL: "http://demo.shopsn.cn/#/", // PC端最终地址
-    agentURL: "http://agent.shopsn.cn/", // 商户中心地址
-    s_url: "http://demo.shopsn.cn/", // 店铺首页导航地址
+    URL: "http://b2b2c.gtpacking.cn/#/", // PC端最终地址
+    agentURL: "http://agent.gtpacking.cn/", // 商户中心地址
+    s_url: "http://b2b2c.gtpacking.cn/", // 店铺首页导航地址
     webSiteName: "亿速网络",
     webKeyWord: "亿速测试",
     // webComContent:

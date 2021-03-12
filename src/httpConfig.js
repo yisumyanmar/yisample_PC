@@ -3,7 +3,7 @@
 // const request = 'http://api.shopsn.net/index.php/'
 const request = 'http://api.gtpacking.cn/custom-pc/index.php/'
 // const request = 'http://192.168.1.146/pc/index.php/'
-const imgRequest = 'http://center.shopsn.cn/'
+const imgRequest = 'http://admin.gtpacking.cn/'
 // const request = 'http://pc.local.com/'
 // const userModuleIndex = 'http://api.shopsn.net/admin.php/'
 const userModuleIndex = 'http://api.gtpacking.cn/custom-pc/admin.php/'
