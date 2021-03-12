@@ -191,7 +191,7 @@ export default {
             cancelIndex: -1,
             checkPic: [], //检查图片是否满足要求
             message: "",
-            imgUpload: "http://center.shopsn.cn/",
+            imgUpload: "http://admin.gtpacking.cn/",
             page: 1, //传的page
             pagesize: 10, //    每页的数据
             showListData: true, //列表数据

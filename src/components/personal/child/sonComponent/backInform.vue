@@ -65,7 +65,7 @@
 export default {
     data() {
         return {
-            imgUpload: "http://center.shopsn.cn/"
+            imgUpload: "http://admin.gtpacking.cn/"
         };
     },
     props: {

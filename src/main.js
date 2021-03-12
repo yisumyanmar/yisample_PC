@@ -67,8 +67,8 @@ Vue.use(preview);
 // 引入自己的css
 import "./assets/css/base.css";
 Vue.use(VueLazyload, {
-    error: "http://center.shopsn.cn/Uploads/qrCode/404.jpg",
-    loading: "http://center.shopsn.cn/Uploads/qrCode/404.jpg",
+    error: "http://admin.gtpacking.cn/Uploads/qrCode/404.jpg",
+    loading: "http://admin.gtpacking.cn/Uploads/qrCode/404.jpg",
     attempt: 1
 });
 
@@ -79,8 +79,8 @@ import OtpInput from "@bachdgvn/vue-otp-input";
 Vue.component("v-otp-input", OtpInput);
 
 // 图片地址
-const imgUpload = "http://center.shopsn.cn/";
-const URl = "http://center.shopsn.cn";
+const imgUpload = "http://admin.gtpacking.cn/";
+const URl = "http://admin.gtpacking.cn";
 Vue.prototype.$constant = constant;
 Vue.prototype.$Status = Status;
 Vue.prototype.URL = URl;
