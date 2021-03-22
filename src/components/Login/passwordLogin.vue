@@ -495,10 +495,11 @@ export default {
             width: 100%;
             height: 100px;
             .logo {
-                width: 184px;
+                // width: 184px;
+                width: 202px;
                 height: 53px;
                 margin-top: 21px;
-                border-right: 1px solid #ebebeb;
+                // border-right: 1px solid #ebebeb;
                 .home {
                     cursor: pointer;
                 }
