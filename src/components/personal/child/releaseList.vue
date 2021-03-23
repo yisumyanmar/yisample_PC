@@ -37,7 +37,8 @@
                             <p>{{item.number}}</p>
                             <p>{{item.create_time | formatDate }}</p>
                             <p>{{item.deadline_time | formatDate }}</p>
-                            <button v-if="item.winning_status == 0" class="buy" @click="popUp">通过</button>
+                            <!-- <button v-if="item.winning_status == 0" class="buy" @click="popUp">通过</button> -->
+                            <button v-if="item.winning_status == 0" class="buy" @click="releaseInquiryList">通过</button>
                             <button v-if="item.winning_status == 1" class="purchase">采购</button>
                         </div>
                         <!-- <div class="bom_btn">
@@ -125,6 +126,14 @@ export default {
         },
         close() {
             this.visible1 = false;
+        },
+        releaseInquiryList() {
+            this.$router.push({
+                name: "releaseInquiryList",
+                // query: {
+                //     x:0
+                // }
+            });
         },
         close1() {
             if(this.checked1 == true) {

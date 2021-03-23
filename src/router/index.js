@@ -215,6 +215,8 @@ import collect from "../components/personal/collect.vue";
 import ecentBrowse from "../components/personal/ecentbrowse.vue";
 // 我的订单-----买家投诉
 import complain from "../components/personal/complain.vue";
+
+import releaseInquiryList from "../components/personal/releaseInquiryList.vue";
 // 招商入驻  -------查看进度
 import progressLook from "../components/personal/child/lookProgress.vue";
 // 招商入驻  -------入驻协议
@@ -1071,6 +1073,12 @@ const router = new Router({
             path: "/complain",
             name: "complain",
             component: complain
+        },
+        {
+            // 我的订单
+            path: "/releaseInquiryList",
+            name: "releaseInquiryList",
+            component: releaseInquiryList
         },
         // 招商入驻  -------入驻协议
         {
