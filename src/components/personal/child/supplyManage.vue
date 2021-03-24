@@ -5,22 +5,23 @@
             <p class="l">产品名称</p>
             <p class="l"> 产品编码</p>
             <p class="l">类型</p>
-            <p class="l">产品属性</p>
+            <!-- <p class="l">产品属性</p> -->
             <p class="l">单价</p>
             <p class="l">有效期</p>
             <p class="l">交易操作</p>
         </div>
 
-        <div class="alike">
+        <div class="alike" v-for="(item, index) in winList.data" :key="index">
             <div class="both">
             <input class="l" type="checkbox" />
-            <p class="l">湖南正虹科技发展股份有限公司</p>
+            <!-- <p class="l">湖南正虹科技发展股份有限公司</p> -->
+            <p class="l">{{item.shop_name}}</p>
             </div>
             <div class="order-item clearfix">
                 <div class="order-info l">
                     <div class="zuo">
                         <div class="huowu">
-                            <p>中铁十一局三公司广州<br>
+                            <!-- <p>中铁十一局三公司广州<br>
                             地铁18号线混凝土料斗<br>
                             询价单
                             </p>
@@ -28,14 +29,20 @@
                             <p>定制品</p>
                             <p>68x58.5cm</p>
                             <p>￥50</p>
-                            <p>2020年10月21日</p>
+                            <p>2020年10月21日</p> -->
+                            <p>{{item.title}}</p>
+                            <p>{{item.goods_id}}</p>
+                            <p>{{item.class_name}}</p>
+                            <!-- <p>68x58.5cm</p> -->
+                            <p>￥{{item.price}}</p>
+                            <p>{{item.time}}</p>
                             <button>再次购买</button>
                             <button>再次议价</button>
                             <button>删除</button>
                         </div>
                     </div>
                 </div>
-                <div class="order-info l">
+                <!-- <div class="order-info l">
                     <div class="zuo">
                         <div class="huowu">
                             <p>水泵彩箱</p>
@@ -49,10 +56,18 @@
                             <button>删除</button>
                         </div>
                     </div>
-                </div>
+                </div> -->
             </div>
         </div>
-        <div class="btn"><span>上一页</span><span>下一页</span></div>
+        <!-- <div class="btn"><span>上一页</span><span>下一页</span></div> -->
+        <div class="pagation" v-if="winList.count">
+            <el-pagination
+                background
+                layout="total, prev, pager, next"
+                :total="parseInt(winList.count)"
+                @current-change="currentPage">
+            </el-pagination>
+        </div>
     </div>
 </template>
 
@@ -68,38 +83,43 @@ export default {
           this.GetWinningList();
     },
     methods: {
-        GetWinningList() {
-            this.HTTP(this.$httpConfig.winningList, {}, "post")
+        GetWinningList(p) {
+            this.HTTP(this.$httpConfig.winningList, {
+                page: p
+            }, "post")
                 .then(res => {
-                    this.winList = res.data.data.data;
+                    this.winList = res.data.data;
                 })
                 .catch(e => {
                     console.log(e);
                 });
         },
-        deleteList(id) {
-            this.$confirm("您确定要删除该订单吗?", "提示", {
-            confirmButtonText: "确定",
-            cancelButtonText: "取消",
-            type: "warning",
-            lockScroll: false,
-            center: true,
-            closeOnClickModal: false
-            })
-            .then(() => {
-                this.HTTP(
-                this.$httpConfig.CustomizedDel,
-                {
-                    id: id
-                },
-                "post"
-                ).then(res => {
-                    this.GetWinningList();
-                });
-            })
-            .catch(() => {
-            });
-        }
+        // deleteList(id) {
+        //     this.$confirm("您确定要删除该订单吗?", "提示", {
+        //     confirmButtonText: "确定",
+        //     cancelButtonText: "取消",
+        //     type: "warning",
+        //     lockScroll: false,
+        //     center: true,
+        //     closeOnClickModal: false
+        //     })
+        //     .then(() => {
+        //         this.HTTP(
+        //         this.$httpConfig.CustomizedDel,
+        //         {
+        //             id: id
+        //         },
+        //         "post"
+        //         ).then(res => {
+        //             this.GetWinningList();
+        //         });
+        //     })
+        //     .catch(() => {
+        //     });
+        // },
+        currentPage (val) {
+            this.GetWinningList(val);
+        },
     }
 };
 </script>
@@ -148,17 +168,17 @@ export default {
             color: #474747;
         }
         p:nth-of-type(1) {
-            margin: 0 120px 0 30px;
+            margin: 0 105px 0 40px;
         }
         p:nth-of-type(3) {
-            margin: 0 50px;
+            margin: 0 110px 0 45px;
         }
         p:nth-of-type(5) {
-            margin: 0 50px;
+            margin: 0 150px 0 85px;
         }
-        p:nth-of-type(7) {
-            margin-left: 100px;
-        }
+        // p:nth-of-type(7) {
+        //     margin-left: 100px;
+        // }
     }
     .alike {
         overflow: hidden;
@@ -192,15 +212,16 @@ export default {
                     color: #333;
                     }
                     p:nth-of-type(1) {
-                        width: 147px;
+                        width: 155px;
                         margin: 0 15px 0 0;
                     }
                     p:nth-of-type(3) {
-                        margin: 0 35px 0 40px;
-                        width: 40px;
+                        margin: 0 50px;
+                        width: 80px;
                     }
                     p:nth-of-type(5) {
-                        margin: 0 35px 0 40px;
+                        margin: 0 40px 0 50px;
+                        width: 100px;
                     }
                     button {
                         color: #ffffff;
@@ -211,7 +232,6 @@ export default {
                     }
                     button:nth-of-type(1) {
                         background: #FF6000;
-                        margin: 0 0 0 30px;
                     }
                     button:nth-of-type(2) {
                         background:#02A3FE;
@@ -224,6 +244,10 @@ export default {
                 }
             }
         }
+    }
+    .pagation{
+        text-align: right;
+        margin-top: 30px;
     }
     .btn {
         cursor: pointer;
