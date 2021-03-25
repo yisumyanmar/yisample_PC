@@ -9,8 +9,8 @@
                 </div>
                 <div class="search_body">
                     <p class="body_keyword">项目关键字：</p>
-                    <input class="body_input" placeholder="请输入想要搜索的项目关键字"/>
-                    <button class="body_button">查询</button>
+                    <input class="body_input" v-model="search_title" @keyup.enter="getInquiryPublicityList(search_title)" placeholder="请输入想要搜索的项目关键字"/>
+                    <button class="body_button" @click="getInquiryPublicityList(search_title)">查询</button>
                 </div>
             </div>
             <div class="inq_project">
@@ -43,7 +43,7 @@
                 <div v-for="(item, index) in PublicityList.data" :key="index">
                     <div class="thead_body">
                         <p v-if="item.title == null" class="l">-</p>
-                        <p v-else class="l">{{item.title}}</p>
+                        <p v-else class="l">{{item.title}}-询价公示</p>
                         <p class="l">{{item.user_name}}</p>
                         <p class="l">{{item.create_time | formatDate}}</p>
                         <p class="l" @click="ToinqInner(item.id)">查看详情</p>
@@ -70,6 +70,7 @@ export default {
     data() {
         return {
             PublicityList: [],
+            search_title: ''
         }
     },
     created() {
@@ -84,10 +85,12 @@ export default {
                 }
             });
         },
-        getInquiryPublicityList(p) {
+        getInquiryPublicityList(title, p) {
+            if(this.search_title) {
             this.HTTP(
                 this.$httpConfig.inquiryPublicityList, {
-                    page:p
+                    title: title,
+                    page: p
                 }, "post")
                 .then(res => {
                     this.PublicityList = res.data.data;
@@ -95,6 +98,18 @@ export default {
                 .catch(err => {
                     console.log(err.data.message)
                 });
+            } else {
+                this.HTTP(
+                this.$httpConfig.inquiryPublicityList, {
+                    page: p
+                }, "post")
+                .then(res => {
+                    this.PublicityList = res.data.data;
+                })
+                .catch(err => {
+                    console.log(err.data.message)
+                });
+            }
         },
         currentPage (val) {
             this.getInquiryPublicityList(val);

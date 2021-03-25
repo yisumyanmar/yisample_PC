@@ -15,7 +15,10 @@
                     <i class="el-icon-arrow-down"></i>
                 </a>
                 <span>{{ goodsData.title }}</span> -->
-                <a @click="GoTo" class="xiala">标准品</a>
+                <!-- <a @click="GoTo" class="xiala">标准品</a> -->
+                <a @click="GoTo" class="xiala"
+                    >{{ getTopClass(goodsData.class_id) }}
+                </a>
                 <!-- <span style="color: #D02629; padding-left: 10px">传感器彩盒</span> -->
                 <span style="color: #D02629; padding-left: 10px">{{ goodsData.title }}</span>
             </div>
@@ -145,10 +148,11 @@
                         </p> -->
                         <p class="l">
                             售 &nbsp;&nbsp;价
-                            <span>￥279.00</span>
+                            <!-- <span>￥279.00</span>
                             <span>￥259.00</span>
                             <span>￥248.00</span>
-                            <span>￥230.00</span>
+                            <span>￥230.00</span> -->
+                            <span v-for="(numb, index) in goods_number" :key="index">￥{{numb.order_price}}</span>
                         </p>
 
                         <!-- <div class="couponSliceDiv" v-if="storeCouponList.length != 0">
@@ -200,10 +204,11 @@
                         </div> -->
                         <div class="couponSliceDiv">
                             起订量
+                            <!-- <span>100 件</span>
                             <span>100 件</span>
                             <span>100 件</span>
-                            <span>100 件</span>
-                            <span>100 件</span>
+                            <span>100 件</span> -->
+                            <span v-for="(numb1, index) in goods_number" :key="index">{{numb1.number}} 件</span>
                         </div>
 
 
@@ -1253,6 +1258,7 @@ export default {
             collection_text: "收藏本店",
             collection_text1: "收藏商品",
             goodsData: {},
+            goods_number: {},
             shop_data: {},
             defaultPicture: "",
             imgList: [],
@@ -2658,6 +2664,7 @@ export default {
                 this.get_goods_id = res.data.data.id;
                 this.get_main_id=res.data.data.p_id;
                 this.goodsData = res.data.data;
+                this.goods_number = res.data.data.number;
                 this.video = res.data.data.video;
                 this.productTitle = this.goodsData.title;
                 this.imgList = this.goodsData.images;
@@ -3515,7 +3522,7 @@ export default {
                 // color: #9a9a9a;
                 color: #999999;
                 margin-left: 25px;
-                width: 100%;
+                // width: 100%;
             }
 
             // p:nth-of-type(1) {
@@ -3546,7 +3553,7 @@ export default {
                     color: #CC353E;
                     margin-left: 10px;
                     font-weight: bold;
-                    margin-right: 70px;
+                    margin-right: 60px;
                 }
             }
 
@@ -3562,7 +3569,7 @@ export default {
                     font-size: 14px;
                     color: #333333;
                     margin-left: 42px;
-                    margin-right: 102px;
+                    margin-right: 92px;
                 }
 
                 // .couponSlice {
