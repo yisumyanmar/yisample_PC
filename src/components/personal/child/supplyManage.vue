@@ -38,7 +38,7 @@
                             <p>{{item.time}}</p>
                             <button>再次购买</button>
                             <button>再次议价</button>
-                            <button>删除</button>
+                            <button @click="deleteList(item.id)">删除</button>
                         </div>
                     </div>
                 </div>
@@ -72,6 +72,7 @@
 </template>
 
 <script>
+import { Message } from "element-ui";
 export default {
     name: 'supplyManage',
     data() {
@@ -94,29 +95,29 @@ export default {
                     console.log(e);
                 });
         },
-        // deleteList(id) {
-        //     this.$confirm("您确定要删除该订单吗?", "提示", {
-        //     confirmButtonText: "确定",
-        //     cancelButtonText: "取消",
-        //     type: "warning",
-        //     lockScroll: false,
-        //     center: true,
-        //     closeOnClickModal: false
-        //     })
-        //     .then(() => {
-        //         this.HTTP(
-        //         this.$httpConfig.CustomizedDel,
-        //         {
-        //             id: id
-        //         },
-        //         "post"
-        //         ).then(res => {
-        //             this.GetWinningList();
-        //         });
-        //     })
-        //     .catch(() => {
-        //     });
-        // },
+        deleteList(id) {
+            this.$confirm("您确定要删除该订单吗?", "提示", {
+            confirmButtonText: "确定",
+            cancelButtonText: "取消",
+            type: "warning",
+            lockScroll: false,
+            center: true,
+            closeOnClickModal: false
+            })
+            .then(() => {
+                this.HTTP(
+                this.$httpConfig.winningDel,
+                {
+                    id: id
+                },
+                "post"
+                ).then(res => {
+                    this.GetWinningList();
+                });
+            })
+            .catch(() => {
+            });
+        },
         currentPage (val) {
             this.GetWinningList(val);
         },

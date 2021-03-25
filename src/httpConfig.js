@@ -46,6 +46,7 @@ const config = {
     customTemplateList: userModuleIndex + 'CustomTemplate/customTemplateList',
     customTemplateDetail: userModuleIndex + 'CustomTemplate/customTemplateDetail',
     winningList: userModuleIndex + 'CustomTemplate/winningList',
+    winningDel: userModuleIndex + 'CustomTemplate/winningDel',
     CustomizedDel: userModuleIndex + 'CustomTemplate/myCustomizedDel',
     addIssueInquiry: userModuleIndex + 'ProjectGoods/addIssueInquiry',
     issueInquiryList: userModuleIndex + 'ProjectGoods/issueInquiryList',
