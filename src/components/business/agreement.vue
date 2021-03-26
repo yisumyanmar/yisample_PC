@@ -70,8 +70,8 @@
                     ></el-alert>
                 </h2>
                 <h3>
-                    <button @click="person">个人入驻</button
-                    ><button @click="company">企业入驻</button>
+                    <!-- <button @click="person">个人入驻</button> -->
+                    <button @click="company">企业入驻</button>
                 </h3>
             </div>
         </div>
