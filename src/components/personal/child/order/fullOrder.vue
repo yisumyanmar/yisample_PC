@@ -77,7 +77,7 @@
       <p class="l">交易操作</p>
     </div>
     <div class="fullOrde">
-      <div class="alike" v-for="(item, index) in data.list" :key="index">
+      <div class="alike" v-for="(item, index) in OrderList" :key="index">
         <div class="both">
           <input class="l" type="checkbox" />
           <p class="l">{{ item.create_time | formatDate }}</p>
@@ -423,7 +423,8 @@ export default {
       freight_price: '',
       provId: '',
       cityId: '',
-      distId: ''
+      distId: '',
+      OrderList: []
     };
   },
   created() {
@@ -663,6 +664,7 @@ export default {
       )
         .then(res => {
           this.data = res.data.data;
+          this.OrderList = res.data.data.list;
           this.provId = this.data.UserAddress.prov.id;
           this.cityId = this.data.UserAddress.city.id;
           this.distId = this.data.UserAddress.dist.id;
