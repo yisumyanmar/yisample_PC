@@ -9,13 +9,19 @@
             </div>
             <div class="location">
                 <div class="location_head">
-                    <p>中铁电气化局贵阳轨道交通2号线车站装修及机电安装5标零星材料采购100602-询价公示的中标结果公告</p>
-                    <p>中铁电气化局西安电气化工程有限公司发布时间：2020-10-09 16:04</p>
+                    <!-- <p>中铁电气化局贵阳轨道交通2号线车站装修及机电安装5标零星材料采购100602-询价公示的中标结果公告</p>
+                    <p>中铁电气化局西安电气化工程有限公司发布时间：2020-10-09 16:04</p> -->
+                    <p>{{PublicityDetail.title}}-询价公示的中标结果公告</p>
+                    <p>{{PublicityDetail.user_name}}发布时间：{{ PublicityDetail.create_time |formatDate }}</p>
                 </div>
                 <div class="location_body">
-                    <p>中铁电气化局贵阳轨道交通2号线车站装修及机电安装5标零星材料采购100602-询价公示评标工作已经结束，中标人已经确定。现将中标结果公布如下</p>
+                    <!-- <p>中铁电气化局贵阳轨道交通2号线车站装修及机电安装5标零星材料采购100602-询价公示评标工作已经结束，中标人已经确定。现将中标结果公布如下</p>
                     <p>中标供应商：贵州正黔通管业有限责任公司（中标总金额：¥48400</p>
-                    <p>中标理由：最低价</p>
+                    <p>中标理由：最低价</p> -->
+                    <p>{{PublicityDetail.title}}-询价公示评标工作已经结束，中标人已经确定。现将中标结果公布如下</p>
+                    <div  v-for="(off, ind) in PublicityDetail.offer" :key="ind">
+                        <p>中标供应商：{{off.name}}（ 中标总金额：¥{{off.price}} )</p>
+                    </div>
                 </div>
             </div>
         </div>
@@ -29,7 +35,7 @@ export default {
     name: 'inqInner',
     data() {
         return {
-            
+            PublicityDetail: []
         }
     },
     created() {
