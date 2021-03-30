@@ -2,23 +2,28 @@
 	<div class="releaseInquiryList">
 		<common-header v-on:childToParent="onChildClick"></common-header>
 		<my-header></my-header>
-		<div class="center">
+		<div class="center" v-for="(item, index) in offerList" :key="index">
             <div class="top"><span>询价中心 </span> > <span>发布询价列表 </span> > <span>中标列表 </span></div>
             <div class="one_part">
-                <p>商品名称：<span>包装 纸类包装容器 纸盒</span></p>
-                <p>采购量：<span>1000</span></p>
+                <!-- <p>商品名称：<span>包装 纸类包装容器 纸盒</span></p>
+                <p>采购量：<span>1000</span></p> -->
+                <p>商品名称：<span>{{item.title}}</span></p>
+                <p>采购量：<span>{{item.number}}</span></p>
             </div>
-            <div class="two_part">
+            <div class="two_part" v-for="(off, ind) in item.offer" :key="ind">
                 <img class="front_img" src="../../assets/img/front_img.png"/>
                 <p>报价方1</p>
-                <p>宁波华人包装有限公司</p>
+                <!-- <p>宁波华人包装有限公司</p>
                 <p>单价：<span>¥100</span>/PCS</p>
-                <p>总价：<span>¥100000.00</span></p>
+                <p>总价：<span>¥100000.00</span></p> -->
+                <p>{{off.shop_name}}</p>
+                <p>单价：<span>¥{{off.price}}</span>/PCS</p>
+                <p>总价：<span>¥{{off.total_price}}</span></p>
                 <p>报价时间：2021-01-26</p>
                 <input type="text" />
                 <button>确定报价</button>
             </div>
-            <div class="two_part">
+            <!-- <div class="two_part">
                 <img class="front_img" src="../../assets/img/front_img.png"/>
                 <p>报价方2</p>
                 <p>中铁电化运管公司</p>
@@ -27,7 +32,7 @@
                 <p>报价时间：2021-01-26</p>
                 <input type="text" />
                 <button>确定报价</button>
-            </div>
+            </div> -->
 		</div>
 		<foot-com></foot-com>
 	</div>
@@ -39,9 +44,11 @@ export default {
     name: 'releaseInquiryList',
 	data(){
 		return{
+            offerList: []
 		}
 	},
 	created() {
+        this.getOfferList();
     },
 	methods: {
         onChildClick (value) {
@@ -50,6 +57,18 @@ export default {
             location.reload();
         }
 	},
+    getOfferList() {
+        this.HTTP(this.$httpConfig.offerListByProject, {
+            id: this.$route.query.id
+        },"post")
+            .then(res => {
+                this.offerList = res.data.data;
+            }
+        )
+        .catch((err) => {
+        console.log(err);
+        });
+    },
 },
 components: {
     "my-header": myHeader
@@ -91,7 +110,7 @@ components: {
         p {
             color: #000;
             font-size: 14px;
-            width: 300px;
+            padding-right: 80px;
         }
         span {
             color: #666;

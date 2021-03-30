@@ -9,25 +9,40 @@
             <p class="l">单价</p>
             <p class="l">交易操作</p>
         </div>
-        <div class="alike">
+        <div class="alike" v-for="(item, index) in standardList.data" :key="index">
             <div class="both">
             <input class="l" type="checkbox" />
             <p class="l">2020-12-02</p>
+            <!-- <p class="l">{{ item.create_time | formatDate }}</p> -->
             </div>
             <div class="order-item clearfix">
                 <div class="order-info l">
                     <div class="zuo">
                         <div class="huowu">
-                            <p>98978784</p>
+                            <!-- <p>98978784</p>
                             <p>水泵彩箱</p>
                             <p>68x58.5cm</p>
                             <p>包装</p>
                             <p>￥50</p>
+                            <button>再次购买</button> -->
+                            <p>{{item.goods_id}}</p>
+                            <p>{{item.title}}</p>
+                            <p>{{item.spec}}</p>
+                            <p>{{item.class_name}}</p>
+                            <p>￥{{item.goods_price}}</p>
                             <button>再次购买</button>
                         </div>
                     </div>
                 </div>
             </div>
+        </div>
+        <div class="pagation" v-if="standardList.count">
+            <el-pagination
+                background
+                layout="total, prev, pager, next"
+                :total="parseInt(standardList.count)"
+                @current-change="currentPage">
+            </el-pagination>
         </div>
     </div>
 </template>
@@ -37,8 +52,28 @@
       name: 'boughtDtd',
       data() {
           return {
-
+              standardList: []
           }
+      },
+      created() {
+          this.getStandardList();
+      },
+      methods: {
+          getStandardList(p) {
+            this.HTTP(this.$httpConfig.standardGoodsList, {
+                page: p
+            },"post")
+                .then(res => {
+                    this.standardList = res.data.data;
+                }
+            )
+            .catch((err) => {
+            console.log(err);
+            });
+        },
+        currentPage (val) {
+            this.getStandardList(val);
+        },
       }
     
   }
@@ -57,7 +92,7 @@
     height: 100%;
 }
 .boughtDtd {
-    height: 800px;
+    height: auto;
     width: 980px;
     background: #fff;
     margin-top: 16px;
@@ -88,13 +123,13 @@
             color: #474747;
         }
         p:nth-of-type(1) {
-            margin: 0 148px 0 30px;
+            margin: 0 120px 0 20px;
         }
         p:nth-of-type(3) {
-            margin: 0 100px;
+            margin: 0 130px 0 110px;
         }
         p:nth-of-type(5) {
-            margin: 0 80px;
+            margin: 0 100px;
         }
     }
     .alike {
@@ -129,15 +164,24 @@
                     color: #333;
                     }
                     p:nth-of-type(1) {
-                        width: 147px;
+                        width: 110px;
+                        margin: 0 45px 0 0;
+                    }
+                    p:nth-of-type(2) {
+                        width: 140px;
                         margin: 0 45px 0 0;
                     }
                     p:nth-of-type(3) {
-                        margin: 0 127px 0 95px;
-                        width: 40px;
+                        width: 110px;
+                        margin: 0 45px 0 0;
+                    }
+                    p:nth-of-type(4) {
+                        width: 90px;
+                        margin: 0 45px 0 0;
                     }
                     p:nth-of-type(5) {
-                        margin: 0 37px 0 90px;
+                        width: 90px;
+                        margin: 0 45px 0 0;
                     }
                     button {
                         cursor: pointer;
@@ -146,11 +190,14 @@
                         border-radius: 4px;
                         width: 80px;
                         background: #FF6000;
-                        margin: 0 0 0 30px;
                     }
                 }
             }
         }
+    }
+    .pagation{
+        text-align: right;
+        margin: 30px 0;
     }
 }
 </style>

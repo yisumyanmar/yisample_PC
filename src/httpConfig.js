@@ -50,6 +50,8 @@ const config = {
     CustomizedDel: userModuleIndex + 'CustomTemplate/myCustomizedDel',
     addIssueInquiry: userModuleIndex + 'ProjectGoods/addIssueInquiry',
     issueInquiryList: userModuleIndex + 'ProjectGoods/issueInquiryList',
+    offerListByProject: request + 'Offer/offerListByProject',
+    standardGoodsList: request + 'Order/standardGoodsList',
 
     //  首页
     home: request + 'HomeIndex/home', //  首页信息获取
